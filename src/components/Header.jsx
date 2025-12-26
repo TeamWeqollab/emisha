@@ -160,7 +160,7 @@ export default function Header() {
 
       {/* Mobile Offcanvas Menu */}
       <div className="offcanvas offcanvas-end" tabIndex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
-        <div className="offcanvas-header bg-dark">
+        <div className="offcanvas-header">
           {/* <div className="d-flex align-items-center">
             <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center me-2" style={{width: '40px', height: '40px'}}>
               <span className="text-white fw-bold">P</span>
@@ -170,7 +170,7 @@ export default function Header() {
           <Link href="/">
             <Image src="/images/logo.svg" alt="Emisha" width={124} height={72} className="img-fluid" />
           </Link>
-          <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body bg-dark">
           <ul className="list-unstyled">
@@ -203,11 +203,14 @@ export default function Header() {
 
           {/* Mobile Schedule Consultation Button */}
           <div className="mt-4 pt-4 border-top border-secondary">
-            <Link 
+            {/* <Link 
               href="#"
               onClick={handleOpenConsultation}
               className="btn btn-outline-light w-100 py-3 btn-schedule-xs"
             >
+              <i className="fas fa-calendar-alt me-2"></i>CONTACT US
+            </Link> */}
+             <Link href="contact" className="btn btn-outline-light w-100 py-3 btn-schedule-xs">
               <i className="fas fa-calendar-alt me-2"></i>CONTACT US
             </Link>
           </div>

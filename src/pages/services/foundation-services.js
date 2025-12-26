@@ -32,12 +32,16 @@ export default function FoundationServices() {
       /> */}
 
         <div className="innerBanner">
-          <div>
+          <div className="d-none d-md-block">
             <Image src="/images/banner-services.png" alt="Emisha" layout="fill" className="img-fluid" />
           </div>
+          <div className="d-md-none">
+            <Image src="/images/banner-services-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
+          </div>
+          
           <div className="container">
             <div className="row">
-              <div className="col-md-8">
+              <div className="col-md-8 col-lg-8 col-xl-8">
                 <div className="banner-details">
                   <h2 className="banner-title">Build a Solid Data Foundation. <br />Unlock Enterprise Growth.</h2>
                   <p className="banner-desc">For organizations seeking direction and clarity on the data maturity roadmap, our Foundation Services offer structured guidance across the complex landscape of technologies, methodologies, planning, implementation, and deployment strategies</p>
@@ -64,13 +68,13 @@ export default function FoundationServices() {
                       <p className="tag-desc">Identify gaps, measure data integrity, and establish a foundation for trusted insights.</p>
                     </div>
                   </div>
-                   <div className="row align-items-center justify-content-center">
-                    <div className="col-md-5">
+                   <div className="row align-items-center justify-content-center mt-5 mt-md-0">
+                    <div className="col-md-5 order-1 order-md-0">
                       <h3 className="tag-Cat gradientText">Data Management Strategy</h3>
                       <h4 className="tag-title">Lead with Data. Win with Strategy</h4>
                       <p className="tag-desc">Empower your business with a data strategy that unites people, processes and technology to deliver measurable growth and compliance.</p>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 order-0 order-md-1">
                       <Image src="/images/img-DataManagement.png" alt="Emisha" width={509} height={421} className="img-fluid" />
                     </div>
                   </div>
@@ -88,13 +92,13 @@ export default function FoundationServices() {
               </div>
             </div>
 
-            <div className="row align-items-center justify-content-between mb-5">
-              <div className="col-md-5">
+            <div className="row align-items-center justify-content-between mt-5 mt-md-0 mb-5">
+              <div className="col-md-5 order-1 order-md-0">
                 <h3 className="tag-Cat gradientText">Proof of Concept</h3>
                 <h4 className="tag-title">From Concept to Confidence</h4>
                 <p className="tag-desc">Experiment with innovative data solutions quickly, validate their impact, and move forward with clarity ensuring only the right solutions scale across your business.</p>
               </div>
-               <div className="col-md-6">
+               <div className="col-md-6 order-0 order-md-1">
                 <Image src="/images/img-proofConcept.png" alt="Emisha" width={624} height={611} className="img-fluid" />
               </div>
             </div>

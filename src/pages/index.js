@@ -43,10 +43,10 @@ export default function Home() {
           </div>
 
           <div className="row justify-content-center align-items-center">
-            <div className="col-md-2">
+            <div className="col-md-3 col-lg-2">
               <Image src="/images/logo-footer.svg" alt="Emisha" width={206} height={120} className="img-fluid p-4" />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-9 col-lg-6">
               <p className="banner-leadInfo">Emisha empowers businesses by unlocking the full potential of their data through end-to-end solutions. With expertise in business integration, tailored strategies, and consulting, we bridge data complexity with precision, ensuring seamless transformation from strategy to execution.</p>
             </div>
           </div>
@@ -55,15 +55,15 @@ export default function Home() {
 
 
 
-       <section className="sectionWrapper">
+       <section className="sectionWrapper pt-0 pt-lg-5">
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-md-3">
+            <div className="col-md-12 col-lg-3">
               <h2 className="hd-ourServices">OUR SERVICES</h2>
               <p>Optimizing data quality, governance, and strategy.</p>
             </div>
-            <div className="col-md-4">
-              <div className="card commonCard">
+            <div className="col-md-6 col-lg-4">
+              <div className="card commonCard h-100">
                 <div className="card-body">
                   <div className="cardIcon">
                      <Image src="/images/icon-services1.svg" alt="Emisha" width={60} height={60} />
@@ -74,8 +74,8 @@ export default function Home() {
                 </div>
               </div>
             </div>
-           <div className="col-md-4">
-              <div className="card commonCard">
+           <div className="col-md-6 col-lg-4">
+              <div className="card commonCard h-100">
                 <div className="card-body">
                   <div className="cardIcon">
                      <Image src="/images/icon-services2.svg" alt="Emisha" width={60} height={60} />
@@ -89,8 +89,8 @@ export default function Home() {
           </div>
 
           <div className="row justify-content-end">
-            <div className="col-md-4">
-              <div className="card commonCard">
+            <div className="col-md-6 col-lg-4">
+              <div className="card commonCard h-100">
                 <div className="card-body">
                   <div className="cardIcon">
                      <Image src="/images/icon-services3.svg" alt="Emisha" width={60} height={60} />
@@ -101,8 +101,8 @@ export default function Home() {
                 </div>
               </div>
             </div>
-           <div className="col-md-4">
-              <div className="card commonCard">
+           <div className="col-md-6 col-lg-4">
+              <div className="card commonCard lastCommonCard h-100">
                 <div className="card-body">
                   <div className="cardIcon">
                      <Image src="/images/icon-services4.svg" alt="Emisha" width={60} height={60} />

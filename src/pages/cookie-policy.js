@@ -5,16 +5,16 @@ import InnerBanner from "@/components/InnerBanner.jsx";
 
 export default function CookiePolicy() {
   return (
-     <Layout
-           pageTitle="Emisha"
-            metaTitle="Future-proofing businesses with intelligent data solutions."
-            metaDescription="Emisha empowers businesses by unlocking the full potential of their data through end-to-end solutions. With expertise in business integration, tailored strategies, and consulting, we bridge data complexity with precision, ensuring seamless transformation from strategy to execution."
-            metaKeywords="Data-driven business solutions, End-to-end data solutions, Business data transformation, Data integration services, Enterprise data solutions, Data strategy and execution, Business integration expertise, Tailored data strategies, Data consulting services, Data-driven decision making, Digital transformation solutions, Strategic data consulting"
-            socialTitle="Future-proofing businesses with intelligent data solutions."
-            socialDescription="Emisha empowers businesses by unlocking the full potential of their data through end-to-end solutions. With expertise in business integration, tailored strategies, and consulting, we bridge data complexity with precision, ensuring seamless transformation from strategy to execution."
-            socialImage="/images/Emisha-Social-card.png"
-            socialUrl="/cookie-policy"
-        >
+    <Layout
+      pageTitle="Emisha"
+      metaTitle="Future-proofing businesses with intelligent data solutions."
+      metaDescription="Emisha empowers businesses by unlocking the full potential of their data through end-to-end solutions. With expertise in business integration, tailored strategies, and consulting, we bridge data complexity with precision, ensuring seamless transformation from strategy to execution."
+      metaKeywords="Data-driven business solutions, End-to-end data solutions, Business data transformation, Data integration services, Enterprise data solutions, Data strategy and execution, Business integration expertise, Tailored data strategies, Data consulting services, Data-driven decision making, Digital transformation solutions, Strategic data consulting"
+      socialTitle="Future-proofing businesses with intelligent data solutions."
+      socialDescription="Emisha empowers businesses by unlocking the full potential of their data through end-to-end solutions. With expertise in business integration, tailored strategies, and consulting, we bridge data complexity with precision, ensuring seamless transformation from strategy to execution."
+      socialImage="/images/Emisha-Social-card.png"
+      socialUrl="/cookie-policy"
+    >
 
       {/* Banner Section */}
       {/* <InnerBanner
@@ -24,12 +24,15 @@ export default function CookiePolicy() {
       /> */}
 
       <div className="innerBanner2">
-        <div>
+        <div className="d-none d-md-block">
           <Image src="/images/banner-news.png" alt="Emisha" width={1920} height={465} className="img-fluid" />
+        </div>
+        <div className="d-md-none">
+          <Image src="/images/banner-news-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
         </div>
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-md-6 text-center">
+            <div className="col-md-8 col-lg-8 col-xl-6 text-center">
               <div className="banner-details2">
                 <h2 className="banner-title">Cookie Settings</h2>
               </div>
@@ -37,10 +40,10 @@ export default function CookiePolicy() {
           </div>
         </div>
       </div>
-      
+
 
       {/* Cookie Policy Content */}
-      <section className="py-5">
+      <section className="sectionWrapper pb-0">
         <div className="container">
           <div className="col-lg-8 mx-auto">
             <div className="cookie-content">

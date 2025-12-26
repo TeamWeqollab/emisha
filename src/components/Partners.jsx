@@ -12,7 +12,7 @@ export default function Partners({
     <section className="partners">
       <div className="container">
         <div className="row align-items-center">
-          <div className="col-md-4">
+          <div className="col-md-12 col-lg-4">
             <h3 className="title">
               {lines.map((line, idx) => (
                 <span key={idx}>
@@ -23,8 +23,8 @@ export default function Partners({
             </h3>
             <p className="desc">{desc}</p>
           </div>
-          <div className="col-md-8">
-            <Image src={imageSrc} alt={alt} width={1499} height={216} className="img-fluid" />
+          <div className="col-md-12 col-lg-8">
+            <Image src={imageSrc} alt={alt} width={1499} height={216} className="img-fluid mt-4 mt-lg-0" />
           </div>
         </div>
       </div>

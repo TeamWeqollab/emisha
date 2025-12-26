@@ -37,7 +37,6 @@ export default function Resources() {
               </div>
             </div>
 
-
             <div className="row">
               <div className="col-md-12">
                 <div className="post-banner">

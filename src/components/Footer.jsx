@@ -21,7 +21,7 @@ export default function Footer() {
                 <Image src="/images/logo-footer.svg" width={124} height={72} alt="Emisha" className="img-fluid me-4" />
               </div>
 
-              <div className="col-lg-2 col-md-4 mb-4 footer-nav pe-5">
+              <div className="col-lg-2 col-md-4 footer-nav pe-5 mb-lg-4 mb-2" >
                 <h3 className="footer-nav-heading">Australia</h3>
                 <p>Level 35, Tower One
                     100 Barangaroo Ave,
@@ -30,7 +30,7 @@ export default function Footer() {
                 </p>
               </div>
 
-              <div className="col-lg-2 col-md-4 mb-4 footer-nav">
+              <div className="col-lg-2 col-md-4 footer-nav mb-lg-4 mb-2">
                 <h3 className="footer-nav-heading">India</h3>
                 <p>WeWork Galaxy, 43, Residency Rd, 
                   Shanthala Nagar, Ashok Nagar, 
@@ -38,7 +38,7 @@ export default function Footer() {
                   Karnataka, India, 560025
                   </p>
               </div>
-               <div className="col-lg-2 col-md-4 mb-4 footer-nav pe-5">
+               <div className="col-lg-2 col-md-4 footer-nav pe-5 mb-lg-4 mb-2">
                 <h3 className="footer-nav-heading">UAE</h3>
                 <p>SF3133, C1-1F
                     Ajman Free Zone
@@ -47,7 +47,7 @@ export default function Footer() {
                   </p>
               </div>
 
-              <div className="col-lg-2 col-md-4 mb-4 footer-nav pe-2">
+              <div className="col-lg-2 col-md-4 footer-nav pe-2 mb-lg-4 mb-2">
                 <h3 className="footer-nav-heading2">EMISHA</h3>
                 <div className="row">
                   <div className="col-md-6">
@@ -67,7 +67,7 @@ export default function Footer() {
                
               </div>
 
-              <div className="col-lg-2 col-md-4 mb-4 footer-nav ps-5">
+              <div className="col-lg-2 col-md-4 footer-nav ps-lg-5 ps-3 mt-2 mt-lg-0 mb-lg-4 mb-2">
                 <h3 className="footer-nav-heading2">LET&apos;S GET SOCIAL</h3>
                 <div className="d-flex justify-content-md-start gap-3" id="footer-social">
                   <Link href="#" className="social-link facebook" aria-label="Read more facebook"><i className="fa-brands fa-facebook-f"></i></Link>
@@ -80,7 +80,7 @@ export default function Footer() {
 
             <div className="row" id="copyright">
               {/* <div className="gradient-line" /> */}
-              <div className="col-md-6">
+              <div className="col-md-8 col-lg-6">
                 <ul className="list-unstyled list-inline">
                   <li className="list-inline-item"><Link href="/privacy-policy">Privacy Policy</Link></li>
                   <li className="list-inline-item"><Link href="/terms-of-service">Terms of Service</Link></li>
@@ -88,7 +88,7 @@ export default function Footer() {
                   {/* <li className="list-inline-item"><Link href="/sitemap">Sitemap</Link></li> */}
                 </ul>
               </div>
-              <div className="col-md-6 text-end">
+              <div className="col-md-4 col-lg-6 text-center text-lg-end">
                 <p className="copytext mb-3 mb-lg-0">&copy; {currentYear} Emisha 2026</p>
               </div>
             </div>

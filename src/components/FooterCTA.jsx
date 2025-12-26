@@ -33,7 +33,7 @@ export default function FooterCTA() {
       return {
        title: (
         <>
-          Trusted data. Confident decisions. 
+          Trusted data. Confident decisions.  
           <br />
           Lasting transformation.
         </>

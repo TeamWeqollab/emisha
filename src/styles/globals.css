@@ -295,7 +295,9 @@ transition: transform 0.3s ease; }
 /* Mobile Offcanvas Styling */
 .offcanvas {
   width: 320px !important;
-  background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important;
+  /* background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important; */
+  /* background: linear-gradient(to right,#FBB32B 0%, #E54D8B 27%, #AE3D8F 53%,#5452A2 77%, #1364AB 100%); */
+  /* background: #f18557; */
 }
 
 .offcanvas-header {
@@ -762,7 +764,7 @@ transition: transform 0.3s ease; }
 
 .contactEmishaBx .contactForm{ background-color: #fff; padding: 30px 50px 30px 15px;}
 .contactEmishaBx .contactForm .form-label{ font-size: 24px; font-weight: 500; margin-bottom: 8px;}
-.contactEmishaBx .contactForm .form-control{ font-size: 18px; font-weight: 500; margin-bottom: 50px; border-radius: 0px; border: none; border-bottom: solid 2px #DFDFDF; padding-left: 0px; padding-right: 0px;}
+.contactEmishaBx .contactForm .form-control{ font-size: 18px; font-weight: 300; margin-bottom: 50px; border-radius: 0px; border: none; border-bottom: solid 2px #DFDFDF; padding-left: 0px; padding-right: 0px;}
 
 .contactEmishaBx .contactForm .form-control:focus { box-shadow: none;  outline: none;}
 
@@ -1000,7 +1002,73 @@ transition: transform 0.3s ease; }
 /* Extra small devices (mobile portrait) for xs and sm */
 @media (max-width: 575px) {
  
+  :root {
+    --section-padding: 40px 0;
+  }
+
   
+  .hd-ourServices { font-size: 24px;}
+  .commonCard .card-title{ font-size: 22px;}
+  .lastCommonCard{ margin-bottom: 0px;}
+  .partners .title{ font-size: 24px;}
+  .footer-cta{ padding: 20px 25px; min-height: 270px;}
+  .footer-cta .sectionHeading{ font-size: 30px; margin-bottom: 25px;}
+  #footerRw{ padding-top: 30px;}
+  #copyright ul li{ margin-right: 10px;}
+
+  .innerBanner{ height: auto; margin-top: 150px;}
+  .banner-details{ margin-top: 40px;}
+  .banner-details .banner-title{ font-size: 28px; font-weight: 400; margin-bottom: 15px;}
+  .banner-details .banner-desc{ font-size: 22px; margin-bottom: 15px;}
+  .tag-Cat{ font-size: 20px; padding: 12px 30px; margin-top: 15px; margin-bottom: 25px;}
+  .tag-title{ font-size: 20px; }
+
+  .aboutHeading{ font-size: 24px;}
+  .aboutDesc{font-size: 20px;}
+  .aboutLeatTitle{font-size: 26px; margin-top: 40px; margin-bottom: 40px;}
+  .aboutCardBody{ padding: 0px !important;}
+  .bringAction{ padding: 30px 0px;}
+  .bringAction .card .card-title{ font-size: 24px;}
+  .bringAction .cardIcon{ width: 100px; height: 100px; margin-top: 20px;}
+  .bringAction .cardIcon img{ width: 80%; height: 80%;}
+  .careerEmishaBx{ padding: 40px;}
+  .careerEmishaBx .title{ font-size: 24px; margin-bottom: 25px;}
+  .careerEmishaBx .sub-Title{font-size: 32px;}
+  .careerEmishaBx .card-Text{ font-size: 22px;}
+  .careerEmishaBx .card-Text2{ font-size: 24px;}
+  .aboutOurProCard{ padding: 30px !important;}
+
+  .innerBanner2{margin-top: 120px; height: auto;}
+  .innerBanner2 .banner-details2{ position: relative; top: 0; left: 0; transform: none;}
+  .banner-details2 .banner-title{font-size: 28px; font-weight: 400;}
+  .contactEmishaBx{padding: 30px; margin-top: 30px; border: solid 1px #e8ecf3;}
+  .contactEmishaBx .title{margin-top: 0px; font-size: 32px;}
+  .contactEmishaBx .card-Text{ margin-bottom: 15px;}
+  .contactEmishaBx .contactForm{padding: 30px 15px;}
+  .contactEmishaBx .contactForm .form-label{ font-size: 20px; margin-bottom: 0px;}
+  .contactEmishaBx .contactForm .form-control{margin-bottom: 40px;}
+  
+  .latestNews { padding-top: 40px; padding-bottom: 40px;}
+  .latestNewsCard .card-title{font-size: 20px;}
+  .newsCard .card-title{font-size: 20px;}
+  .imageContainer-latestNews{max-height: 250px;}
+  .imageContainer-latestNews img{ height: 250px;}
+  .newsCard{ border-radius: 20px;}
+  .newsCard .card-body{padding: 30px;}
+  
+  .resourceCard .imageContainer{ max-height: 250px; }
+  .resourceCard .imageContainer img{height: 250px;}
+  .resourceCard .card-title { font-size: 20px;}
+  .post-title{font-size: 32px;}
+  .post-desc { font-size: 18px;}
+  .post-banner{max-height: 350px; margin-bottom: 20px;}
+  .post-banner img{height: 350px;}
+  .post-heading{font-size: 22px;}
+  .blogPageContent{ font-size: 18px;}
+  .blockFigure .blockquote .blockTitle{ font-size: 22px;}
+  .blockFigure .blockquote{padding: 90px 25px;}
+  .relatedSection .gradientText{ font-size: 24px;}
+
 }
 
 
@@ -1008,19 +1076,218 @@ transition: transform 0.3s ease; }
 @media (min-width: 576px) and (max-width: 767px) {
   
 
+  :root {
+    --section-padding: 40px 0;
+  }
+
+  .hd-ourServices { font-size: 24px;}
+  .commonCard .card-title{ font-size: 22px;}
+  .lastCommonCard{ margin-bottom: 0px;}
+  .partners .title{ font-size: 24px;}
+  .footer-cta{ padding: 20px 25px; min-height: 270px;}
+  .footer-cta .sectionHeading{ font-size: 30px; margin-bottom: 25px;}
+  #footerRw{ padding-top: 30px;}
+  #copyright ul li{ margin-right: 10px;}
+
+  .innerBanner{ height: auto; margin-top: 150px;}
+  .banner-details{ margin-top: 40px;}
+  .banner-details .banner-title{ font-size: 28px; font-weight: 400; margin-bottom: 15px;}
+  .banner-details .banner-desc{ font-size: 22px; margin-bottom: 15px;}
+  .tag-Cat{ font-size: 20px; padding: 12px 30px; margin-top: 15px; margin-bottom: 25px;}
+  .tag-title{ font-size: 20px; }
+
+  .aboutHeading{ font-size: 24px;}
+  .aboutDesc{font-size: 20px;}
+  .aboutLeatTitle{font-size: 26px; margin-top: 40px; margin-bottom: 40px;}
+  .aboutCardBody{ padding: 0px !important;}
+  .bringAction{ padding: 30px 0px;}
+  .bringAction .card .card-title{ font-size: 24px;}
+  .bringAction .cardIcon{ width: 100px; height: 100px; margin-top: 20px;}
+  .bringAction .cardIcon img{ width: 80%; height: 80%;}
+  .careerEmishaBx{ padding: 40px;}
+  .careerEmishaBx .title{ font-size: 24px; margin-bottom: 25px;}
+  .careerEmishaBx .sub-Title{font-size: 32px;}
+  .careerEmishaBx .card-Text{ font-size: 22px;}
+  .careerEmishaBx .card-Text2{ font-size: 24px;}
+  .aboutOurProCard{ padding: 30px !important;}
+
+  .innerBanner2{margin-top: 120px; height: auto;}
+  .innerBanner2 .banner-details2{ position: relative; top: 0; left: 0; transform: none;}
+  .banner-details2 .banner-title{font-size: 28px; font-weight: 400;}
+  .contactEmishaBx{padding: 30px; margin-top: 30px; border: solid 1px #e8ecf3;}
+  .contactEmishaBx .title{margin-top: 0px; font-size: 32px;}
+  .contactEmishaBx .card-Text{ margin-bottom: 15px;}
+  .contactEmishaBx .contactForm{padding: 30px 15px;}
+  .contactEmishaBx .contactForm .form-label{ font-size: 20px; margin-bottom: 0px;}
+  .contactEmishaBx .contactForm .form-control{margin-bottom: 40px;}
+
+  .latestNews { padding-top: 40px; padding-bottom: 40px;}
+  .latestNewsCard .card-title{font-size: 20px;}
+  .newsCard .card-title{font-size: 20px;}
+  .imageContainer-latestNews{max-height: 250px;}
+  .imageContainer-latestNews img{ height: 250px;}
+  .newsCard{ border-radius: 20px;}
+  .newsCard .card-body{padding: 30px;}
+
+  .resourceCard .imageContainer{ max-height: 250px; }
+  .resourceCard .imageContainer img{height: 250px;}
+  .resourceCard .card-title { font-size: 20px;}
+  .post-title{font-size: 32px;}
+  .post-desc { font-size: 18px;}
+  .post-banner{max-height: 350px; margin-bottom: 20px;}
+  .post-banner img{height: 350px;}
+  .post-heading{font-size: 22px;}
+  .blogPageContent{ font-size: 18px;}
+  .blockFigure .blockquote .blockTitle{ font-size: 22px;}
+  .blockFigure .blockquote{padding: 90px 25px;}
+  .relatedSection .gradientText{ font-size: 24px;}
+
 }
 
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991px){
  
+:root {
+    --section-padding: 40px 0;
+  }
+
+  .hd-ourServices { font-size: 24px;}
+  .commonCard .card-title{ font-size: 22px;}
+  .lastCommonCard{ margin-bottom: 0px;}
+  .partners .title{ font-size: 24px;}
+  .footer-cta{ padding: 20px 25px; min-height: 270px;}
+  .footer-cta .sectionHeading{ font-size: 30px; margin-bottom: 25px;}
+  #footerRw{ padding-top: 30px;}
+  #copyright ul li{ margin-right: 10px;}
+
+  .innerBanner{ height: 350px; margin-top: 100px; display: flex; align-items: center;}
+  .banner-details{ margin-top: 80px; padding-right: 50px;}
+  .banner-details .banner-title{ font-size: 28px; font-weight: 400; margin-bottom: 15px;}
+  .banner-details .banner-desc{ font-size: 22px; margin-bottom: 15px;}
+  .tag-Cat{ font-size: 20px; padding: 12px 30px; margin-top: 15px; margin-bottom: 25px;}
+  .tag-title{ font-size: 20px; }
+
+  .aboutHeading{ font-size: 24px;}
+  .aboutDesc{font-size: 20px;}
+  .aboutLeatTitle{font-size: 26px; margin-top: 40px; margin-bottom: 40px;}
+  .aboutCardBody{ padding: 0px !important;}
+  .bringAction{ padding: 30px 0px;}
+  .bringAction .card .card-title{ font-size: 24px;}
+  .bringAction .cardIcon{ width: 100px; height: 100px; margin-top: 20px;}
+  .bringAction .cardIcon img{ width: 80%; height: 80%;}
+  .careerEmishaBx{ padding: 40px;}
+  .careerEmishaBx .title{ font-size: 24px; margin-bottom: 25px;}
+  .careerEmishaBx .sub-Title{font-size: 32px;}
+  .careerEmishaBx .card-Text{ font-size: 22px;}
+  .careerEmishaBx .card-Text2{ font-size: 24px;}
+  .aboutOurProCard{ padding: 30px !important; min-height: 290px;}
+
+  .innerBanner2{margin-top: 120px; height: auto;}
+  .innerBanner2 .banner-details2{ position: relative; top: 0; left: 0; transform: none; margin-top: -50px;}
+  .banner-details2 .banner-title{font-size: 28px; font-weight: 400;}
+  .contactEmishaBx{padding: 30px; margin-top: 30px; border: solid 1px #e8ecf3;}
+  .contactEmishaBx .title{margin-top: 0px; font-size: 32px;}
+  .contactEmishaBx .card-Text{ margin-bottom: 15px;}
+  .contactEmishaBx .contactForm{padding: 30px 15px;}
+  .contactEmishaBx .contactForm .form-label{ font-size: 20px; margin-bottom: 0px;}
+  .contactEmishaBx .contactForm .form-control{margin-bottom: 40px;}
+
+  .latestNews { padding-top: 40px; padding-bottom: 40px;}
+  .latestNewsCard .card-title{font-size: 20px;}
+  .newsCard .card-title{font-size: 20px;}
+  .imageContainer-latestNews{max-height: 200px;}
+  .imageContainer-latestNews img{ height: 200px;}
+  .newsCard{ border-radius: 20px;}
+  .newsCard .card-body{padding: 30px;}
+  .imageContainer-news{ max-height: 200px;}
+  .imageContainer-news img{ height: 200px;}
+
+  .resourceCard .imageContainer{ max-height: 250px; }
+  .resourceCard .imageContainer img{height: 250px;}
+  .resourceCard .card-title { font-size: 20px;}
+  .post-title{font-size: 32px;}
+  .post-desc { font-size: 18px;}
+  .post-banner{max-height: 350px; margin-bottom: 20px;}
+  .post-banner img{height: 350px;}
+  .post-heading{font-size: 22px;}
+  .blogPageContent{ font-size: 18px;}
+  .blockFigure .blockquote .blockTitle{ font-size: 22px;}
+  .blockFigure .blockquote{padding: 90px 25px;}
+  .relatedSection .gradientText{ font-size: 24px;}
 
 }
 
 
 /* Larger tablets and small laptops (e.g., iPad Pro, 900px to 1024px) */
 @media (min-width: 992px) and (max-width: 1199px){
-  
+  :root {
+    --section-padding: 40px 0;
+  }
+
+   .hd-ourServices { font-size: 24px;}
+  .commonCard .card-title{ font-size: 22px;}
+  .lastCommonCard{ margin-bottom: 0px;}
+  .partners .title{ font-size: 24px;}
+  .footer-cta{ padding: 20px 25px; min-height: 270px;}
+  .footer-cta .sectionHeading{ font-size: 30px; margin-bottom: 25px;}
+  #footerRw{ padding-top: 30px;}
+  #copyright ul li{ margin-right: 10px;}
+
+  .innerBanner{ height: 460px; margin-top: 60px; display: flex; align-items: center;}
+  .banner-details{ margin-top: 130px; padding-right: 50px;}
+  .banner-details .banner-title{ font-size: 28px; font-weight: 400; margin-bottom: 15px;}
+  .banner-details .banner-desc{ font-size: 22px; margin-bottom: 15px;}
+  .tag-Cat{ font-size: 20px; padding: 12px 30px; margin-top: 15px; margin-bottom: 25px;}
+  .tag-title{ font-size: 20px; }
+
+  .aboutHeading{ font-size: 24px;}
+  .aboutDesc{font-size: 20px;}
+  .aboutLeatTitle{font-size: 26px; margin-top: 40px; margin-bottom: 40px;}
+  .aboutCardBody{ padding: 0px !important;}
+  .bringAction{ padding: 30px 0px;}
+  .bringAction .card .card-title{ font-size: 24px;}
+  .bringAction .cardIcon{ width: 100px; height: 100px; margin-top: 20px;}
+  .bringAction .cardIcon img{ width: 80%; height: 80%;}
+  .careerEmishaBx{ padding: 40px;}
+  .careerEmishaBx .title{ font-size: 24px; margin-bottom: 25px;}
+  .careerEmishaBx .sub-Title{font-size: 32px;}
+  .careerEmishaBx .card-Text{ font-size: 22px;}
+  .careerEmishaBx .card-Text2{ font-size: 24px;}
+  .aboutOurProCard{ padding: 30px !important; min-height: 290px;}
+
+  .innerBanner2{margin-top: 120px; height: auto;}
+  .innerBanner2 .banner-details2{ position: relative; top: 0; left: 0; transform: none; margin-top: -100px;}
+  .banner-details2 .banner-title{font-size: 28px; font-weight: 400;}
+  .contactEmishaBx{padding: 30px; margin-top: 30px; border: solid 1px #e8ecf3;}
+  .contactEmishaBx .title{margin-top: 0px; font-size: 32px;}
+  .contactEmishaBx .card-Text{ margin-bottom: 15px;}
+  .contactEmishaBx .contactForm{padding: 30px 15px;}
+  .contactEmishaBx .contactForm .form-label{ font-size: 20px; margin-bottom: 0px;}
+  .contactEmishaBx .contactForm .form-control{margin-bottom: 40px;}
+
+  .latestNews { padding-top: 40px; padding-bottom: 40px;}
+  .latestNewsCard .card-title{font-size: 20px;}
+  .newsCard .card-title{font-size: 20px;}
+  .imageContainer-latestNews{max-height: 200px;}
+  .imageContainer-latestNews img{ height: 200px;}
+  .newsCard{ border-radius: 20px;}
+  .newsCard .card-body{padding: 30px;}
+  .imageContainer-news{ max-height: 200px;}
+  .imageContainer-news img{ height: 200px;}
+
+  .resourceCard .imageContainer{ max-height: 250px; }
+  .resourceCard .imageContainer img{height: 250px;}
+  .resourceCard .card-title { font-size: 20px;}
+  .post-title{font-size: 32px;}
+  .post-desc { font-size: 18px;}
+  .post-banner{max-height: 350px; margin-bottom: 20px;}
+  .post-banner img{height: 350px;}
+  .post-heading{font-size: 22px;}
+  .blogPageContent{ font-size: 18px;}
+  .blockFigure .blockquote .blockTitle{ font-size: 22px;}
+  .blockFigure .blockquote{padding: 90px 25px;}
+  .relatedSection .gradientText{ font-size: 24px;}
 
 }
 

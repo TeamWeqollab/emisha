@@ -24,12 +24,15 @@ export default function TermsOfService() {
       /> */}
 
       <div className="innerBanner2">
-        <div>
+        <div className="d-none d-md-block">
           <Image src="/images/banner-news.png" alt="Emisha" width={1920} height={465} className="img-fluid" />
+        </div>
+        <div className="d-md-none">
+          <Image src="/images/banner-news-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
         </div>
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-md-6 text-center">
+            <div className="col-md-8 col-lg-8 col-xl-6 text-center">
               <div className="banner-details2">
                 <h2 className="banner-title">Terms of Service</h2>
               </div>
@@ -40,7 +43,7 @@ export default function TermsOfService() {
 
 
       {/* Terms of Service Content */}
-      <section className="py-5">
+      <section className="sectionWrapper pb-0">
         <div className="container">
           <div className="col-lg-8 mx-auto">
             <div className="terms-content">

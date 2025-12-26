@@ -31,12 +31,16 @@ export default function EnterpriseInformationManagement() {
       /> */}
 
         <div className="innerBanner">
-          <div>
+          <div className="d-none d-md-block">
             <Image src="/images/banner-enterpriseInformation.png" alt="Emisha" layout="fill" className="img-fluid" />
           </div>
+          <div className="d-md-none">
+            <Image src="/images/banner-enterpriseInformation-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
+          </div>
+
           <div className="container">
             <div className="row">
-              <div className="col-md-8">
+              <div className="col-md-8 col-lg-8 col-xl-8">
                 <div className="banner-details">
                   <h2 className="banner-title">Data Trust &amp; <br />Transformation Services</h2>
                   <p className="banner-desc">We enable enterprises to build robust governance frameworks, ensure the integrity of information assets, and harness data as a strategic driver of sustainable business transformation.</p>
@@ -52,33 +56,33 @@ export default function EnterpriseInformationManagement() {
         <section className="sectionWrapper">
           <div className="container">
             
-            <div className="row align-items-center justify-content-between mt-5">
-              <div className="col-md-6">
+            <div className="row align-items-center justify-content-between mt-0 mt-xl-5">
+              <div className="col-md-6 col-lg-6">
                 <Image src="/images/img-dataProfiling.png" alt="Emisha" width={697} height={450} className="img-fluid" />
               </div>
-              <div className="col-md-5">
+              <div className="col-md-5 col-lg-5">
                 <h3 className="tag-Cat gradientText">Data Profiling and Catalogue</h3>
                 <h4 className="tag-title">Turn Data Visibility into Business Advantage</h4>
                 <p className="tag-desc">Our Data Cataloguing and Profiling services provide a comprehensive view of enterprise data assets, enabling organizations to identify, classify, and assess data quality.</p>
               </div>
             </div>
 
-            <div className="row align-items-center justify-content-between mb-5">
-              <div className="col-md-5">
+            <div className="row align-items-center justify-content-between mt-5 mt-lg-0 mb-5">
+              <div className="col-md-5 col-lg-5 order-1 order-md-0">
                 <h3 className="tag-Cat gradientText">Master & Reference Data Management</h3>
                 <h4 className="tag-title">Unified Data. Consistent Decisions</h4>
                 <p className="tag-desc">Our Master and Reference Data Management services ensure that critical enterprise data is accurate, consistent, and governed across all systems.</p>
               </div>
-                <div className="col-md-6">
+                <div className="col-md-6 col-lg-6 order-0 order-md-1">
                 <Image src="/images/img-masterRefrence.png" alt="Emisha" width={762} height={524} className="img-fluid" />
               </div>
             </div>
 
              <div className="row align-items-center justify-content-between mb-5">
-              <div className="col-md-6">
+              <div className="col-md-6 col-lg-6">
                 <Image src="/images/img-dataManagementService.png" alt="Emisha" width={553} height={529} className="img-fluid" />
               </div>
-              <div className="col-md-5">
+              <div className="col-md-5 col-lg-5">
                 <h3 className="tag-Cat gradientText">Data Management as a Service</h3>
                 <h4 className="tag-title">Reliable Data, Delivered</h4>
                 <p className="tag-desc">Scalable data management delivered as a service—ensuring quality, compliance, and accessibility without the overhead</p>
@@ -88,12 +92,12 @@ export default function EnterpriseInformationManagement() {
             <div className="commonCard2" style={{backgroundColor:'#fdfdfd'}}>
               <div className="card-body">
                   <div className="row align-items-center justify-content-center">
-                    <div className="col-md-5">
+                    <div className="col-md-5 col-lg-5 order-1 order-md-0">
                       <h3 className="tag-Cat gradientText">Next-Level Data Management for SAP</h3>
                       <h4 className="tag-title">SAP MDG Implementation, Done Right.</h4>
                       <p className="tag-desc">We help you choose the right deployment model, streamline processes, and embed change management to maximize business impact and reduce implementation risk.</p>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 col-lg-6 order-0 order-md-1">
                       <Image src="/images/img-deploymentModel.png" alt="Emisha" width={704} height={662} className="img-fluid" />
                     </div>
                   </div>

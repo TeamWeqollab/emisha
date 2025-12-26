@@ -29,12 +29,15 @@ export default function News() {
       /> */}
 
       <div className="innerBanner2">
-        <div>
+      <div className="d-none d-md-block">
           <Image src="/images/banner-news.png" alt="Emisha" width={1920} height={465} className="img-fluid" />
+        </div>
+        <div className="d-md-none">
+          <Image src="/images/banner-news-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
         </div>
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-md-6 text-center">
+            <div className="col-md-8 col-lg-8 col-xl-6 text-center">
               <div className="banner-details2">
                 <h2 className="banner-title">News</h2>
               </div>
@@ -142,12 +145,12 @@ export default function News() {
             <div className="col-md-12">
               <div className="card newsCard">
                 <div className="row align-items-center g-0">
-                  <div className="col-lg-6">
+                  <div className="col-md-6 col-lg-6">
                     <div className="imageContainer-news">
                       <Image src="/images/img-news-1.jpg" alt="Emisha" width={1480} height={568} className="img-fluid" />
                     </div>
                   </div>
-                  <div className="col-lg-6">
+                  <div className="col-md-6 col-lg-6">
                     <div className="card-body">
                       <h3 className="card-title">Emisha Launches DMaaS</h3>
                       <p className="card-date">Product Launches   -    April 2025</p>
@@ -160,12 +163,12 @@ export default function News() {
 
               <div className="card newsCard">
                 <div className="row align-items-center g-0">
-                  <div className="col-lg-6">
+                  <div className="col-md-6 col-lg-6">
                     <div className="imageContainer-news">
                       <Image src="/images/img-news-2.jpg" alt="Emisha" width={1480} height={568} className="img-fluid" />
                     </div>
                   </div>
-                  <div className="col-lg-6">
+                  <div className="col-md-6 col-lg-6">
                     <div className="card-body">
                       <h5 className="card-title">Boosting ROI with Data Strategy</h5>
                       <p className="card-date">Business Insights   -    May 2025</p>
@@ -178,12 +181,12 @@ export default function News() {
 
               <div className="card newsCard">
                 <div className="row align-items-center g-0">
-                  <div className="col-lg-6">
+                  <div className="col-md-6 col-lg-6">
                     <div className="imageContainer-news">
                       <Image src="/images/img-news-3.jpg" alt="Emisha" width={1480} height={568} className="img-fluid" />
                     </div>
                   </div>
-                  <div className="col-lg-6">
+                  <div className="col-md-6 col-lg-6">
                     <div className="card-body">
                       <h5 className="card-title">Future-Ready Data Solutions</h5>
                       <p className="card-date">Thought Leadership   -    June 2025</p>
