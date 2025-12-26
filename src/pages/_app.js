@@ -1,0 +1,33 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import "line-awesome/dist/line-awesome/css/line-awesome.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "@/styles/globals.css";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+
+export default function App({ Component, pageProps }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      if (typeof window !== "undefined" && window.dataLayer) {
+        window.dataLayer.push({
+          event: "pageview",
+          page: url,
+        });
+      }
+    };
+
+    // Track initial page load
+    handleRouteChange(router.asPath);
+
+    // Track route changes
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router]);
+
+  return <Component {...pageProps} />;
+}

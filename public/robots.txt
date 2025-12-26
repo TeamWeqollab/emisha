@@ -1,0 +1,14 @@
+# *
+User-agent: *
+Disallow: /404
+
+
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://emisha.com/
+
+# Sitemaps
+Sitemap: https://emisha.com/sitemap.xml
