@@ -6,6 +6,21 @@ import { useState, useEffect } from "react";
 export default function Header() {
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return (typeof document !== 'undefined' && document.body.classList.contains('dark-mode')) || (typeof window !== 'undefined' && localStorage.getItem('theme') === 'dark');
+  });
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    if (isDark) {
+      document.body.classList.add('dark-mode');
+      try { localStorage.setItem('theme', 'dark'); } catch {}
+    } else {
+      document.body.classList.remove('dark-mode');
+      try { localStorage.setItem('theme', 'light'); } catch {}
+    }
+  }, [isDark]);
 
   const handleOpenConsultation = (e) => {
     e.preventDefault();
@@ -16,16 +31,12 @@ export default function Header() {
         const instance = bootstrap.Offcanvas.getInstance(offcanvasEl) || new bootstrap.Offcanvas(offcanvasEl);
         instance.hide();
       }
-      // Open the contact modal after a short delay to allow offcanvas to close cleanly
+      // Navigate to contact page after a short delay to allow offcanvas to close cleanly
       setTimeout(() => {
-        if (typeof window !== 'undefined' && window.openContactModal) {
-          window.openContactModal();
-        }
+        router.push('/contact');
       }, 150);
     } catch {
-      if (typeof window !== 'undefined' && window.openContactModal) {
-        window.openContactModal();
-      }
+      router.push('/contact');
     }
   };
 
@@ -45,8 +56,8 @@ export default function Header() {
 
   // Helper function to get active classes for mobile nav
   const getMobileNavClasses = (path) => {
-    const baseClasses = "text-white-50 d-block py-2 text-decoration-none";
-    return isMainNavActive(path) ? `${baseClasses.replace('text-white-50', 'mobNavActive fw-bold')}` : baseClasses;
+    const baseClasses = "mobNavLink d-block py-2 text-decoration-none";
+    return isMainNavActive(path) ? `${baseClasses.replace('mobNavLink', 'mobNavActive fw-bold')}` : baseClasses;
   };
 
   // Scroll detection effect
@@ -147,8 +158,12 @@ export default function Header() {
 
           <div className="d-none d-lg-block">
             <Link href="/contact" className="btn btn-primary btnHeader">CONTACT US</Link>
-            <Image src="/images/icon-darkMode.svg" alt="Emisha" width={38} height={38} className="img-fluid ms-4" />
-            <Image src="/images/icon-lightMode.svg" alt="Emisha" width={38} height={38} className="img-fluid ms-2" />
+            <button type="button" onClick={() => setIsDark(true)} aria-label="Activate dark mode" className="btn btn-link p-0 ms-4 theme-toggle-dark">
+              <Image src="/images/icon-darkMode.svg" alt="Dark mode" width={37} height={38} className="img-fluid" />
+            </button>
+            <button type="button" onClick={() => setIsDark(false)} aria-label="Activate light mode" className="btn btn-link p-0 ms-2 theme-toggle-light">
+              <Image src="/images/icon-lightMode.svg" alt="Light mode" width={38} height={38} className="img-fluid" />
+            </button>
           </div>
 
           {/* Mobile Offcanvas Toggle Button */}
@@ -172,21 +187,21 @@ export default function Header() {
           </Link>
           <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div className="offcanvas-body bg-dark">
+        <div className="offcanvas-body bg-canvasMobile">
           <ul className="list-unstyled">
             <li className="mb-3">
               <Link href="/services/foundation-services" className={getMobileNavClasses('/services')}>
-                <i className="fas fa-cogs me-2"></i>SERVICES
+                SERVICES
               </Link>
             </li>
             <li className="mb-3">
               <Link href="/company" className={getMobileNavClasses('/company')}>
-                <i className="fas fa-microchip me-2"></i>COMPANY
+                COMPANY
               </Link>
             </li>
             <li className="mb-3">
               <Link href="/news" className={getMobileNavClasses('/news')}>
-                <i className="fas fa-tools me-2"></i>NEWS
+                NEWS
               </Link>
             </li>
             {/* <li className="mb-3">
@@ -196,13 +211,13 @@ export default function Header() {
             </li> */}
             <li className="mb-3">
               <Link href="/resources" className={getMobileNavClasses('/resources')}>
-                <i className="fas fa-users me-2"></i>RESOURCES
+                RESOURCES
               </Link>
             </li>
           </ul>
 
           {/* Mobile Schedule Consultation Button */}
-          <div className="mt-4 pt-4 border-top border-secondary">
+          <div className="mt-4 pt-4 gradient-border-top">
             {/* <Link 
               href="#"
               onClick={handleOpenConsultation}
@@ -210,8 +225,8 @@ export default function Header() {
             >
               <i className="fas fa-calendar-alt me-2"></i>CONTACT US
             </Link> */}
-             <Link href="contact" className="btn btn-outline-light w-100 py-3 btn-schedule-xs">
-              <i className="fas fa-calendar-alt me-2"></i>CONTACT US
+             <Link href="contact" className="btn btn-primary w-100 py-3">
+              CONTACT US
             </Link>
           </div>
 

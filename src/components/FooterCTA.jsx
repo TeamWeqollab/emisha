@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function FooterCTA() {
@@ -134,14 +135,14 @@ export default function FooterCTA() {
             <div className="col-lg-12">
               <h2 className="sectionHeading">{ctaContent.title}</h2>
               {/* <p className="sectionLead col-lg-8">{ctaContent.description}</p> */}
-              <button 
+              {/* <button 
                 type="button"
                 onClick={() => typeof window !== 'undefined' && window.openContactModal && window.openContactModal()}
                 className="btn btn-primary"
               >
-                {/* <i className={`${ctaContent.buttonIcon} me-2`}></i> */}
                 {ctaContent.buttonText}
-              </button>
+              </button> */}
+              <Link href="/contact" className="btn btn-primary">GET IN TOUCH</Link>
             </div>
           </div>
         </div>

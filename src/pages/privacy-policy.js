@@ -23,6 +23,9 @@ export default function PrivacyPolicy() {
         title="Privacy Policy"
       /> */}
 
+
+      <div className="bg-terms">
+
       <div className="innerBanner2">
         <div className="d-none d-md-block">
           <Image src="/images/banner-news.png" alt="Emisha" width={1920} height={465} className="img-fluid" />
@@ -184,6 +187,10 @@ export default function PrivacyPolicy() {
           </div>
         </div>
       </section>
+
+
+      </div>
+      
     </Layout>
   );
 }

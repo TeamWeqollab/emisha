@@ -6,6 +6,21 @@ import { useState, useEffect } from "react";
 export default function Header() {
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return (typeof document !== 'undefined' && document.body.classList.contains('dark-mode')) || (typeof window !== 'undefined' && localStorage.getItem('theme') === 'dark');
+  });
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    if (isDark) {
+      document.body.classList.add('dark-mode');
+      try { localStorage.setItem('theme', 'dark'); } catch {}
+    } else {
+      document.body.classList.remove('dark-mode');
+      try { localStorage.setItem('theme', 'light'); } catch {}
+    }
+  }, [isDark]);
 
   const handleOpenConsultation = (e) => {
     e.preventDefault();
@@ -16,16 +31,12 @@ export default function Header() {
         const instance = bootstrap.Offcanvas.getInstance(offcanvasEl) || new bootstrap.Offcanvas(offcanvasEl);
         instance.hide();
       }
-      // Open the contact modal after a short delay to allow offcanvas to close cleanly
+      // Navigate to contact page after a short delay to allow offcanvas to close cleanly
       setTimeout(() => {
-        if (typeof window !== 'undefined' && window.openContactModal) {
-          window.openContactModal();
-        }
+        router.push('/contact');
       }, 150);
     } catch {
-      if (typeof window !== 'undefined' && window.openContactModal) {
-        window.openContactModal();
-      }
+      router.push('/contact');
     }
   };
 
@@ -195,13 +206,17 @@ export default function Header() {
 
           {/* Mobile Schedule Consultation Button */}
           <div className="mt-4 pt-4 border-top border-secondary">
-            <Link 
-              href="#"
-              onClick={handleOpenConsultation}
-              className="btn btn-outline-light w-100 py-3 btn-schedule-xs"
-            >
+             <Link href="/contact" className="btn btn-outline-light w-100 py-3 btn-schedule-xs">
               <i className="fas fa-calendar-alt me-2"></i>CONTACT US
             </Link>
+            <div className="d-none d-lg-block mt-2">
+              <button type="button" onClick={() => setIsDark(true)} aria-label="Activate dark mode" className="btn btn-link p-0 ms-2 theme-toggle-dark">
+                <Image src="/images/icon-darkMode.svg" alt="Dark mode" width={37} height={38} className="img-fluid" />
+              </button>
+              <button type="button" onClick={() => setIsDark(false)} aria-label="Activate light mode" className="btn btn-link p-0 ms-2 theme-toggle-light">
+                <Image src="/images/icon-lightMode.svg" alt="Light mode" width={38} height={38} className="img-fluid" />
+              </button>
+            </div>
           </div>
 
           {/* Mobile Social Links */}

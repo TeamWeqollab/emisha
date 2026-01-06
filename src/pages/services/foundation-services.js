@@ -31,17 +31,19 @@ export default function FoundationServices() {
         title="Services"
       /> */}
 
+        <div className="bg-service">
+        
         <div className="innerBanner">
-          <div className="d-none d-md-block">
+          <div className="d-none d-lg-block">
             <Image src="/images/banner-services.png" alt="Emisha" layout="fill" className="img-fluid" />
           </div>
-          <div className="d-md-none">
+          <div className="d-lg-none">
             <Image src="/images/banner-services-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
           </div>
           
           <div className="container">
             <div className="row">
-              <div className="col-md-8 col-lg-8 col-xl-8">
+              <div className="col-md-12 col-lg-8 col-xl-8">
                 <div className="banner-details">
                   <h2 className="banner-title">Build a Solid Data Foundation. <br />Unlock Enterprise Growth.</h2>
                   <p className="banner-desc">For organizations seeking direction and clarity on the data maturity roadmap, our Foundation Services offer structured guidance across the complex landscape of technologies, methodologies, planning, implementation, and deployment strategies</p>
@@ -56,7 +58,7 @@ export default function FoundationServices() {
         <section className="sectionWrapper">
           <div className="container">
             
-            <div className="commonCard2 mt-5">
+            <div className="commonCard2 bxFoundation" style={{background:'#fdfdfd'}}>
               <div className="card-body">
                    <div className="row align-items-center justify-content-center">
                     <div className="col-md-6">
@@ -126,6 +128,7 @@ export default function FoundationServices() {
         <Partners />
 
 
+    </div>
 
 
     </Layout>

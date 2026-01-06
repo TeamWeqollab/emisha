@@ -4,7 +4,6 @@ import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import ScrollToTop from "./ScrollToTop.jsx";
 import BootstrapClient from "./BootstrapClient.jsx";
-import ContactModal from "./ContactModal.jsx";
 
 export default function Layout({ 
   children, 
@@ -86,7 +85,6 @@ export default function Layout({
       </main>
       <Footer />
       <ScrollToTop />
-      <ContactModal />
       <BootstrapClient />
     </>
   );

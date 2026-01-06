@@ -1,13 +1,37 @@
 import Layout from "@/components/Layout.jsx";
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import emailjs from "@emailjs/browser";
 import Image from "next/image";
 import Link from "next/link";
 import 'react-multi-carousel/lib/styles.css';
 
 import InnerBanner from "@/components/InnerBanner.jsx";
 
+const ContactSchema = Yup.object().shape({
+  name: Yup.string().required("Name is required"),
+  phone: Yup.string().test('phone', 'Phone must be exactly 10 digits', (val) => !val || /^[0-9]{10}$/.test(val)),
+  email: Yup.string()
+    .matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "Invalid email address")
+    .required("Email is required"),
+  message: Yup.string().required("Message is required"),
+});
+
 export default function ContactUs() {
   const partnershipCarouselRef = useRef(null);
+  const [status, setStatus] = useState("");
+  const [isInit, setIsInit] = useState(false);
+
+  useEffect(() => {
+    try {
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || process.env.EMAILJS_PUBLIC_KEY;
+      if (publicKey && !isInit) {
+        emailjs.init({ publicKey });
+        setIsInit(true);
+      }
+    } catch {}
+  }, [isInit]);
 
   return (
     <Layout
@@ -27,6 +51,8 @@ export default function ContactUs() {
         imageAlt="Services"
         title="Services"
       /> */}
+
+      <div className="bg-contact">
 
       <div className="innerBanner2">
         <div className="d-none d-md-block">
@@ -65,25 +91,97 @@ export default function ContactUs() {
 
               <div className="col-md-7">
                 <div className="contactForm">
-                  <div className="mb-3">
-                    <label class="form-label">Name</label>
-                    <input type="text" className="form-control" />
-                  </div>
-                  <div className="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" className="form-control" />
-                  </div>
-                  <div className="mb-3">
-                    <label class="form-label">Phone (Optional)</label>
-                    <input type="tel" className="form-control" />
-                  </div>
-                  <div className="mb-3">
-                    <label class="form-label">Message</label>
-                    <textarea className="form-control" rows="4" style={{ resize: 'none' }}></textarea>
-                  </div>
-                  <div className="text-end">
-                    <button type="submit" className="btn btn-primary">SUBMIT</button>
-                  </div>
+                  <Formik
+                    initialValues={{ name: "", email: "", phone: "", message: "" }}
+                    validationSchema={ContactSchema}
+                    onSubmit={async (values, { resetForm, setSubmitting }) => {
+                      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+                      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+                      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+                      if (!serviceId || !templateId || !publicKey) {
+                        console.error("EmailJS environment variables are missing:", { serviceId, templateId, publicKey });
+                        setStatus("❌ Email service not configured. Please try again later.");
+                        setSubmitting(false);
+                        return;
+                      }
+
+                      try {
+                        
+                        const response = await emailjs.send(
+                          serviceId,
+                          templateId,
+                          {
+                            name: values.name,
+                            phone: values.phone,
+                            email: values.email,
+                            message: values.message,
+                          },
+                          publicKey
+                        );
+                        console.log("Form submit values:", values);
+                        console.log("EmailJS success:", response);
+                        setStatus("✅ Message sent successfully!");
+                        resetForm();
+                      } catch (error) {
+                        console.error("EmailJS Error:", error);
+                        setStatus("❌ Failed to send. Please try again later.");
+                      } finally {
+                        setSubmitting(false);
+                        // optionally clear status after a short time
+                        setTimeout(() => setStatus(""), 5000);
+                      }
+                    }}
+                  >
+                    {({ isSubmitting }) => (
+                      <Form className="row g-4">
+                        <div className="col-12 contactCol">
+                          <label className="form-label">Name <span className="text-danger">*</span></label>
+                          <Field name="name" className="form-control" />
+                          <ErrorMessage name="name" component="div" className="text-danger small mt-3" />
+                        </div>
+
+                        <div className="col-12 contactCol">
+                          <label className="form-label">Email <span className="text-danger">*</span></label>
+                          <Field type="email" name="email" className="form-control" />
+                          <ErrorMessage name="email" component="div" className="text-danger small mt-3" />
+                        </div>
+
+                        <div className="col-12 contactCol">
+                          <label className="form-label">Phone (Optional)</label>
+                          <Field
+                            name="phone"
+                            className="form-control"
+                            maxLength="10"
+                            onKeyPress={(e) => {
+                              if (!/[0-9]/.test(e.key)) {
+                                e.preventDefault();
+                              }
+                            }}
+                          />
+                          <ErrorMessage name="phone" component="div" className="text-danger small mt-3" />
+                        </div>
+
+                        <div className="col-12 contactCol">
+                          <label className="form-label">Message <span className="text-danger">*</span></label>
+                          <Field as="textarea" name="message" className="form-control" rows="4" style={{ resize: 'none' }} />
+                          <ErrorMessage name="message" component="div" className="text-danger small mt-3" />
+                        </div>
+
+                        <div className="col-12 text-end">
+                          <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+                            {isSubmitting ? "Sending..." : "SUBMIT"}
+                          </button>
+                        </div>
+
+                        {status && (
+                          <div className="col-12 text-center mt-3">
+                            <p>{status}</p>
+                          </div>
+                        )}
+                      </Form>
+                    )}
+                  </Formik>
                 </div>
               </div>
             </div>
@@ -92,6 +190,7 @@ export default function ContactUs() {
       </section>
 
 
+    </div>
 
 
     </Layout>
