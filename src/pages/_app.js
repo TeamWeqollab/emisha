@@ -5,6 +5,17 @@ import "@/styles/globals.css";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
+
+import { Outfit } from "next/font/google";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["100","200","300","400","500","600","700","800","900"],
+  variable: "--font-body",
+});
+
+
+
 export default function App({ Component, pageProps }) {
   const router = useRouter();
 
@@ -29,5 +40,10 @@ export default function App({ Component, pageProps }) {
     };
   }, [router]);
 
-  return <Component {...pageProps} />;
+  // return <Component {...pageProps} />;
+  return (
+    <main className={outfit.variable}>
+      <Component {...pageProps} />
+    </main>
+  );
 }
