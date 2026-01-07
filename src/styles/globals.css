@@ -1347,6 +1347,7 @@ transition: transform 0.3s ease; }
 .imageContainer-related{ max-height: 200px;}
 .imageContainer-related img{ height: 200px;}
 
+.dynamicPage{ margin-top: 140px !important;}
 }
 
 
@@ -1454,6 +1455,8 @@ transition: transform 0.3s ease; }
 
 .imageContainer-related{ max-height: 200px;}
 .imageContainer-related img{ height: 200px;}
+
+.dynamicPage{ margin-top: 140px !important;}
 
 }
 
@@ -1564,6 +1567,8 @@ transition: transform 0.3s ease; }
 .imageContainer-related{ max-height: 200px;}
 .imageContainer-related img{ height: 200px;}
 
+.dynamicPage{ margin-top: 140px !important;}
+
 }
 
 
@@ -1669,6 +1674,9 @@ transition: transform 0.3s ease; }
 
 .imageContainer-related{ max-height: 200px;}
 .imageContainer-related img{ height: 200px;}
+
+.dynamicPage{ margin-top: 140px !important;}
+
 }
 
 

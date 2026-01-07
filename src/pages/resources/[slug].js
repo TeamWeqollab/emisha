@@ -134,7 +134,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
         socialImage={getBannerImageUrl(resource)}
         socialUrl={`/resources/${resource.Slug}`}
       >
-      <section className="sectionWrapper" id="resourcesPage" style={{ paddingBottom: '0px' }}>
+      <section className="sectionWrapper dynamicPage" id="resourcesPage" style={{ paddingBottom: '0px' }}>
         <div className="container">
           <div className="blogPageContent">
             <div className="row justify-content-center">

@@ -124,7 +124,7 @@ export default function NewsDetail({ article, relatedArticles }) {
         socialImage={getBannerImageUrl(article)}
         socialUrl={`/news/${article.Slug}`}
       >
-      <section className="sectionWrapper" id="resourcesPage" style={{ paddingBottom: '0px' }}>
+      <section className="sectionWrapper dynamicPage" id="resourcesPage" style={{ paddingBottom: '0px' }}>
         <div className="container">
           <div className="blogPageContent">
             <div className="row justify-content-center">
