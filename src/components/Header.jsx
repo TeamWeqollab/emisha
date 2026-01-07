@@ -217,8 +217,8 @@ export default function Header() {
             </li>
           </ul>
 
-          {/* Mobile Schedule Consultation Button */}
-          <div className="mt-4 pt-4 gradient-border-top">
+          {/* Mobile Schedule Consultation Button gradient-border-top*/}
+          <div className="mt-4 pt-2">
             {/* <Link 
               href="#"
               onClick={handleOpenConsultation}
@@ -226,7 +226,7 @@ export default function Header() {
             >
               <i className="fas fa-calendar-alt me-2"></i>CONTACT US
             </Link> */}
-             <Link href="contact" className="btn btn-primary w-100 py-3">
+             <Link href="contact" className="btn btn-primary btnHeader">
               CONTACT US
             </Link>
           </div>
