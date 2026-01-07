@@ -35,7 +35,10 @@ export default function FoundationServices() {
         
         <div className="innerBanner">
           <div className="d-none d-lg-block">
-            <Image src="/images/banner-services.png" alt="Emisha" layout="fill" className="img-fluid" />
+            {/* <Image src="/images/banner-services.png" alt="Emisha" layout="fill" className="img-fluid" /> */}
+            <div className="deskBanner">
+              <Image src="/images/banner-services.png" alt="Emisha" layout="contain" width={1920} height={824} className="img-fluid" />
+            </div>
           </div>
           <div className="d-lg-none">
             <Image src="/images/banner-services-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
@@ -43,7 +46,7 @@ export default function FoundationServices() {
           
           <div className="container">
             <div className="row">
-              <div className="col-md-12 col-lg-8 col-xl-8">
+              <div className="col-md-12 col-lg-7 col-xl-7">
                 <div className="banner-details">
                   <h2 className="banner-title">Build a Solid Data Foundation. <br />Unlock Enterprise Growth.</h2>
                   <p className="banner-desc">For organizations seeking direction and clarity on the data maturity roadmap, our Foundation Services offer structured guidance across the complex landscape of technologies, methodologies, planning, implementation, and deployment strategies</p>

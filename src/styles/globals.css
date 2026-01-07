@@ -837,7 +837,7 @@ transition: transform 0.3s ease; }
 .innerBanner{ position: relative; width: 100%; height: 850px; }
 .innerBanner img{ object-fit: cover; object-position: right;}
 
-.banner-details{ position: relative; margin-top: 280px; padding-right: 90px;}
+.banner-details{ position: relative; margin-top: 280px;}
 .banner-details .banner-title{ font-size: 60px; font-weight: 300; margin-bottom: 25px;}
 .banner-details .banner-desc{ font-size: 28px; font-weight: 300; margin-bottom: 25px;}
 .banner-details .btn-primary{border-radius: 10px !important;}
@@ -852,7 +852,7 @@ transition: transform 0.3s ease; }
 .banner-details2 .banner-desc{ font-size: 18px; font-weight: 300; margin-bottom: 25px;}
 .banner-details2 .btn-primary{border-radius: 10px !important;}
 
-.deskBanner{position: absolute; width: 100%; height: 824px; padding-left: 80px;  }
+.deskBanner{position: absolute; width: 100%; height: 824px; padding-left: 120px; top: 0;  }
 /* .deskBanner img{ width: 100%; height: auto; } */
 
 
@@ -1590,13 +1590,13 @@ transition: transform 0.3s ease; }
   #copyright ul li{ margin-right: 10px;}
 
   .innerBanner{ height: 460px; padding-top: 60px; display: flex; align-items: center;}
-  .banner-details{ margin-top: 130px; padding-right: 50px;}
+  .banner-details{ margin-top: 90px; padding-right: 0px;}
   .banner-details .banner-title{ font-size: 28px; font-weight: 400; margin-bottom: 15px;}
   .banner-details .banner-desc{ font-size: 22px; margin-bottom: 15px;}
   .tag-Cat{ font-size: 20px; padding: 12px 30px; margin-top: 15px; margin-bottom: 25px;}
   .tag-title{ font-size: 20px; }
   
-  /* .deskBanner{ height: auto;} */
+  .deskBanner{ height: auto; top: 90px;}
 
   .aboutHeading{ font-size: 24px;}
   .aboutDesc{font-size: 20px;}

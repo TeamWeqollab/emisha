@@ -13,14 +13,14 @@ export default function EnterpriseInformationManagement() {
 
   return (
     <Layout
-       pageTitle="Emisha"
-        metaTitle="Future-proofing businesses with intelligent data solutions."
-        metaDescription="Emisha empowers businesses by unlocking the full potential of their data through end-to-end solutions. With expertise in business integration, tailored strategies, and consulting, we bridge data complexity with precision, ensuring seamless transformation from strategy to execution."
-        metaKeywords="Data-driven business solutions, End-to-end data solutions, Business data transformation, Data integration services, Enterprise data solutions, Data strategy and execution, Business integration expertise, Tailored data strategies, Data consulting services, Data-driven decision making, Digital transformation solutions, Strategic data consulting"
-        socialTitle="Future-proofing businesses with intelligent data solutions."
-        socialDescription="Emisha empowers businesses by unlocking the full potential of their data through end-to-end solutions. With expertise in business integration, tailored strategies, and consulting, we bridge data complexity with precision, ensuring seamless transformation from strategy to execution."
-        socialImage="/images/Emisha-Social-card.png"
-        socialUrl="/services"
+      pageTitle="Emisha"
+      metaTitle="Future-proofing businesses with intelligent data solutions."
+      metaDescription="Emisha empowers businesses by unlocking the full potential of their data through end-to-end solutions. With expertise in business integration, tailored strategies, and consulting, we bridge data complexity with precision, ensuring seamless transformation from strategy to execution."
+      metaKeywords="Data-driven business solutions, End-to-end data solutions, Business data transformation, Data integration services, Enterprise data solutions, Data strategy and execution, Business integration expertise, Tailored data strategies, Data consulting services, Data-driven decision making, Digital transformation solutions, Strategic data consulting"
+      socialTitle="Future-proofing businesses with intelligent data solutions."
+      socialDescription="Emisha empowers businesses by unlocking the full potential of their data through end-to-end solutions. With expertise in business integration, tailored strategies, and consulting, we bridge data complexity with precision, ensuring seamless transformation from strategy to execution."
+      socialImage="/images/Emisha-Social-card.png"
+      socialUrl="/services"
     >
 
       {/* banner inner Section */}
@@ -30,12 +30,15 @@ export default function EnterpriseInformationManagement() {
         title="Services"
       /> */}
 
-        <div className="bg-service">
+      <div className="bg-service">
 
 
         <div className="innerBanner">
           <div className="d-none d-lg-block">
-            <Image src="/images/banner-enterpriseInformation.png" alt="Emisha" layout="fill" className="img-fluid" />
+            {/* <Image src="/images/banner-enterpriseInformation.png" alt="Emisha" layout="fill" className="img-fluid" /> */}
+            <div className="deskBanner">
+              <Image src="/images/banner-enterpriseInformation.png" alt="Emisha" layout="contain" width={1920} height={824} className="img-fluid" />
+            </div>
           </div>
           <div className="d-lg-none">
             <Image src="/images/banner-enterpriseInformation-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
@@ -43,7 +46,7 @@ export default function EnterpriseInformationManagement() {
 
           <div className="container">
             <div className="row">
-              <div className="col-md-12 col-lg-8 col-xl-8">
+              <div className="col-md-12 col-lg-7 col-xl-7">
                 <div className="banner-details">
                   <h2 className="banner-title">Data Trust &amp; <br />Transformation Services</h2>
                   <p className="banner-desc">We enable enterprises to build robust governance frameworks, ensure the integrity of information assets, and harness data as a strategic driver of sustainable business transformation.</p>
@@ -58,7 +61,7 @@ export default function EnterpriseInformationManagement() {
 
         <section className="sectionWrapper">
           <div className="container">
-            
+
             <div className="row align-items-center justify-content-between mt-0 mt-xl-5">
               <div className="col-md-6 col-lg-6">
                 <Image src="/images/img-dataProfiling.png" alt="Emisha" width={697} height={450} className="img-fluid" />
@@ -76,12 +79,12 @@ export default function EnterpriseInformationManagement() {
                 <h4 className="tag-title">Unified Data. Consistent Decisions</h4>
                 <p className="tag-desc">Our Master and Reference Data Management services ensure that critical enterprise data is accurate, consistent, and governed across all systems.</p>
               </div>
-                <div className="col-md-6 col-lg-6 order-0 order-md-1">
+              <div className="col-md-6 col-lg-6 order-0 order-md-1">
                 <Image src="/images/img-masterRefrence.png" alt="Emisha" width={762} height={524} className="img-fluid" />
               </div>
             </div>
 
-             <div className="row align-items-center justify-content-between mb-5">
+            <div className="row align-items-center justify-content-between mb-5">
               <div className="col-md-6 col-lg-6">
                 <Image src="/images/img-dataManagementService.png" alt="Emisha" width={553} height={529} className="img-fluid" />
               </div>
@@ -92,18 +95,18 @@ export default function EnterpriseInformationManagement() {
               </div>
             </div>
 
-            <div className="commonCard2" style={{backgroundColor:'#fdfdfd'}}>
+            <div className="commonCard2" style={{ backgroundColor: '#fdfdfd' }}>
               <div className="card-body">
-                  <div className="row align-items-center justify-content-center">
-                    <div className="col-md-5 col-lg-5 order-1 order-md-0">
-                      <h3 className="tag-Cat"><span className="gradientText">Next-Level Data Management for SAP</span></h3>
-                      <h4 className="tag-title">SAP MDG Implementation, Done Right.</h4>
-                      <p className="tag-desc">We help you choose the right deployment model, streamline processes, and embed change management to maximize business impact and reduce implementation risk.</p>
-                    </div>
-                    <div className="col-md-6 col-lg-6 order-0 order-md-1">
-                      <Image src="/images/img-deploymentModel.png" alt="Emisha" width={704} height={662} className="img-fluid" />
-                    </div>
+                <div className="row align-items-center justify-content-center">
+                  <div className="col-md-5 col-lg-5 order-1 order-md-0">
+                    <h3 className="tag-Cat"><span className="gradientText">Next-Level Data Management for SAP</span></h3>
+                    <h4 className="tag-title">SAP MDG Implementation, Done Right.</h4>
+                    <p className="tag-desc">We help you choose the right deployment model, streamline processes, and embed change management to maximize business impact and reduce implementation risk.</p>
                   </div>
+                  <div className="col-md-6 col-lg-6 order-0 order-md-1">
+                    <Image src="/images/img-deploymentModel.png" alt="Emisha" width={704} height={662} className="img-fluid" />
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -115,7 +118,7 @@ export default function EnterpriseInformationManagement() {
         <Partners />
 
 
-    </div>
+      </div>
 
     </Layout>
   );
