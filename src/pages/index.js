@@ -106,7 +106,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
             <div className="col-md-3 col-lg-2">
               <Image src="/images/logo-footer.svg" alt="Emisha" width={206} height={120} className="img-fluid p-4" />
             </div>
-            <div className="col-md-9 col-lg-6">
+            <div className="col-md-9 col-lg-8">
               <p className="banner-leadInfo">Emisha empowers businesses by unlocking the full potential of their data through end-to-end solutions. With expertise in business integration, tailored strategies, and consulting, we bridge data complexity with precision, ensuring seamless transformation from strategy to execution.</p>
             </div>
           </div>
