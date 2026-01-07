@@ -31,66 +31,69 @@ export default function Company() {
       /> */}
       <div className="bg-company">
 
-      <div className="innerBanner">
-        <div className="d-none d-lg-block">
-          <Image src="/images/banner-company.png" alt="Emisha" layout="fill" className="img-fluid" />
-        </div>
-        <div className="d-lg-none">
-          <Image src="/images/banner-company-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
-        </div>
-
-
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 col-lg-8 col-xl-8">
-              <div className="banner-details">
-                <h2 className="banner-title">Enabling Enterprises to Unlock the Full Value of Their Data Through Trusted Governance and Transformation</h2>
-                <p className="banner-desc">Guided by our mission to be the most trusted partner for enterprises seeking to transform data into a strategic asset that drives innovation, resilience, and sustainable growth.</p>
-                <Link href='/contact' className="btn btn-primary">GET STARTED</Link>
-              </div>
-            </div>
+        <div className="innerBanner">
+          <div className="d-none d-lg-block">
+            <Image src="/images/banner-company.png" alt="Emisha" layout="fill" className="img-fluid" />
+            {/* <div className="deskBanner">
+              <Image src="/images/banner-company.png" alt="Emisha" layout="contain" width={1920} height={824} className="img-fluid" />
+            </div> */}
           </div>
-        </div>
-      </div>
-
-
-
-
-      <section className="sectionWrapper">
-        <div className="container">
-
-          <div className="row justify-content-center">
-            <div className="col-md-11 text-center">
-              <h2 className="aboutHeading">About us</h2>
-              <p className="aboutDesc">Emisha is a global data consulting and technology services firm specialising in unlocking business value through trusted, high-quality, and intelligently governed data. We partner with enterprises to design, implement, and scale modern data capabilities across the full data value chain — including data strategy, data governance, master data management, data quality, analytics, AI-readiness, and cloud data platforms.</p>
-
-              <p className="aboutDesc">With a proven track record across industries such as manufacturing, retail, energy, financial services, and consumer goods, Emisha enables organisations to move from fragmented data landscapes to connected, governed, insight-driven ecosystems that power business outcomes, regulatory confidence, and digital transformation.</p>
-
-              <p className="aboutDesc mb-0">Our engagements span advisory, implementation, managed services, and product enablement for leading data platforms — delivering measurable impact through accelerated time-to-value, reduced risk, and enhanced decision intelligence.</p>
-            </div>
-          </div>
-
-          <div className="row justify-content-center">
-            <div className="col-md-11 text-center">
-              <h2 className="aboutLeatTitle gradientText">Innovation is more than just an idea. It&apos;s action</h2>
-            </div>
+          <div className="d-lg-none">
+            <Image src="/images/banner-company-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
           </div>
 
 
-          <div className="commonCard2" style={{ backgroundColor: '#fdfdfd', padding: '40px 40px' }}>
-            <div className="card-body aboutCardBody">
-              <div className="row align-items-center justify-content-center">
-                <div className="col-md-12 text-center">
-                  <div>
-                    <Image src="/images/img-innovation.svg" alt="Emisha" width={309} height={179} className="img-fluid" />
-                  </div>
-                  <p className="aboutDesc mb-0" style={{ fontWeight: '400' }}>At Emisha, we reimagine what exists to unlock greater purpose and performance.</p>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12 col-lg-8 col-xl-8">
+                <div className="banner-details">
+                  <h2 className="banner-title">Enabling Enterprises to Unlock the Full Value of Their Data Through Trusted Governance and Transformation</h2>
+                  <p className="banner-desc">Guided by our mission to be the most trusted partner for enterprises seeking to transform data into a strategic asset that drives innovation, resilience, and sustainable growth.</p>
+                  <Link href='/contact' className="btn btn-primary">GET STARTED</Link>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* <div className="commonCard2" style={{backgroundColor:'#fdfdfd'}}>
+
+
+
+        <section className="sectionWrapper">
+          <div className="container">
+
+            <div className="row justify-content-center">
+              <div className="col-md-11 text-center">
+                <h2 className="aboutHeading">About us</h2>
+                <p className="aboutDesc">Emisha is a global data consulting and technology services firm specialising in unlocking business value through trusted, high-quality, and intelligently governed data. We partner with enterprises to design, implement, and scale modern data capabilities across the full data value chain — including data strategy, data governance, master data management, data quality, analytics, AI-readiness, and cloud data platforms.</p>
+
+                <p className="aboutDesc">With a proven track record across industries such as manufacturing, retail, energy, financial services, and consumer goods, Emisha enables organisations to move from fragmented data landscapes to connected, governed, insight-driven ecosystems that power business outcomes, regulatory confidence, and digital transformation.</p>
+
+                <p className="aboutDesc mb-0">Our engagements span advisory, implementation, managed services, and product enablement for leading data platforms — delivering measurable impact through accelerated time-to-value, reduced risk, and enhanced decision intelligence.</p>
+              </div>
+            </div>
+
+            <div className="row justify-content-center">
+              <div className="col-md-11 text-center">
+                <h2 className="aboutLeatTitle gradientText">Innovation is more than just an idea. It&apos;s action</h2>
+              </div>
+            </div>
+
+
+            <div className="commonCard2" style={{ backgroundColor: '#fdfdfd', padding: '40px 40px' }}>
+              <div className="card-body aboutCardBody">
+                <div className="row align-items-center justify-content-center">
+                  <div className="col-md-12 text-center">
+                    <div>
+                      <Image src="/images/img-innovation.svg" alt="Emisha" width={309} height={179} className="img-fluid" />
+                    </div>
+                    <p className="aboutDesc mb-0" style={{ fontWeight: '400' }}>At Emisha, we reimagine what exists to unlock greater purpose and performance.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* <div className="commonCard2" style={{backgroundColor:'#fdfdfd'}}>
               <div className="card-body">
                   <div className="row align-items-center justify-content-center">
                     <div className="col-md-5">
@@ -105,141 +108,141 @@ export default function Company() {
               </div>
             </div> */}
 
-        </div>
-      </section>
+          </div>
+        </section>
 
 
-      <section className="sectionWrapper pt-3">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-md-12 col-lg-3">
-              <h2 className="hd-ourServices">Our <br />Foundation</h2>
-            </div>
-            <div className="col-md-4 col-lg-3">
-              <div className="card commonCard bg-lightGray">
-                <div className="card-body aboutOurProCard">
-                  <div className="cardIcon">
-                    <Image src="/images/icon-people.svg" alt="Emisha" width={60} height={60} />
+        <section className="sectionWrapper pt-3">
+          <div className="container">
+            <div className="row align-items-center">
+              <div className="col-md-12 col-lg-3">
+                <h2 className="hd-ourServices">Our <br />Foundation</h2>
+              </div>
+              <div className="col-md-4 col-lg-3">
+                <div className="card commonCard bg-lightGray">
+                  <div className="card-body aboutOurProCard">
+                    <div className="cardIcon">
+                      <Image src="/images/icon-people.svg" alt="Emisha" width={60} height={60} />
+                    </div>
+                    <h5 className="card-title">Our People</h5>
+                    <p className="card-text">A passionate team with decades of global experience, committed to excellence.</p>
                   </div>
-                  <h5 className="card-title">Our People</h5>
-                  <p className="card-text">A passionate team with decades of global experience, committed to excellence.</p>
                 </div>
               </div>
-            </div>
-            <div className="col-md-4 col-lg-3">
-              <div className="card commonCard bg-lightGray">
-                <div className="card-body aboutOurProCard">
-                  <div className="cardIcon">
-                    <Image src="/images/icon-products.svg" alt="Emisha" width={60} height={60} />
+              <div className="col-md-4 col-lg-3">
+                <div className="card commonCard bg-lightGray">
+                  <div className="card-body aboutOurProCard">
+                    <div className="cardIcon">
+                      <Image src="/images/icon-products.svg" alt="Emisha" width={60} height={60} />
+                    </div>
+                    <h5 className="card-title">Our Products</h5>
+                    <p className="card-text">Strong collaborations built on shared vision, action, and results.</p>
                   </div>
-                  <h5 className="card-title">Our Products</h5>
-                  <p className="card-text">Strong collaborations built on shared vision, action, and results.</p>
                 </div>
               </div>
-            </div>
-            <div className="col-md-4 col-lg-3">
-              <div className="card commonCard bg-lightGray">
-                <div className="card-body aboutOurProCard">
-                  <div className="cardIcon">
-                    <Image src="/images/icon-partners.svg" alt="Emisha" width={60} height={60} />
+              <div className="col-md-4 col-lg-3">
+                <div className="card commonCard bg-lightGray">
+                  <div className="card-body aboutOurProCard">
+                    <div className="cardIcon">
+                      <Image src="/images/icon-partners.svg" alt="Emisha" width={60} height={60} />
+                    </div>
+                    <h5 className="card-title">Our Partners</h5>
+                    <p className="card-text">Innovative, market-leading solutions designed to deliver real value.</p>
                   </div>
-                  <h5 className="card-title">Our Partners</h5>
-                  <p className="card-text">Innovative, market-leading solutions designed to deliver real value.</p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
 
 
 
 
-      <section className="bringAction">
-        <div className="container">
-          <div className="row row-cols-4 align-items-center">
+        <section className="bringAction">
+          <div className="container">
+            <div className="row row-cols-4 align-items-center">
 
-            <div className="col-12 col-md-6 col-lg-3">
-              <div className="card commonCard bg-lightGray">
-                <div className="card-body">
-                  <div className="cardIcon">
-                    <Image src="/images/icon-action1.svg" alt="Emisha" width={90} height={90} />
+              <div className="col-12 col-md-6 col-lg-3">
+                <div className="card commonCard bg-lightGray">
+                  <div className="card-body">
+                    <div className="cardIcon">
+                      <Image src="/images/icon-action1.svg" alt="Emisha" width={90} height={90} />
+                    </div>
+                    <h5 className="card-title">BRING ACTION TO <br /> INNOVATION</h5>
                   </div>
-                  <h5 className="card-title">BRING ACTION TO <br /> INNOVATION</h5>
                 </div>
               </div>
-            </div>
 
-            <div className="col-12 col-md-6 col-lg-3">
-              <div className="card commonCard bg-lightGray">
-                <div className="card-body">
-                  <div className="cardIcon">
-                    <Image src="/images/icon-action2.svg" alt="Emisha" width={90} height={90} />
+              <div className="col-12 col-md-6 col-lg-3">
+                <div className="card commonCard bg-lightGray">
+                  <div className="card-body">
+                    <div className="cardIcon">
+                      <Image src="/images/icon-action2.svg" alt="Emisha" width={90} height={90} />
+                    </div>
+                    <h5 className="card-title">LEVERAGE <br />  Partnerships</h5>
                   </div>
-                  <h5 className="card-title">LEVERAGE <br />  Partnerships</h5>
                 </div>
               </div>
-            </div>
 
-            <div className="col-12 col-md-6 col-lg-3">
-              <div className="card commonCard bg-lightGray">
-                <div className="card-body">
-                  <div className="cardIcon">
-                    <Image src="/images/icon-action3.svg" alt="Emisha" width={90} height={90} />
+              <div className="col-12 col-md-6 col-lg-3">
+                <div className="card commonCard bg-lightGray">
+                  <div className="card-body">
+                    <div className="cardIcon">
+                      <Image src="/images/icon-action3.svg" alt="Emisha" width={90} height={90} />
+                    </div>
+                    <h5 className="card-title">Redefine <br />  Excellence</h5>
                   </div>
-                  <h5 className="card-title">Redefine <br />  Excellence</h5>
                 </div>
               </div>
-            </div>
 
-            <div className="col-12 col-md-6 col-lg-3">
-              <div className="card commonCard bg-lightGray">
-                <div className="card-body">
-                  <div className="cardIcon">
-                    <Image src="/images/icon-action4.svg" alt="Emisha" width={90} height={90} />
+              <div className="col-12 col-md-6 col-lg-3">
+                <div className="card commonCard bg-lightGray">
+                  <div className="card-body">
+                    <div className="cardIcon">
+                      <Image src="/images/icon-action4.svg" alt="Emisha" width={90} height={90} />
+                    </div>
+                    <h5 className="card-title">Lead with <br />  Accountability</h5>
                   </div>
-                  <h5 className="card-title">Lead with <br />  Accountability</h5>
                 </div>
               </div>
-            </div>
 
 
-          </div>
-        </div>
-      </section>
-
-
-
-
-      {/* partners Section */}
-      <Partners />
-
-
-
-
-      <section>
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-md-12">
-              <div className="careerEmishaBx">
-                <h2 className="title">CAREERS AT EMISHA</h2>
-                <h3 className="sub-Title">Want to Join Our Team?</h3>
-                <p className="card-Text">At Emisha, you&apos;ll do work that matters. We bring together curious minds and experienced practitioners to solve complex data challenges for leading enterprises. If you&apos;re passionate about building trusted data foundations and shaping meaning full transformation, Emisha offers a place to grow, lead, and make an impact.</p>
-
-                <p className="card-Text2">Ready to Deliver Value?</p>
-                <p className="card-Text2">Email us to inquire about open roles.</p>
-
-                <Link href='#' className="btn btn-primary mt-4">JOIN THE TEAM</Link>
-              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
 
-  </div>
-  
+
+
+        {/* partners Section */}
+        <Partners />
+
+
+
+
+        <section>
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-md-12">
+                <div className="careerEmishaBx">
+                  <h2 className="title">CAREERS AT EMISHA</h2>
+                  <h3 className="sub-Title">Want to Join Our Team?</h3>
+                  <p className="card-Text">At Emisha, you&apos;ll do work that matters. We bring together curious minds and experienced practitioners to solve complex data challenges for leading enterprises. If you&apos;re passionate about building trusted data foundations and shaping meaning full transformation, Emisha offers a place to grow, lead, and make an impact.</p>
+
+                  <p className="card-Text2">Ready to Deliver Value?</p>
+                  <p className="card-Text2">Email us to inquire about open roles.</p>
+
+                  <Link href='#' className="btn btn-primary mt-4">JOIN THE TEAM</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+      </div>
+
 
     </Layout>
   );

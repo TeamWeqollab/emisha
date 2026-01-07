@@ -829,13 +829,15 @@ transition: transform 0.3s ease; }
 .homeLatestNews.latestNews{padding-bottom: 0px !important;}
 
 
+#homeOurServices .cardIcon{ margin-bottom: 50px;}
+
 
 
 /******************** Services Page CSS ********************/
 .innerBanner{ position: relative; width: 100%; height: 850px; }
 .innerBanner img{ object-fit: cover; object-position: right;}
 
-.banner-details{ position: relative; margin-top: 280px; padding-right: 100px;}
+.banner-details{ position: relative; margin-top: 280px; padding-right: 90px;}
 .banner-details .banner-title{ font-size: 60px; font-weight: 300; margin-bottom: 25px;}
 .banner-details .banner-desc{ font-size: 28px; font-weight: 300; margin-bottom: 25px;}
 .banner-details .btn-primary{border-radius: 10px !important;}
@@ -850,8 +852,8 @@ transition: transform 0.3s ease; }
 .banner-details2 .banner-desc{ font-size: 18px; font-weight: 300; margin-bottom: 25px;}
 .banner-details2 .btn-primary{border-radius: 10px !important;}
 
-
-
+.deskBanner{position: absolute; width: 100%; height: 824px; padding-left: 80px;  }
+/* .deskBanner img{ width: 100%; height: auto; } */
 
 
 
@@ -1006,9 +1008,9 @@ transition: transform 0.3s ease; }
 #homeResourceSec{ margin-top: 80px;  padding: 60px 35px;  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.05);  border: 1px solid #E1E7EF; border-radius: 32px;
   background: linear-gradient( 135deg, #F7F7FF 0%, #FFFFFF 35%, #F9FEFF 70%, #F2FBFF 100% );  
 }
-#homeResourceSec .resHeading{ font-size: 36px; font-weight: 800; margin-bottom: 40px; letter-spacing: 3px;
-  background: linear-gradient(to right, #FBB32B 20%, #E54D8B 50%, #AE3D8F 63%, #5452A2 77%, #1364AB 100%);
-  -webkit-background-clip: text;
+#homeResourceSec .resHeading{ font-size: 36px; font-weight: 800; margin-bottom: 40px; letter-spacing: 3px; display: inline-block;
+  background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #5452A2 77%, #1364AB 100%) !important;
+  -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
@@ -1175,7 +1177,7 @@ transition: transform 0.3s ease; }
 .commonCard .card-title{ font-size: 24px; font-weight: 500; margin-bottom: 8px;}
 .commonCard .card-title img{ vertical-align: middle; margin-top: -4px;}
 .commonCard .card-text{ font-weight: 300; margin-bottom: 8px;}
-.commonCard .card-body{ padding: 30px 40px 30px 40px;}
+.commonCard .card-body{ /*padding: 30px 40px 30px 40px;*/ padding: 40px;}
 
 .commonCard ul{ font-size: 14px; padding-left: 15px; color: var(--black-secondary);}
 .commonCard ul li{ margin-bottom: 15px;}
@@ -1261,7 +1263,7 @@ transition: transform 0.3s ease; }
   #copyright ul li{ margin-right: 10px;}
 
   .innerBanner{ height: auto; padding-top: 150px;}
-  .banner-details{ margin-top: 40px;}
+  .banner-details{ margin-top: 40px; padding-right: 0px;}
   .banner-details .banner-title{ font-size: 28px; font-weight: 400; margin-bottom: 15px;}
   .banner-details .banner-desc{ font-size: 22px; margin-bottom: 15px;}
   .tag-Cat{ font-size: 20px; padding: 12px 30px; margin-top: 15px; margin-bottom: 25px;}
@@ -1369,7 +1371,7 @@ transition: transform 0.3s ease; }
   #copyright ul li{ margin-right: 10px;}
 
   .innerBanner{ height: auto; padding-top: 150px;}
-  .banner-details{ margin-top: 40px;}
+  .banner-details{ margin-top: 40px; padding-right: 0px;}
   .banner-details .banner-title{ font-size: 28px; font-weight: 400; margin-bottom: 15px;}
   .banner-details .banner-desc{ font-size: 22px; margin-bottom: 15px;}
   .tag-Cat{ font-size: 20px; padding: 12px 30px; margin-top: 15px; margin-bottom: 25px;}
@@ -1478,7 +1480,7 @@ transition: transform 0.3s ease; }
   #copyright ul li{ margin-right: 10px;}
 
   .innerBanner{ height: auto; padding-top: 150px;  /*margin-bottom: 60px;*/ /*display: flex;*/ align-items: center;}
-  .banner-details{ margin-top: 40px; /*padding-right: 50px;*/}
+  .banner-details{ margin-top: 40px; padding-right: 0px; /*padding-right: 50px;*/}
   .banner-details .banner-title{ font-size: 28px; font-weight: 400; margin-bottom: 15px;}
   .banner-details .banner-desc{ font-size: 22px; margin-bottom: 15px;}
   .tag-Cat{ font-size: 20px; padding: 12px 30px; margin-top: 15px; margin-bottom: 25px;}
@@ -1593,6 +1595,8 @@ transition: transform 0.3s ease; }
   .banner-details .banner-desc{ font-size: 22px; margin-bottom: 15px;}
   .tag-Cat{ font-size: 20px; padding: 12px 30px; margin-top: 15px; margin-bottom: 25px;}
   .tag-title{ font-size: 20px; }
+  
+  /* .deskBanner{ height: auto;} */
 
   .aboutHeading{ font-size: 24px;}
   .aboutDesc{font-size: 20px;}
@@ -1697,7 +1701,8 @@ transition: transform 0.3s ease; }
 
 
 @media (min-width: 1920px) {
-  .container{ max-width: 1480px;}
+  .container{ max-width: 1500px;}
+  .deskNav{ padding-right: 250px;}
 }
 
 

@@ -115,14 +115,14 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
 
 
 
-       <section className="sectionWrapper pt-0 pt-lg-5">
+       <section className="sectionWrapper pt-0 pt-lg-5" id="homeOurServices">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-12 col-lg-3">
               <h2 className="hd-ourServices">OUR SERVICES</h2>
               <p>Optimizing data quality, governance, and strategy.</p>
             </div>
-            <div className="col-md-6 col-lg-4">
+            <div className="col-md-6 col-lg-4 col-xl-3">
               <div className="card commonCard">
                 <div className="card-body">
                   <div className="cardIcon">
@@ -134,7 +134,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
                 </div>
               </div>
             </div>
-           <div className="col-md-6 col-lg-4">
+           <div className="col-md-6 col-lg-4 col-xl-3">
               <div className="card commonCard">
                 <div className="card-body">
                   <div className="cardIcon">
@@ -149,7 +149,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
           </div>
 
           <div className="row justify-content-end">
-            <div className="col-md-6 col-lg-4">
+            <div className="col-md-6 col-lg-4 col-xl-3">
               <div className="card commonCard">
                 <div className="card-body">
                   <div className="cardIcon">
@@ -161,7 +161,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
                 </div>
               </div>
             </div>
-           <div className="col-md-6 col-lg-4">
+           <div className="col-md-6 col-lg-4 col-xl-3">
               <div className="card commonCard lastCommonCard">
                 <div className="card-body">
                   <div className="cardIcon">
@@ -190,7 +190,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
             <div className="row">
               <div className="col-md-12 text-center">
                 <p className="mb-2">EXPLORE OUR</p>
-                <h2 className="resHeading gradientText">RESOURCES</h2>
+                <h2><sapn className="resHeading gradientText">RESOURCES</sapn></h2>
               </div>
             </div>
 

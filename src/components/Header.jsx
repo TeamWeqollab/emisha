@@ -122,7 +122,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="d-none d-lg-block">
-            <div className="mx-auto d-flex flex-row justify-content-center">
+            <div className="mx-auto d-flex flex-row justify-content-center deskNav">
                <ul className="navbar-nav">
                   <li className="nav-item">
                     <Link href="/services/foundation-services" className={getMainNavClasses('/services')}>
