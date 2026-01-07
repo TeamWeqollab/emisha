@@ -47,7 +47,7 @@ export default function FoundationServices() {
                 <div className="banner-details">
                   <h2 className="banner-title">Build a Solid Data Foundation. <br />Unlock Enterprise Growth.</h2>
                   <p className="banner-desc">For organizations seeking direction and clarity on the data maturity roadmap, our Foundation Services offer structured guidance across the complex landscape of technologies, methodologies, planning, implementation, and deployment strategies</p>
-                  <Link href='#' className="btn btn-primary">GET STARTED</Link>
+                  <Link href='/contact' className="btn btn-primary">GET STARTED</Link>
                 </div>
               </div>
             </div>

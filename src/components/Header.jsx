@@ -156,14 +156,15 @@ export default function Header() {
             </div>
           </div>
 
+           {/* dark mode theme enable */}          
           <div className="d-none d-lg-block">
             <Link href="/contact" className="btn btn-primary btnHeader">CONTACT US</Link>
-            <button type="button" onClick={() => setIsDark(true)} aria-label="Activate dark mode" className="btn btn-link p-0 ms-4 theme-toggle-dark">
+            {/* <button type="button" onClick={() => setIsDark(true)} aria-label="Activate dark mode" className="btn btn-link p-0 ms-4 theme-toggle-dark">
               <Image src="/images/icon-darkMode.svg" alt="Dark mode" width={37} height={38} className="img-fluid" />
             </button>
             <button type="button" onClick={() => setIsDark(false)} aria-label="Activate light mode" className="btn btn-link p-0 ms-2 theme-toggle-light">
               <Image src="/images/icon-lightMode.svg" alt="Light mode" width={38} height={38} className="img-fluid" />
-            </button>
+            </button> */}
           </div>
 
           {/* Mobile Offcanvas Toggle Button */}

@@ -47,7 +47,7 @@ export default function EnterpriseInformationManagement() {
                 <div className="banner-details">
                   <h2 className="banner-title">Data Trust &amp; <br />Transformation Services</h2>
                   <p className="banner-desc">We enable enterprises to build robust governance frameworks, ensure the integrity of information assets, and harness data as a strategic driver of sustainable business transformation.</p>
-                  <Link href='#' className="btn btn-primary">GET STARTED</Link>
+                  <Link href='/contact' className="btn btn-primary">GET STARTED</Link>
                 </div>
               </div>
             </div>

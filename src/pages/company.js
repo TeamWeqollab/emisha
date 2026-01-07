@@ -46,7 +46,7 @@ export default function Company() {
               <div className="banner-details">
                 <h2 className="banner-title">Enabling Enterprises to Unlock the Full Value of Their Data Through Trusted Governance and Transformation</h2>
                 <p className="banner-desc">Guided by our mission to be the most trusted partner for enterprises seeking to transform data into a strategic asset that drives innovation, resilience, and sustainable growth.</p>
-                <Link href='#' className="btn btn-primary">GET STARTED</Link>
+                <Link href='/contact' className="btn btn-primary">GET STARTED</Link>
               </div>
             </div>
           </div>
