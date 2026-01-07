@@ -644,7 +644,7 @@ transition: transform 0.3s ease; }
 .dropdown-menu { animation: fadeInDown 0.3s ease;}
 
 
-
+.deskNav{ padding-right: 250px;}
 
 
 
@@ -1702,7 +1702,7 @@ transition: transform 0.3s ease; }
 
 @media (min-width: 1920px) {
   .container{ max-width: 1500px;}
-  .deskNav{ padding-right: 250px;}
+  
 }
 
 
