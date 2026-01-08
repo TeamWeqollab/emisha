@@ -952,13 +952,28 @@ transition: transform 0.3s ease; }
 
 .blogPageContent p{ margin-bottom: 20px;}
 .blogPageContent h2, .blogPageContent h3, .blogPageContent h4, .blogPageContent h5, .blogPageContent h6{ 
-  background: linear-gradient(to right, #FBB32B 0%, #E54D8B 17%, #AE3D8F 27%, #5452A2 57%, #1364AB 100%);
+  background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #5452A2 77%, #1364AB 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700; margin-top: 30px; margin-bottom: 20px; text-transform: uppercase; 
+  /* width: fit-content; */
+  display: inline-block;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+
+/* .blogPageContent h2 span, .blogPageContent h3 span, .blogPageContent h4 span, .blogPageContent h5 span, .blogPageContent h6 span{ display: inline-block;
+background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #5452A2 77%, #1364AB 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
   font-weight: 700; margin-top: 30px; margin-bottom: 20px; text-transform: uppercase;
-}
+} */
+
 .blogPageContent h2{font-size: 36px;}
 .blogPageContent h3{font-size: 32px;}
 .blogPageContent h4{font-size: 28px;}
@@ -994,11 +1009,15 @@ transition: transform 0.3s ease; }
 }
 
 .relatedSection .gradientText{ font-size: 36px; font-weight: 700; margin-bottom: 40px;
-  background: linear-gradient(to right, #FBB32B 30%, #E54D8B 45%, #AE3D8F 53%, #5452A2 77%, #1364AB 100%);
+  background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #5452A2 77%, #1364AB 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+    /* width: fit-content; */
+  display: inline-block;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 
@@ -1014,6 +1033,11 @@ transition: transform 0.3s ease; }
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+
+    /* width: fit-content; */
+  display: inline-block;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 #homeResourceSec .news-btn{ z-index: 3;}
@@ -1204,11 +1228,16 @@ transition: transform 0.3s ease; }
 
 
 .gradientText{
-  background: linear-gradient(to right, #FBB32B 0%, #E54D8B 45%, #AE3D8F 53%, #5452A2 77%, #1364AB 100%);
+  background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #5452A2 77%, #1364AB 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+
+  /* width: fit-content; */
+  display: inline-block;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 

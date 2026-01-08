@@ -15,6 +15,8 @@ const outfit = Outfit({
 });
 
 
+import NextNProgress from "nextjs-progressbar";
+
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -43,6 +45,14 @@ export default function App({ Component, pageProps }) {
   // return <Component {...pageProps} />;
   return (
     <main className={outfit.variable}>
+      <NextNProgress
+        color='linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #5452A2 77%, #1364AB 100%)' /*color="#FF671F"*/
+        startPosition={0.3}
+        stopDelayMs={200}
+        height={2}
+        showOnShallow={true}
+        options={{ showSpinner: false }}
+      />
       <Component {...pageProps} />
     </main>
   );

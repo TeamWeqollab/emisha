@@ -130,7 +130,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
       return (
         <div className="row">
           <div className="col-md-12">
-            <h2>White Paper</h2>
+            <h2><span>White Paper</span></h2>
             {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
           </div>
         </div>
@@ -141,7 +141,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
       return (
         <div className="row">
           <div className="col-md-12">
-            <h2>Case Study</h2>
+            <h2><span>Case Study</span></h2>
             {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
           </div>
         </div>
@@ -152,7 +152,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
       return (
         <div className="row">
           <div className="col-md-12">
-            <h2>Ebook</h2>
+            <h2><span>Ebook</span></h2>
             {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
           </div>
         </div>
@@ -163,7 +163,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
       return (
         <div className="row">
           <div className="col-md-12">
-            <h2>Video Tutorial</h2>
+            <h2><span>Video Tutorial</span></h2>
             {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
           </div>
         </div>
@@ -174,7 +174,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
       return (
         <div className="row">
           <div className="col-md-12">
-            <h2>Toolkit</h2>
+            <h2><span>Toolkit</span></h2>
             {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
           </div>
         </div>
@@ -185,7 +185,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
       return (
         <div className="row">
           <div className="col-md-12">
-            <h2>Blog</h2>
+            <h2><span>Blog</span></h2>
             {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
           </div>
         </div>
@@ -196,7 +196,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
       return (
         <div className="row">
           <div className="col-md-12">
-            <h2>Customer Story</h2>
+            <h2><span>Customer Story</span></h2>
             {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
           </div>
         </div>

@@ -59,7 +59,7 @@ export default function EnterpriseInformationManagement() {
 
 
 
-        <section className="sectionWrapper">
+        <section className="sectionWrapper pt-5 pt-xl-0">
           <div className="container">
 
             <div className="row align-items-center justify-content-between mt-0 mt-xl-5">
