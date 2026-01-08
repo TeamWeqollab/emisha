@@ -518,7 +518,7 @@ export async function getStaticProps({ params }) {
         resource,
         relatedResources
       },
-      revalidate: 60 // Revalidate every 60 seconds (ISR)
+      revalidate: 10 // Revalidate every 60 seconds (ISR)
     };
   } catch (error) {
     console.error('Error fetching resource:', error);

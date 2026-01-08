@@ -387,7 +387,7 @@ export async function getStaticProps() {
         resources: resources || [],
         resourceTypes: resourceTypes || []
       },
-      revalidate: 60
+      revalidate: 10
     };
   } catch (error) {
     console.error('Error fetching resources data:', error);
@@ -396,7 +396,7 @@ export async function getStaticProps() {
         resources: [],
         resourceTypes: []
       },
-      revalidate: 60
+      revalidate: 10
     };
   }
 }

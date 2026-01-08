@@ -1053,7 +1053,7 @@ export async function getStaticProps() {
         newsArticles: newsArticles || [],
         newsCategories: newsCategories || []
       },
-      revalidate: 60 // Revalidate every 60 seconds (ISR)
+      revalidate: 10 // Revalidate every 60 seconds (ISR)
     };
   } catch (error) {
     console.error('Error fetching news data:', error);
@@ -1062,7 +1062,7 @@ export async function getStaticProps() {
         newsArticles: [],
         newsCategories: []
       },
-      revalidate: 60
+      revalidate: 10
     };
   }
 }
