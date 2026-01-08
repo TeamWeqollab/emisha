@@ -117,6 +117,94 @@ export default function ResourceDetail({ resource, relatedResources }) {
 
   const metaDescription = resource.Summary || (isHtmlContent(resource.Content) ? stripHtml(resource.Content) : stripMarkdown(resource.Content))?.substring(0, 160) || 'Read our resources from Emisha';
 
+  // Render a section specific to the resource type (white paper, case study, ebook, etc.)
+  const renderResourceTypeSection = () => {
+    const type = (resource?.ResourceType?.Slug || resource?.ResourceType?.Name || '')
+      .toString()
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w-]+/g, '');
+    const summary = resource?.Summary || '';
+
+    if (/white/.test(type)) {
+      return (
+        <div className="row">
+          <div className="col-md-12">
+            <h2>White Paper</h2>
+            {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+          </div>
+        </div>
+      );
+    }
+
+    if (/case/.test(type) || /case-study/.test(type)) {
+      return (
+        <div className="row">
+          <div className="col-md-12">
+            <h2>Case Study</h2>
+            {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+          </div>
+        </div>
+      );
+    }
+
+    if (/ebook/.test(type)) {
+      return (
+        <div className="row">
+          <div className="col-md-12">
+            <h2>Ebook</h2>
+            {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+          </div>
+        </div>
+      );
+    }
+
+    if (/video/.test(type) || /tutorial/.test(type)) {
+      return (
+        <div className="row">
+          <div className="col-md-12">
+            <h2>Video Tutorial</h2>
+            {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+          </div>
+        </div>
+      );
+    }
+
+    if (/toolkit/.test(type)) {
+      return (
+        <div className="row">
+          <div className="col-md-12">
+            <h2>Toolkit</h2>
+            {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+          </div>
+        </div>
+      );
+    }
+
+    if (/blog/.test(type)) {
+      return (
+        <div className="row">
+          <div className="col-md-12">
+            <h2>Blog</h2>
+            {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+          </div>
+        </div>
+      );
+    }
+
+    if (/customer/.test(type) || /customer-story/.test(type)) {
+      return (
+        <div className="row">
+          <div className="col-md-12">
+            <h2>Customer Story</h2>
+            {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+          </div>
+        </div>
+      );
+    }
+
+    return null;
+  };
 
   return (
     <>
@@ -182,6 +270,15 @@ export default function ResourceDetail({ resource, relatedResources }) {
                 )}
               </div>
             </div>
+
+                
+
+            {renderResourceTypeSection()}
+
+
+
+
+
           </div>
 
 
