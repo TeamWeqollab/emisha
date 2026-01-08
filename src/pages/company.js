@@ -75,7 +75,7 @@ export default function Company() {
 
             <div className="row justify-content-center">
               <div className="col-md-11 text-center">
-                <h2 className="aboutLeatTitle gradientText">Innovation is more than just an idea. It&apos;s action</h2>
+                <h2 className="aboutLeatTitle"><span className="gradientText">Innovation is more than just an idea. It&apos;s action</span></h2>
               </div>
             </div>
 
