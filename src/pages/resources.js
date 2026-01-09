@@ -231,7 +231,7 @@ export async function getStaticProps() {
     let resourcesRes = await fetch(`${strapiUrl}/api/resources?populate[ResourceType]=*&populate[Image]=*&populate[ImageResource]=*`);
     if (!resourcesRes.ok) {
       // fallback
-      resourcesRes = await fetch(`${strapiUrl}/api/resources?populate=*`);
+      resourcesRes = await fetch(`${strapiUrl}/api/resources?populate=*&sort[0]=Title:asc&pagination[pageSize]=100`);
     }
     if (!resourcesRes.ok) {
       console.error('Failed to fetch resources:', resourcesRes.status, resourcesRes.statusText);

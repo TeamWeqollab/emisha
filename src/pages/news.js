@@ -599,7 +599,7 @@ export async function getStaticProps() {
     const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
     
     // Fetch news articles with all relations populated
-    const articlesRes = await fetch(`${strapiUrl}/api/news-articles?populate=*`);
+    const articlesRes = await fetch(`${strapiUrl}/api/news-articles?populate=*&pagination[pageSize]=100`);
     
     if (!articlesRes.ok) {
       throw new Error(`Failed to fetch articles: ${articlesRes.status}`);
@@ -608,7 +608,7 @@ export async function getStaticProps() {
     const articlesData = await articlesRes.json();
 
     // Fetch news categories
-    const categoriesRes = await fetch(`${strapiUrl}/api/news-categories`);
+    const categoriesRes = await fetch(`${strapiUrl}/api/news-categories?pagination[pageSize]=100`);
     
     if (!categoriesRes.ok) {
       console.error('Failed to fetch categories:', categoriesRes.status, categoriesRes.statusText);
