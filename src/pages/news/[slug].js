@@ -143,8 +143,8 @@ export default function NewsDetail({ article, relatedArticles }) {
                   <Image
                     src={getBannerImageUrl(article)}
                     alt={article.Title || 'News article'}
-                    width={1422}
-                    height={680}
+                    width={1920}
+                    height={1440}
                     className="img-fluid"
                   />
                 </div>

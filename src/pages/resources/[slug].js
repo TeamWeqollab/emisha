@@ -240,8 +240,8 @@ export default function ResourceDetail({ resource, relatedResources }) {
                   <Image
                     src={getBannerImageUrl(resource)}
                     alt={resource.Title || 'Resource'}
-                    width={1422}
-                    height={680}
+                    width={1920}
+                    height={1440}
                     className="img-fluid"
                   />
                 </div>

@@ -296,21 +296,24 @@ export default function News({ newsArticles, newsCategories }) {
 
   // Get banner image URL
   const getBannerImageUrl = (article) => {
-    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
-    
-    // Handle direct image object (Strapi v5 format)
+    // Handle Strapi v4 format
+    if (article.Banner?.data?.attributes?.url) {
+      const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+      return `${baseUrl}${article.Banner.data.attributes.url}`;
+    }
+    // Handle Strapi v3 format or direct URL
     if (article.Banner?.url) {
+      const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
       return `${baseUrl}${article.Banner.url}`;
     }
-    
     // Handle direct URL string
     if (typeof article.Banner === 'string' && article.Banner.startsWith('http')) {
       return article.Banner;
     }
     if (typeof article.Banner === 'string' && article.Banner.startsWith('/')) {
+      const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
       return `${baseUrl}${article.Banner}`;
     }
-    
     // Fallback to default images
     const defaultImages = [
       '/images/img-news-1.jpg',
@@ -598,14 +601,117 @@ export async function getStaticProps() {
   try {
     const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
     
-    // Fetch news articles with all relations populated
-    const articlesRes = await fetch(`${strapiUrl}/api/news-articles?populate=*`);
+    // Fetch news articles with Banner and Category populated
+    // For Strapi v4, we need to explicitly populate relations
+    // Try multiple populate formats to ensure Category is included
     
+    // First, try with explicit Category populate (Strapi v4 format) and common variant field names
+    let articlesRes = await fetch(`${strapiUrl}/api/news-articles?populate[Category]=*&populate[news_category]=*&populate[news_categorie]=*&populate[Banner]=*`);
+
+    // If initial attempt didn't succeed try other populate variants in order of likelihood
     if (!articlesRes.ok) {
+      console.warn('populate[Category] request failed, trying populate[news_category]...');
+      articlesRes = await fetch(`${strapiUrl}/api/news-articles?populate[news_category]=*&populate[Banner]=*`);
+    }
+
+    if (!articlesRes.ok) {
+      console.warn('populate[news_category] request failed, trying populate[NewsCategory]...');
+      articlesRes = await fetch(`${strapiUrl}/api/news-articles?populate[NewsCategory]=*&populate[Banner]=*`);
+    }
+
+    // Try lowercase 'category' next
+    if (!articlesRes.ok) {
+      console.warn('populate[NewsCategory] request failed, trying populate[category]...');
+      articlesRes = await fetch(`${strapiUrl}/api/news-articles?populate[category]=*&populate[Banner]=*`);
+    }
+
+    // Final fallback to wildcard
+    if (!articlesRes.ok) {
+      console.warn('populate[category] request failed, falling back to populate=*');
+      articlesRes = await fetch(`${strapiUrl}/api/news-articles?populate=*`);
+    }
+
+    if (!articlesRes.ok) {
+      console.error('Failed to fetch articles:', articlesRes.status, articlesRes.statusText);
       throw new Error(`Failed to fetch articles: ${articlesRes.status}`);
     }
+
+    let articlesData = await articlesRes.json();
+
+    // Check if Category/news_category was populated - if not, try targeted populate for news_category specifically
+    if (articlesData.data && articlesData.data.length > 0) {
+      const firstArticle = articlesData.data[0];
+      const attrs = firstArticle.attributes || {};
+      const hasCategory = attrs.Category || attrs.category || attrs.news_category || attrs.news_categorie || attrs.newsCategory || attrs.newsCategorie || attrs.NewsCategory || attrs.News_Categorie;
+
+      if (!hasCategory && process.env.NODE_ENV === 'development') {
+        console.warn('Category not populated. Trying more targeted populate for news_category...');
+
+        // Try several targeted populate queries to surface the relation
+        const tries = [
+          `${strapiUrl}/api/news-articles?populate[news_category]=*&populate[Banner]=*`,
+          `${strapiUrl}/api/news-articles?populate[news_categorie]=*&populate[Banner]=*`,
+          `${strapiUrl}/api/news-articles?populate[newsCategory]=*&populate[Banner]=*`,
+          `${strapiUrl}/api/news-articles?populate[newsCategorie]=*&populate[Banner]=*`,
+          `${strapiUrl}/api/news-articles?populate[NewsCategory]=*&populate[Banner]=*`,
+          `${strapiUrl}/api/news-articles?populate[News_Categorie]=*&populate[Banner]=*`
+        ];
+
+        for (const url of tries) {
+          try {
+            const r = await fetch(url);
+            if (r.ok) {
+              const altData = await r.json();
+              if (altData.data && altData.data.length > 0) {
+                const altAttrs = altData.data[0].attributes || {};
+                if (altAttrs.news_category || altAttrs.newsCategory || altAttrs.NewsCategory) {
+                  articlesData = altData;
+                  console.log('Found Category by targeted populate:', url);
+                  break;
+                }
+              }
+            }
+          } catch (e) {
+            // ignore and continue
+          }
+        }
+      }
+    }
     
-    const articlesData = await articlesRes.json();
+    // Check for API errors
+    if (articlesData.error) {
+      console.error('Strapi API returned an error:', articlesData.error);
+    }
+    
+    // Log the raw response for debugging
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Raw Articles API Response:', JSON.stringify(articlesData, null, 2).substring(0, 1000));
+    }
+    
+    // Log for debugging (remove in production or use environment variable)
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Articles API Response structure:', {
+        hasData: !!articlesData.data,
+        isArray: Array.isArray(articlesData.data),
+        dataLength: articlesData.data?.length,
+        keys: Object.keys(articlesData)
+      });
+      
+      // Log first article to see Category structure
+      if (articlesData.data && articlesData.data.length > 0) {
+        const firstArticle = articlesData.data[0];
+        const attrs = firstArticle.attributes || {};
+        console.log('First article structure:', {
+          id: firstArticle.id,
+          hasAttributes: !!firstArticle.attributes,
+          attributeKeys: Object.keys(attrs),
+          categoryInAttributes: attrs.Category,
+          categoryInAttributesLower: attrs.category,
+          categoryInAttributesNews: attrs.news_category || attrs.newsCategory,
+          fullAttributes: JSON.stringify(attrs, null, 2).substring(0, 500) // First 500 chars
+        });
+      }
+    }
 
     // Fetch news categories
     const categoriesRes = await fetch(`${strapiUrl}/api/news-categories`);
@@ -615,13 +721,67 @@ export async function getStaticProps() {
     }
     
     const categoriesData = await categoriesRes.json();
+    
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Categories API Response structure:', {
+        hasData: !!categoriesData.data,
+        isArray: Array.isArray(categoriesData.data),
+        dataLength: categoriesData.data?.length,
+        keys: Object.keys(categoriesData)
+      });
+    }
 
-    // Transform articles data
+    // Transform articles data (handle Strapi response structure)
     let newsArticles = [];
     
-    if (articlesData.data && Array.isArray(articlesData.data)) {
-      newsArticles = articlesData.data.map((item, index) => {
-        // In Strapi v5, fields are directly on the item, not in attributes
+    // Check if there's an error in the response
+    if (articlesData.error) {
+      console.error('Strapi API Error:', articlesData.error);
+    }
+    
+    // Check if data exists in different possible locations
+    let articlesArray = null;
+    
+    // Try multiple possible response structures
+    if (articlesData.data !== undefined) {
+      if (Array.isArray(articlesData.data)) {
+        articlesArray = articlesData.data;
+      } else if (articlesData.data && typeof articlesData.data === 'object') {
+        articlesArray = [articlesData.data];
+      }
+    } else if (Array.isArray(articlesData)) {
+      articlesArray = articlesData;
+    } else if (articlesData.attributes) {
+      // Single item response
+      articlesArray = [articlesData];
+    } else if (typeof articlesData === 'object' && articlesData !== null) {
+      // Try to find any array in the response
+      for (const key in articlesData) {
+        if (Array.isArray(articlesData[key])) {
+          articlesArray = articlesData[key];
+          break;
+        }
+      }
+    }
+    
+    if (!articlesArray || articlesArray.length === 0) {
+      console.error('No articles array found in API response. Response structure:', {
+        hasData: !!articlesData.data,
+        isArray: Array.isArray(articlesData.data),
+        topLevelKeys: Object.keys(articlesData),
+        error: articlesData.error,
+        message: articlesData.message,
+        fullResponse: JSON.stringify(articlesData, null, 2).substring(0, 2000)
+      });
+    }
+    
+    if (articlesArray && articlesArray.length > 0) {
+      newsArticles = articlesArray.map((item, index) => {
+        // Handle different Strapi response structures
+        const id = item.id || item.Id || index;
+        const attributes = item.attributes || item;
+        
+        // Helper function to get nested value with multiple possible keys
         const getValue = (obj, ...keys) => {
           for (const key of keys) {
             if (obj && obj[key] !== undefined && obj[key] !== null) {
@@ -631,51 +791,261 @@ export async function getStaticProps() {
           return null;
         };
         
-        // Extract Banner (already populated as object)
+        // Handle Banner image - try multiple possible structures
         let bannerData = null;
-        const banner = item.Banner;
-        if (banner && typeof banner === 'object') {
-          bannerData = banner;
+        const banner = getValue(attributes, 'Banner', 'banner', 'BannerImage', 'bannerImage', 'Image', 'image');
+        if (banner) {
+          if (banner.data) {
+            bannerData = banner.data;
+          } else if (Array.isArray(banner) && banner.length > 0) {
+            bannerData = banner[0];
+          } else {
+            bannerData = banner;
+          }
         }
         
-        // Extract Category from news_categorie field
+        // Handle Category - try multiple possible structures and field names
         let categoryData = null;
-        const category = item.news_categorie;
-        if (category && typeof category === 'object') {
-          categoryData = {
-            id: category.id,
-            Slug: category.Slug || '',
-            Name: category.Name || ''
-          };
+        
+        // Try different possible field names for the category relation
+        const category = getValue(
+          attributes, 
+          'Category', 
+          'category', 
+          'NewsCategory', 
+          'newsCategory',
+          'news_category',
+          'news_categorie',
+          'newsCategorie',
+          'News_Category',
+          'News_Categorie'
+        );
+        
+        if (category) {
+          // Strapi v4 format: category.data.attributes (populated relation)
+          if (category.data) {
+            const catData = Array.isArray(category.data) ? category.data[0] : category.data;
+            const catAttrs = catData?.attributes || catData;
+            if (catAttrs) {
+              categoryData = {
+                Slug: getValue(catAttrs, 'Slug', 'slug') || '',
+                Name: getValue(catAttrs, 'Name', 'name') || '',
+                id: catData?.id || catAttrs?.id || null
+              };
+            }
+          } 
+          // Strapi v4 nested: category.attributes (single populated relation)
+          else if (category.attributes) {
+            categoryData = {
+              Slug: getValue(category.attributes, 'Slug', 'slug') || '',
+              Name: getValue(category.attributes, 'Name', 'name') || '',
+              id: category.id || category.attributes.id || null
+            };
+          } 
+          // Direct object format (already populated)
+          else if (typeof category === 'object' && category !== null) {
+            categoryData = {
+              Slug: getValue(category, 'Slug', 'slug') || '',
+              Name: getValue(category, 'Name', 'name') || '',
+              id: category.id || null
+            };
+          }
+          // Category is just an ID (not populated) - we'll look it up later
+          else if (typeof category === 'number' || (typeof category === 'string' && !isNaN(category))) {
+            categoryData = {
+              id: parseInt(category),
+              Slug: '',
+              Name: ''
+            };
+          }
+        }
+
+        // Fallback: try common alt id fields when relation not populated
+        if (!categoryData) {
+          const altId = getValue(attributes, 'category_id', 'CategoryId', 'categoryId', 'news_category_id', 'NewsCategoryId', 'category');
+          if (altId && (typeof altId === 'number' || !isNaN(Number(altId)))) {
+            categoryData = { id: Number(altId), Slug: '', Name: '' };
+          }
+        }
+        
+        // Log if category is missing (for debugging)
+        if (process.env.NODE_ENV === 'development' && index === 0) {
+          console.log('Category extraction result:', {
+            articleId: id,
+            articleTitle: getValue(attributes, 'Title', 'title'),
+            categoryFound: !!category,
+            categoryValue: category,
+            categoryData: categoryData,
+            availableKeys: Object.keys(attributes)
+          });
         }
         
         return {
-          id: item.id || index,
-          Title: item.Title || '',
-          Slug: item.Slug || '',
-          Summary: item.Summary || '',
-          Content: item.Content || '',
-          PublishDate: item.PublishDate || item.publishedAt || new Date().toISOString(),
-          IsFeatured: !!item.IsFeatured,
+          id: id,
+          Title: getValue(attributes, 'Title', 'title') || '',
+          Slug: getValue(attributes, 'Slug', 'slug') || '',
+          Summary: getValue(attributes, 'Summary', 'summary', 'Description', 'description') || '',
+          Content: getValue(attributes, 'Content', 'content', 'Body', 'body') || '',
+          PublishDate: getValue(attributes, 'PublishDate', 'publishDate', 'PublishedAt', 'publishedAt', 'createdAt', 'CreatedAt', 'updatedAt', 'UpdatedAt') || new Date().toISOString(),
+          IsFeatured: getValue(attributes, 'IsFeatured', 'isFeatured', 'Featured', 'featured') !== undefined 
+            ? (getValue(attributes, 'IsFeatured', 'isFeatured', 'Featured', 'featured') === true || getValue(attributes, 'IsFeatured', 'isFeatured', 'Featured', 'featured') === 'true')
+            : false,
           Banner: bannerData,
           Category: categoryData
         };
       });
     }
+    
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Transformed Articles:', newsArticles.length, 'articles found');
+    }
 
-    // Transform categories data
+    // Transform categories data (handle Strapi response structure)
     let newsCategories = [];
     
-    if (categoriesData.data && Array.isArray(categoriesData.data)) {
-      newsCategories = categoriesData.data.map((item, index) => {
-        // In Strapi v5, fields are directly on the item
+    // Check if there's an error in the response
+    if (categoriesData.error) {
+      console.error('Strapi Categories API Error:', categoriesData.error);
+    }
+    
+    let categoriesArray = null;
+    
+    // Try multiple possible response structures
+    if (categoriesData.data !== undefined) {
+      if (Array.isArray(categoriesData.data)) {
+        categoriesArray = categoriesData.data;
+      } else if (categoriesData.data && typeof categoriesData.data === 'object') {
+        categoriesArray = [categoriesData.data];
+      }
+    } else if (Array.isArray(categoriesData)) {
+      categoriesArray = categoriesData;
+    } else if (categoriesData.attributes) {
+      categoriesArray = [categoriesData];
+    } else if (typeof categoriesData === 'object' && categoriesData !== null) {
+      // Try to find any array in the response
+      for (const key in categoriesData) {
+        if (Array.isArray(categoriesData[key])) {
+          categoriesArray = categoriesData[key];
+          break;
+        }
+      }
+    }
+    
+    if (categoriesArray && categoriesArray.length > 0) {
+      newsCategories = categoriesArray.map((item, index) => {
+        const attributes = item.attributes || item;
+        
+        // Helper function to get nested value with multiple possible keys
+        const getValue = (obj, ...keys) => {
+          for (const key of keys) {
+            if (obj && obj[key] !== undefined && obj[key] !== null) {
+              return obj[key];
+            }
+          }
+          return null;
+        };
+        
         return {
-          id: item.id || index,
-          Name: item.Name || '',
-          Slug: item.Slug || '',
-          Description: item.Description || ''
+          id: item.id || item.Id || index,
+          Name: getValue(attributes, 'Name', 'name') || '',
+          Slug: getValue(attributes, 'Slug', 'slug') || '',
+          Description: getValue(attributes, 'Description', 'description') || ''
         };
       });
+    } else {
+      console.error('No categories array found in API response. Response structure:', Object.keys(categoriesData));
+    }
+    
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Transformed Categories:', newsCategories.length, 'categories found');
+    }
+
+    // Resolve missing Category details on articles by looking up newsCategories and inspecting the raw API items
+    const slugify = (s) => s ? s.toString().toLowerCase().trim().replace(/\s+/g,'-').replace(/[^\w-]+/g,'') : '';
+    if (newsArticles && newsArticles.length > 0 && newsCategories && newsCategories.length > 0) {
+      const beforeMissing = newsArticles.filter(a => !a.Category || !a.Category.Name).length;
+
+      const extractCategoryIdFromRaw = (rawItem) => {
+        if (!rawItem) return null;
+        const attrs = rawItem.attributes || rawItem;
+
+        const tryFromObj = (obj) => {
+          if (!obj) return null;
+          // Strapi v4 populated relation: obj.data may be object or array
+          if (obj.data) {
+            const d = Array.isArray(obj.data) ? obj.data[0] : obj.data;
+            if (d?.id) return d.id;
+            if (d?.attributes?.id) return d.attributes.id;
+          }
+          if (obj.id) return obj.id;
+          if (typeof obj === 'number') return obj;
+          if (typeof obj === 'string' && !isNaN(obj)) return Number(obj);
+          return null;
+        };
+
+        // Common fields to inspect
+        const fields = ['Category', 'category', 'NewsCategory', 'newsCategory', 'news_category', 'news_categorie', 'newsCategorie', 'News_Category', 'News_Categorie'];
+        for (const f of fields) {
+          const v = attrs[f];
+          const id = tryFromObj(v);
+          if (id) return id;
+        }
+
+        // Alt id fields
+        const altId = attrs.category_id || attrs.CategoryId || attrs.categoryId || attrs.news_category_id || attrs.NewsCategoryId || attrs.newsCategoryId;
+        if (altId && (typeof altId === 'number' || !isNaN(Number(altId)))) return Number(altId);
+
+        return null;
+      };
+
+      newsArticles.forEach((article) => {
+        let resolved = false;
+
+        // If category exists but only has an id, or has missing name/slug
+        if (article.Category && (article.Category.id || article.Category.id === 0) && (!article.Category.Name || !article.Category.Slug)) {
+          const match = newsCategories.find(cat => String(cat.id) === String(article.Category.id) || slugify(cat.Slug || cat.Name || '') === slugify(article.Category.Slug || article.Category.Name || ''));
+          if (match) {
+            article.Category = { id: match.id, Name: match.Name, Slug: match.Slug };
+            resolved = true;
+          }
+        }
+
+        // If category stored as a raw id value (e.g., Category: 3)
+        if (!resolved && (article.Category && (typeof article.Category === 'number' || !isNaN(Number(article.Category))))) {
+          const match = newsCategories.find(cat => String(cat.id) === String(article.Category));
+          if (match) {
+            article.Category = { id: match.id, Name: match.Name, Slug: match.Slug };
+            resolved = true;
+          }
+        }
+
+        // Try to resolve by inspecting the raw API response for this article
+        if (!resolved) {
+          const raw = typeof articlesArray !== 'undefined' ? articlesArray.find(it => String(it.id || it.Id) === String(article.id)) : null;
+          const candidateId = extractCategoryIdFromRaw(raw);
+          if (candidateId) {
+            const match = newsCategories.find(cat => String(cat.id) === String(candidateId));
+            if (match) {
+              article.Category = { id: match.id, Name: match.Name, Slug: match.Slug };
+              resolved = true;
+            }
+          }
+        }
+
+        // Fallback: try matching by slug/name if some slug-like value exists
+        if (!resolved && article.Category && (article.Category.Slug || article.Category.slug || article.Category.Name)) {
+          const slugVal = slugify(article.Category.Slug || article.Category.slug || article.Category.Name || '');
+          if (slugVal) {
+            const match = newsCategories.find(cat => slugify(cat.Slug || cat.Name || '') === slugVal);
+            if (match) article.Category = { id: match.id, Name: match.Name, Slug: match.Slug };
+          }
+        }
+      });
+
+      const afterMissing = newsArticles.filter(a => !a.Category || !a.Category.Name).length;
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`Resolved ${beforeMissing - afterMissing} article categories from categories list (including raw-item lookup).`);
+      }
     }
 
     return {
@@ -683,7 +1053,7 @@ export async function getStaticProps() {
         newsArticles: newsArticles || [],
         newsCategories: newsCategories || []
       },
-      revalidate: 10 // Revalidate every 10 seconds (ISR)
+      revalidate: 10 // Revalidate every 60 seconds (ISR)
     };
   } catch (error) {
     console.error('Error fetching news data:', error);

@@ -5,11 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import Partners from "@/components/Partners.jsx";
 
-import LatestInsights from "@/components/LatestInsights.jsx";
-import ClientSuccessCarousel from "@/components/ClientSuccessCarousel.jsx";
-import LeadInfo from "@/components/LeadInfo.jsx";
+// import LatestInsights from "@/components/LatestInsights.jsx";
+// import ClientSuccessCarousel from "@/components/ClientSuccessCarousel.jsx";
+// import LeadInfo from "@/components/LeadInfo.jsx";
 
-import Carousel from 'react-multi-carousel';
+// import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 import axios from "axios";
@@ -239,34 +239,6 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
             </div>
 
 
-             {/* <div className="row">
-                {homepageResources && homepageResources.length > 0 ? homepageResources.slice(0,3).map((item, idx) => (
-                  <div key={item.id || idx} className="col-md-4">
-                    <Link href={`/resources/${item.Slug || item.slug || ''}`}>
-                      <div className="card latestNewsCard">
-                        <div className="imageContainer-latestNews position-relative">
-                          <Image src={getImageUrl(item) || '/images/img-news-1.jpg'} alt={item.Title || 'Resource'} width={480} height={360} className="img-fluid" />
-                          <div className="news-btn">
-                            <span className="cardIcon">
-                              <span className="arrow"></span>
-                            </span>
-                          </div>
-                        </div>
-                        <div className="card-body">
-                          <h5 className="card-title">{item.Title || item.name || 'Untitled'}</h5>
-                          <p className="card-date">{(item.ResourceType && (item.ResourceType.Name || item.ResourceType.name)) || 'Resource'}</p>
-                          <p className="card-text">{item.Summary || ''}</p>
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                )) : (
-                  <div className="col-12 text-center py-4">
-                    <p>No homepage resources defined. Please check the homepage settings in the CMS.</p>
-                  </div>
-                )}
-              </div> */}
-
           </div>
 
        </div>
@@ -318,66 +290,67 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
        </div>
        
 
-       {/* <section>
-        <h2>Homepage News</h2>
-
-        {(!homepageNews || homepageNews.length === 0) && <p>No news selected.</p>}
-
-        {homepageNews.map(item => {
-          // item is normalized: { id, Title, Slug, Summary, Banner, PublishDate, Category }
-          const title = item.Title || item.title || 'Untitled';
-          const imgUrl = getImageUrl(item);
-          return (
-            <article key={item.id || item.Slug || item.Slug || title}>
-              <h3>{title}</h3>
-
-              {imgUrl && (
-                <Image src={imgUrl} alt={title} width={300} height={200} />
-              )}
-
-              <p>{item.Summary || ''}</p>
-
-              <Link href={`/news/${item.Slug || item.slug || ''}`}>Read More</Link>
-            </article>
-          );
-        })}
-      </section> */}
-
-
-      {/* <section>
-        <h2>Homepage Resources</h2>
-
-        {(!homepageResources || homepageResources.length === 0) && (
-          <p>No resources selected.</p>
-        )}
-
-        <div className="homepage-resources">
-          {homepageResources.map(item => {
-            const title = item.Title || item.title || 'Untitled';
-            const imgUrl = getImageUrl(item) || (item.Image ? getImageUrl({ Image: item.Image }) : null);
-            return (
-              <article key={item.id || item.Slug || title}>
-                <h3>{title}</h3>
-
-                {imgUrl && (
-                  <Image src={imgUrl} alt={title} width={300} height={200} />
-                )}
-
-                <p>{item.Summary || ''}</p>
-
-                <Link href={`/resources/${item.Slug || item.slug || ''}`}>View</Link>
-              </article>
-            );
-          })}
-        </div>
-      </section> */}
-        
       </div>
 
       </Layout>
     </>
   );
 }
+
+
+
+
+export async function getStaticProps() {
+  const base =
+    process.env.NEXT_PUBLIC_STRAPI_URL || 
+    "http://localhost:1337";
+
+  try {
+    const { data } = await axios.get(
+      `${base}/api/homepage-setting?populate[homepage_news][populate]=*&populate[homepage_resources][populate]=*`
+    );
+
+    const root = data?.data || {};
+
+    const homepageNews = (root.homepage_news || []).map(n => ({
+      id: n.id,
+      Title: n.Title,
+      Slug: n.Slug,
+      Summary: n.Summary,
+      PublishDate: n.PublishDate,
+      Banner: n?.Banner?.url || null,
+      Category: n?.news_categorie?.Name || null,
+    }));
+
+    const homepageResources = (root.homepage_resources || []).map(r => ({
+      id: r.id,
+      Title: r.Title,
+      Slug: r.Slug,
+      Summary: r.Summary,
+      Image: r?.Image?.url || r?.Banner?.url || null,
+      ResourceType: r?.resource_type?.Name || null,
+    }));
+
+    return {
+      props: {
+        homepageNews,
+        homepageResources,
+      },
+      revalidate: 10, // 🔁 refresh every 60 seconds
+    };
+
+  } catch (err) {
+    console.error("Homepage fetch failed:", err);
+
+    return {
+      props: { homepageNews: [], homepageResources: [] },
+      revalidate: 10,
+    };
+  }
+}
+
+
+
 
 
 
@@ -444,58 +417,3 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
 //     };
 //   }
 // }
-
-
-
-
-
-export async function getStaticProps() {
-  const base =
-    process.env.NEXT_PUBLIC_API_URL ||
-    process.env.NEXT_PUBLIC_STRAPI_URL ||
-    "http://localhost:1337";
-
-  try {
-    const { data } = await axios.get(
-      `${base}/api/homepage-setting?populate[homepage_news][populate]=*&populate[homepage_resources][populate]=*`
-    );
-
-    const root = data?.data || {};
-
-    const homepageNews = (root.homepage_news || []).map(n => ({
-      id: n.id,
-      Title: n.Title,
-      Slug: n.Slug,
-      Summary: n.Summary,
-      PublishDate: n.PublishDate,
-      Banner: n?.Banner?.url || null,
-      Category: n?.news_categorie?.Name || null,
-    }));
-
-    const homepageResources = (root.homepage_resources || []).map(r => ({
-      id: r.id,
-      Title: r.Title,
-      Slug: r.Slug,
-      Summary: r.Summary,
-      Image: r?.Image?.url || r?.Banner?.url || null,
-      ResourceType: r?.resource_type?.Name || null,
-    }));
-
-    return {
-      props: {
-        homepageNews,
-        homepageResources,
-      },
-      revalidate: 60, // 🔁 refresh every 60 seconds
-    };
-
-  } catch (err) {
-    console.error("Homepage fetch failed:", err);
-
-    return {
-      props: { homepageNews: [], homepageResources: [] },
-      revalidate: 60,
-    };
-  }
-}
-
