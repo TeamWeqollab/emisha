@@ -226,7 +226,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
         <div className="container">
           <div className="blogPageContent">
             <div className="row justify-content-center">
-              <div className="col-md-12 col-lg-10 text-center">
+              <div className="col-md-12 col-lg-11 text-center">
                 <h1 className="post-title">{resource.Title || 'Untitled'}</h1>
                 <p className="post-desc">
                   {getResourceTypeName(resource)} {resource.PublishDate ? ' - ' + formatDate(resource.PublishDate) : ''}
@@ -272,11 +272,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
             </div>
 
                 
-
             {renderResourceTypeSection()}
-
-
-
 
 
           </div>
