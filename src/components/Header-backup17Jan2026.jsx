@@ -48,70 +48,18 @@ export default function Header() {
     return router.pathname.startsWith(path);
   };
 
-  // Helper function to check if a sub nav item is active
-  const isSubNavActive = (path) => {
-    return router.asPath === path;
-  };
-
   // Helper function to get active classes for main nav
   const getMainNavClasses = (path) => {
     const baseClasses = "nav-link";
     return isMainNavActive(path) ? `${baseClasses} active` : baseClasses;
   };
 
-    // Helper function to get active classes for sub nav
-  const getSubNavClasses = (path) => {
-    const baseClasses = "dropdown-item";
-    return isSubNavActive(path) ? `${baseClasses} active` : baseClasses;
-  };
-  
-
-
   // Helper function to get active classes for mobile nav
-  // const getMobileNavClasses = (path) => {
-  //   const baseClasses = "mobNavLink d-block py-2 text-decoration-none";
-  //   return isMainNavActive(path) ? `${baseClasses.replace('mobNavLink', 'mobNavActive')}` : baseClasses;
-  // };
   const getMobileNavClasses = (path) => {
-  const baseClasses = "mobNavLink d-block py-2 text-decoration-none";
+    const baseClasses = "mobNavLink d-block py-2 text-decoration-none";
+    return isMainNavActive(path) ? `${baseClasses.replace('mobNavLink', 'mobNavActive fw-bold')}` : baseClasses;
+  };
 
-  // hash based link (/company#aboutus)
-  if (path.includes("#")) {
-    return router.asPath === path
-      ? `${baseClasses.replace("mobNavLink", "mobNavActive")}`
-      : baseClasses;
-  }
-
-  // normal route (/services/...)
-  return router.pathname.startsWith(path)
-    ? `${baseClasses.replace("mobNavLink", "mobNavActive")}`
-    : baseClasses;
-};
-
-
-
-const closeOffcanvas = () => {
-  try {
-    const offcanvasEl = document.getElementById("mobileMenu");
-    const bootstrap = window.bootstrap;
-
-    if (offcanvasEl && bootstrap && bootstrap.Offcanvas) {
-      const instance =
-        bootstrap.Offcanvas.getInstance(offcanvasEl) ||
-        new bootstrap.Offcanvas(offcanvasEl);
-      instance.hide();
-    }
-  } catch (err) {
-    console.log("Offcanvas close failed", err);
-  }
-};
-
-useEffect(() => {
-  closeOffcanvas();
-}, [router.asPath]);
-
-
-  
   // Scroll detection effect
   useEffect(() => {
     const handleScroll = () => {
@@ -176,44 +124,16 @@ useEffect(() => {
           <div className="d-none d-lg-block">
             <div className="mx-auto d-flex flex-row justify-content-center">
                <ul className="navbar-nav">
-                  <li className="nav-item dropdown">
-                    <a className={getMainNavClasses('/services')} href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      SERVICES
-                    </a>
-                    <ul className="dropdown-menu">
-                      <li><Link href="/services/enterprise-information-and-management" className={getSubNavClasses('/services/enterprise-information-and-management')}><span className="dropdown-text">Enterprise Information & Management</span></Link></li>
-
-                      <li><Link href="/services/foundation-services" className={getSubNavClasses('/services/foundation-services')}><span className="dropdown-text">Foundation Services</span></Link></li>
-
-                      <li><Link href="/services/data-and-cyber-security" className={getSubNavClasses('/services/data-and-cyber-security')}><span className="dropdown-text">Data and Cyber Security</span></Link></li>
-
-                      <li><Link href="/services/cloud-and-data-engineering" className={getSubNavClasses('/services/cloud-and-data-engineering')}><span className="dropdown-text">Cloud and Data Engineering</span></Link></li>
-                    </ul>
-                  </li>
-                  {/* <li className="nav-item">
+                  <li className="nav-item">
                     <Link href="/services/foundation-services" className={getMainNavClasses('/services')}>
                       SERVICES
                     </Link>
-                  </li> */}
-                  {/* <li className="nav-item">
+                  </li>
+                  <li className="nav-item">
                     <Link href="/company" className={getMainNavClasses('/company')}>
                       COMPANY
                     </Link>
-                  </li> */}
-                  
-                  <li className="nav-item dropdown">
-                    <a className={getMainNavClasses('/company')} href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      COMPANY
-                    </a>
-                    <ul className="dropdown-menu">
-                      <li><Link href="/company#aboutus" className={getSubNavClasses('/company#aboutus')}><span className="dropdown-text">ABOUT US</span></Link></li>
-
-                      <li><Link href="/company#careers" className={getSubNavClasses('/company#careers')}><span className="dropdown-text">CAREERS</span></Link></li>
-
-                      <li><Link href="/company#partners" className={getSubNavClasses('/company#partners')}><span className="dropdown-text">PARTNERS</span></Link></li>
-                    </ul>
                   </li>
-
                   <li className="nav-item">
                     <Link href="/news" className={getMainNavClasses('/news')}>
                       NEWS
@@ -269,7 +189,7 @@ useEffect(() => {
           <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body bg-canvasMobile">
-          {/* <ul className="list-unstyled">
+          <ul className="list-unstyled">
             <li className="mb-3">
               <Link href="/services/foundation-services" className={getMobileNavClasses('/services')}>
                 SERVICES
@@ -285,103 +205,17 @@ useEffect(() => {
                 NEWS
               </Link>
             </li>
+            {/* <li className="mb-3">
+              <Link href="/company/about-us" className={getMobileNavClasses('/company')}>
+                  <i className="fas fa-building me-2"></i>Company
+              </Link>
+            </li> */}
             <li className="mb-3">
               <Link href="/resources" className={getMobileNavClasses('/resources')}>
                 RESOURCES
               </Link>
             </li>
-          </ul> */}
-
-          <div className="accordion" id="mobileAccordion">
-            {/* SERVICES Accordion */}
-            <div className="accordion-item bg-transparent border-0">
-              <h2 className="accordion-header" id="solutionsHeading">
-                <button className="accordion-button bg-transparent border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#serviceCollapse" aria-expanded="false" aria-controls="serviceCollapse">
-                  SERVICES
-                </button>
-              </h2>
-              <div id="serviceCollapse" className="accordion-collapse collapse" aria-labelledby="serviceHeading" data-bs-parent="#mobileAccordion">
-                <div className="accordion-body bg-light">
-                  <ul className="list-unstyled">
-                    <li><Link href="/services/enterprise-information-and-management" className={getMobileNavClasses('/services/enterprise-information-and-management')}>Enterprise Information & Management</Link></li>
-
-                    <li><Link href="/services/foundation-services" className={getMobileNavClasses('/services/foundation-services')}>Foundation Services</Link></li>
-
-                    <li><Link href="/services/data-and-cyber-security" className={getMobileNavClasses('/services/data-and-cyber-security')}>Data and Cyber Security</Link></li>
-
-                    <li><Link href="/services/cloud-and-data-engineering" className={getMobileNavClasses('/services/cloud-and-data-engineering')}>Cloud and Data Engineering</Link></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-             {/* COMPANY Accordion */}
-            <div className="accordion-item bg-transparent border-0">
-              <h2 className="accordion-header" id="companyHeading">
-                <button className="accordion-button bg-transparent border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#companyCollapse" aria-expanded="false" aria-controls="companyCollapse">
-                  COMPANY
-                </button>
-              </h2>
-              <div id="companyCollapse" className="accordion-collapse collapse" aria-labelledby="companyHeading" data-bs-parent="#mobileAccordion">
-                <div className="accordion-body bg-light">
-                  <ul className="list-unstyled">
-                    <li><Link href="/company#aboutus" className={getMobileNavClasses('/company#aboutus')}>About Us</Link></li>
-                    <li><Link href="/company#careers" className={getMobileNavClasses('/company#careers')}>Careers</Link></li>
-                    <li><Link href="/company#partners" className={getMobileNavClasses('/company#partners')}>Partners</Link></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-
-            {/* NEWS Accordion */}
-            {/* <div className="accordion-item bg-transparent border-0">
-              <h2 className="accordion-header" id="newsHeading">
-                <button className="accordion-button no-caret bg-transparent border-0 shadow-none" type="button" data-bs-toggle="collapsed" data-bs-target="#newsCollapse" aria-expanded="false" aria-controls="newsCollapse">
-                  NEWS
-                </button>
-              </h2>
-            </div> */}
-            <div className="accordion-item bg-transparent border-0">
-              <h2 className="accordion-header" id="newsHeading">
-                <Link
-                  href="/news"
-                  onClick={closeOffcanvas}
-                  className={`accordion-button no-caret bg-transparent border-0 shadow-none text-decoration-none ${
-                    router.pathname === "/news" ? "mobNavActive" : ""
-                  }`}
-                >
-                  NEWS
-                </Link>
-              </h2>
-            </div>
-
-            {/* RESOURCES Accordion */}
-            {/* <div className="accordion-item bg-transparent border-0">
-              <h2 className="accordion-header" id="resourcesHeading">
-                <button className="accordion-button no-caret bg-transparent border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#resourcesCollapse" aria-expanded="false" aria-controls="resourcesCollapse">
-                  RESOURCES
-                </button>
-              </h2>
-            </div> */}
-            <div className="accordion-item bg-transparent border-0">
-              <h2 className="accordion-header" id="resourcesHeading">
-                <Link
-                  href="/resources"
-                  onClick={closeOffcanvas}
-                  className={`accordion-button no-caret bg-transparent border-0 shadow-none text-decoration-none ${
-                    router.pathname === "/resources" ? "mobNavActive" : ""
-                  }`}
-                >
-                  RESOURCES
-                </Link>
-              </h2>
-            </div>
-
-           
-          </div>
-
-
+          </ul>
 
           {/* Mobile Schedule Consultation Button gradient-border-top*/}
           <div className="mt-4 pt-2">

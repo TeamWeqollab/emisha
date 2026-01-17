@@ -163,7 +163,7 @@ export default function Resources({ resources = [], resourceTypes = [] }) {
               );
             }) : (
               <>
-                {/* no resource types from API */}
+                <span>No resource types from API</span>
               </>
             )}
           </div>

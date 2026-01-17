@@ -58,7 +58,7 @@ export default function Company() {
 
 
 
-
+        <a name="aboutus"></a>
         <section className="sectionWrapper">
           <div className="container">
 
@@ -216,11 +216,12 @@ export default function Company() {
 
 
         {/* partners Section */}
+        <a name="partners"></a> 
         <Partners />
 
 
 
-
+         <a name="careers"></a>     
         <section>
           <div className="container">
             <div className="row justify-content-center">

@@ -47,7 +47,7 @@ export default function DataCyberSecurity() {
             <div className="row">
               <div className="col-md-12 col-lg-7 col-xl-7">
                 <div className="banner-details">
-                  <h2 className="banner-title">Enterprise Data Protection &  <br />Cyber Assurance</h2>
+                  <h2 className="banner-title">Enterprise Data Protection &  <br className="d-none d-xl-block" />Cyber Assurance</h2>
                   <p className="banner-desc">We provide board-level assurance with targeted, measurable security programmes, combining strategic assessment, fast incident response and robust operational controls to protect assets, ensure continuity and reduce risk.</p>
                   <Link href='/contact' className="btn btn-primary">GET STARTED</Link>
                 </div>
