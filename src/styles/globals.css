@@ -1879,7 +1879,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 @media (min-width: 992px) {
   .navbar .dropdown:hover > .dropdown-menu {
     display: block;
-    margin-top: 2px;
+    /* margin-top: 2px; */
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
