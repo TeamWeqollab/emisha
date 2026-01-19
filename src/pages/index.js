@@ -96,11 +96,11 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
       <section className="sectionWrapper">
       
         <div className="container">
-          <div className="row mt-5">
+          {/* <div className="row mt-5">
             <div className="col-12 text-center">
               <Image src="/images/banner-video.png" alt="Emisha" width={1920} height={1055} className="img-fluid" />
             </div>
-          </div>
+          </div> */}
 
           <div className="row justify-content-center align-items-center">
             <div className="col-md-3 col-lg-2">
