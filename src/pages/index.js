@@ -81,7 +81,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
 
     <div className="bg-home">
 
-    {/* <section id="homeBanner">
+    <section id="homeBanner">
           <div className="video-container">
             <div className="overlay"></div>
             <video autoPlay loop muted playsInline preload="none" className="background-video" poster="/images/video-poster.jpg">
@@ -90,7 +90,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
               Your browser does not support the video tag.
             </video>
           </div>
-      </section> */}
+      </section>
 
 
       <section className="sectionWrapper">
