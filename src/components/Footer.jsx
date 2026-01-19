@@ -22,7 +22,7 @@ export default function Footer() {
               </div>
 
               <div className="col-lg-2 col-md-4 footer-nav pe-5 mb-lg-4 mb-2" >
-                <h3 className="footer-nav-heading">Australia</h3>
+                <p className="footer-nav-heading">Australia</p>
                 <p>Level 35, Tower One
                     100 Barangaroo Ave,
                     Sydney, NSW 2000
@@ -31,7 +31,7 @@ export default function Footer() {
               </div>
 
               <div className="col-lg-2 col-md-4 footer-nav mb-lg-4 mb-2">
-                <h3 className="footer-nav-heading">India</h3>
+                <p className="footer-nav-heading">India</p>
                 <p>WeWork Galaxy, 43, Residency Rd, 
                   Shanthala Nagar, Ashok Nagar, 
                   Museum Road, Bangalore,
@@ -39,7 +39,7 @@ export default function Footer() {
                   </p>
               </div>
                <div className="col-lg-2 col-md-4 footer-nav pe-5 mb-lg-4 mb-2">
-                <h3 className="footer-nav-heading">UAE</h3>
+                <p className="footer-nav-heading">UAE</p>
                 <p>SF3133, C1-1F
                     Ajman Free Zone
                     Ajman
@@ -48,7 +48,7 @@ export default function Footer() {
               </div>
 
               <div className="col-lg-2 col-md-4 footer-nav pe-2 mb-lg-4 mb-2">
-                <h3 className="footer-nav-heading2">EMISHA</h3>
+                <p className="footer-nav-heading2">EMISHA</p>
                 <div className="row">
                   <div className="col-md-6">
                     <ul className="list-unstyled">
@@ -68,7 +68,7 @@ export default function Footer() {
               </div>
 
               <div className="col-lg-2 col-md-4 footer-nav ps-lg-5 ps-3 mt-2 mt-lg-0 mb-lg-4 mb-2">
-                <h3 className="footer-nav-heading2">LET&apos;S GET SOCIAL</h3>
+                <p className="footer-nav-heading2">LET&apos;S GET SOCIAL</p>
                 <div className="d-flex justify-content-md-start gap-3" id="footer-social">
                   <Link href="#" className="social-link facebook" aria-label="Read more facebook"><i className="fa-brands fa-facebook-f"></i></Link>
                   <Link href="#" className="social-link linkedin" aria-label="Read more linkedin"><i className="fa-brands fa-linkedin-in"></i></Link>

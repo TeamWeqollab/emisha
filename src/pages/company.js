@@ -59,7 +59,7 @@ export default function Company() {
 
 
         <a name="aboutus"></a>
-        <section className="sectionWrapper">
+        <div className="sectionWrapper">
           <div className="container">
 
             <div className="row justify-content-center">
@@ -75,7 +75,7 @@ export default function Company() {
 
             <div className="row justify-content-center">
               <div className="col-md-11 text-center">
-                <h2 className="aboutLeatTitle"><span className="gradientText">Innovation is more than just an idea. It&apos;s action</span></h2>
+                <p className="aboutLeatTitle"><span className="gradientText">Innovation is more than just an idea. It&apos;s action</span></p>
               </div>
             </div>
 
@@ -109,7 +109,7 @@ export default function Company() {
             </div> */}
 
           </div>
-        </section>
+        </div>
 
 
         <section className="sectionWrapper pt-3">
@@ -124,7 +124,7 @@ export default function Company() {
                     <div className="cardIcon">
                       <Image src="/images/icon-people.svg" alt="Emisha" width={60} height={60} />
                     </div>
-                    <h5 className="card-title">Our People</h5>
+                    <h3 className="card-title">Our People</h3>
                     <p className="card-text">A passionate team with decades of global experience, committed to excellence.</p>
                   </div>
                 </div>
@@ -135,7 +135,7 @@ export default function Company() {
                     <div className="cardIcon">
                       <Image src="/images/icon-products.svg" alt="Emisha" width={60} height={60} />
                     </div>
-                    <h5 className="card-title">Our Products</h5>
+                    <h3 className="card-title">Our Products</h3>
                     <p className="card-text">Strong collaborations built on shared vision, action, and results.</p>
                   </div>
                 </div>
@@ -146,7 +146,7 @@ export default function Company() {
                     <div className="cardIcon">
                       <Image src="/images/icon-partners.svg" alt="Emisha" width={60} height={60} />
                     </div>
-                    <h5 className="card-title">Our Partners</h5>
+                    <h3 className="card-title">Our Partners</h3>
                     <p className="card-text">Innovative, market-leading solutions designed to deliver real value.</p>
                   </div>
                 </div>

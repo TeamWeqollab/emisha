@@ -80,9 +80,9 @@ export default function Layout({
       </Head>
 
       <Header />
-      <main className="page-content">
+      <div className="page-content">
         {children}
-      </main>
+      </div>
       <Footer />
       <ScrollToTop />
       <BootstrapClient />

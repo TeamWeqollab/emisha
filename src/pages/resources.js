@@ -133,7 +133,7 @@ export default function Resources({ resources = [], resourceTypes = [] }) {
 
 
 
-      <section className="sectionWrapper" id="resourcesPage">
+      <div className="sectionWrapper" id="resourcesPage">
         <div className="container">
 
 
@@ -196,7 +196,7 @@ export default function Resources({ resources = [], resourceTypes = [] }) {
                           if (typeField.attributes) return typeField.attributes.Name || typeField.attributes.name || 'Resource Type';
                           return 'Resource Type';
                         })()}</span>
-                        <h2 className="card-title">{resource.Title || resource.Name || ''}</h2>
+                        <h3 className="card-title">{resource.Title || resource.Name || ''}</h3>
                         <span className="link-primary">Read More</span>
                         {/* <Link href={slug ? `/resources/${slug}` : '/resources'} className="link-primary">Read More</Link> */}
                       </div>
@@ -214,7 +214,7 @@ export default function Resources({ resources = [], resourceTypes = [] }) {
 
 
         </div>
-      </section>
+      </div>
 
 
     </div>

@@ -59,7 +59,7 @@ export default function EnterpriseInformationManagement() {
 
 
 
-        <section className="sectionWrapper pt-5 pt-xl-0">
+        <div className="sectionWrapper pt-5 pt-xl-0">
           <div className="container">
 
             <div className="row align-items-center justify-content-between mt-0 mt-xl-5">
@@ -68,7 +68,7 @@ export default function EnterpriseInformationManagement() {
               </div>
               <div className="col-md-5 col-lg-5">
                 <h3 className="tag-Cat"><span className="gradientText">Data Profiling and Catalogue</span></h3>
-                <h4 className="tag-title">Turn Data Visibility into Business Advantage</h4>
+                <p className="tag-title">Turn Data Visibility into Business Advantage</p>
                 <p className="tag-desc">Our Data Cataloguing and Profiling services provide a comprehensive view of enterprise data assets, enabling organizations to identify, classify, and assess data quality.</p>
               </div>
             </div>
@@ -76,7 +76,7 @@ export default function EnterpriseInformationManagement() {
             <div className="row align-items-center justify-content-between mt-5 mt-lg-0 mb-5">
               <div className="col-md-5 col-lg-5 order-1 order-md-0">
                 <h3 className="tag-Cat"><span className="gradientText">Master & Reference Data Management</span></h3>
-                <h4 className="tag-title">Unified Data. Consistent Decisions</h4>
+                <p className="tag-title">Unified Data. Consistent Decisions</p>
                 <p className="tag-desc">Our Master and Reference Data Management services ensure that critical enterprise data is accurate, consistent, and governed across all systems.</p>
               </div>
               <div className="col-md-6 col-lg-6 order-0 order-md-1">
@@ -90,7 +90,7 @@ export default function EnterpriseInformationManagement() {
               </div>
               <div className="col-md-5 col-lg-5">
                 <h3 className="tag-Cat"><span className="gradientText">Data Management as a Service</span></h3>
-                <h4 className="tag-title">Reliable Data, Delivered</h4>
+                <p className="tag-title">Reliable Data, Delivered</p>
                 <p className="tag-desc">Scalable data management delivered as a service—ensuring quality, compliance, and accessibility without the overhead</p>
               </div>
             </div>
@@ -100,7 +100,7 @@ export default function EnterpriseInformationManagement() {
                 <div className="row align-items-center justify-content-center">
                   <div className="col-md-5 col-lg-5 order-1 order-md-0">
                     <h3 className="tag-Cat"><span className="gradientText">Next-Level Data Management for SAP</span></h3>
-                    <h4 className="tag-title">SAP MDG Implementation, Done Right.</h4>
+                    <p className="tag-title">SAP MDG Implementation, Done Right.</p>
                     <p className="tag-desc">We help you choose the right deployment model, streamline processes, and embed change management to maximize business impact and reduce implementation risk.</p>
                   </div>
                   <div className="col-md-6 col-lg-6 order-0 order-md-1">
@@ -111,7 +111,8 @@ export default function EnterpriseInformationManagement() {
             </div>
 
           </div>
-        </section>
+          
+        </div>
 
 
         {/* partners Section */}

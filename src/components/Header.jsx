@@ -163,10 +163,11 @@ useEffect(() => {
 
   return (
     <>
-     <h1 className="d-none">Emisha Solutions</h1>
+    <header>
+     <h1 className="visually-hidden">Emisha Solutions</h1>
       {/* Navigation */}
       <nav className={`navbar navbar-expand-lg navbar-dark fixed-top ${isScrolled ? 'header-active' : 'header-transparent'}`}>
-        <h2 className="d-none">Site Navigation</h2>
+        <h2 className="visually-hidden">Site Navigation</h2>
         <div className="container">
           <Link href="/" className="navbar-brand">
             <Image src={isScrolled ? "/images/logo.svg" : "/images/logo.svg"} alt="Emisha" width={124} height={72} className="img-fluid" />
@@ -254,6 +255,10 @@ useEffect(() => {
         </div>
       </nav>
 
+
+
+
+
       {/* Mobile Offcanvas Menu */}
       <div className="offcanvas offcanvas-end" tabIndex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
         <div className="offcanvas-header">
@@ -295,11 +300,11 @@ useEffect(() => {
           <div className="accordion" id="mobileAccordion">
             {/* SERVICES Accordion */}
             <div className="accordion-item bg-transparent border-0">
-              <h2 className="accordion-header" id="solutionsHeading">
+              <div className="accordion-header" id="solutionsHeading">
                 <button className="accordion-button bg-transparent border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#serviceCollapse" aria-expanded="false" aria-controls="serviceCollapse">
                   SERVICES
                 </button>
-              </h2>
+              </div>
               <div id="serviceCollapse" className="accordion-collapse collapse" aria-labelledby="serviceHeading" data-bs-parent="#mobileAccordion">
                 <div className="accordion-body bg-light">
                   <ul className="list-unstyled">
@@ -317,11 +322,11 @@ useEffect(() => {
 
              {/* COMPANY Accordion */}
             <div className="accordion-item bg-transparent border-0">
-              <h2 className="accordion-header" id="companyHeading">
+              <div className="accordion-header" id="companyHeading">
                 <button className="accordion-button bg-transparent border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#companyCollapse" aria-expanded="false" aria-controls="companyCollapse">
                   COMPANY
                 </button>
-              </h2>
+              </div>
               <div id="companyCollapse" className="accordion-collapse collapse" aria-labelledby="companyHeading" data-bs-parent="#mobileAccordion">
                 <div className="accordion-body bg-light">
                   <ul className="list-unstyled">
@@ -343,7 +348,7 @@ useEffect(() => {
               </h2>
             </div> */}
             <div className="accordion-item bg-transparent border-0">
-              <h2 className="accordion-header" id="newsHeading">
+              <div className="accordion-header" id="newsHeading">
                 <Link
                   href="/news"
                   onClick={closeOffcanvas}
@@ -353,7 +358,7 @@ useEffect(() => {
                 >
                   NEWS
                 </Link>
-              </h2>
+              </div>
             </div>
 
             {/* RESOURCES Accordion */}
@@ -365,7 +370,7 @@ useEffect(() => {
               </h2>
             </div> */}
             <div className="accordion-item bg-transparent border-0">
-              <h2 className="accordion-header" id="resourcesHeading">
+              <div className="accordion-header" id="resourcesHeading">
                 <Link
                   href="/resources"
                   onClick={closeOffcanvas}
@@ -375,7 +380,7 @@ useEffect(() => {
                 >
                   RESOURCES
                 </Link>
-              </h2>
+              </div>
             </div>
 
            
@@ -409,6 +414,8 @@ useEffect(() => {
           </div> */}
         </div>
       </div>
+
+      </header>
     </>
   );
 }

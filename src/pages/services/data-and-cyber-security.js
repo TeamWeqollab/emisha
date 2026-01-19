@@ -59,7 +59,7 @@ export default function DataCyberSecurity() {
 
 
 
-        <section className="sectionWrapper">
+        <div className="sectionWrapper">
           <div className="container">
 
             <div className="row align-items-center justify-content-between mt-0 mt-xl-5">
@@ -68,7 +68,7 @@ export default function DataCyberSecurity() {
               </div>
               <div className="col-md-5">
                 <h3 className="tag-Cat"><span className="gradientText">Cybersecurity Assessment & Awareness</span></h3>
-                <h4 className="tag-title">Assess. Educate. Defend</h4>
+                <p className="tag-title">Assess. Educate. Defend</p>
                 <p className="tag-desc">With our Cybersecurity Assessment & Awareness empower your teams and technology to stay one step ahead of cyber threats.</p>
               </div>
             </div>
@@ -76,7 +76,7 @@ export default function DataCyberSecurity() {
             <div className="row align-items-center justify-content-between mt-5 mt-lg-0 mb-5">
               <div className="col-md-5 col-lg-5 order-1 order-md-0">
                 <h3 className="tag-Cat"><span className="gradientText">Digital Forensics & Incident Response (DFIR)</span></h3>
-                <h4 className="tag-title">Detect faster. Respond smarter. Recover stronger</h4>
+                <p className="tag-title">Detect faster. Respond smarter. Recover stronger</p>
                 <p className="tag-desc">We deliver forensic insights and rapid incident response to minimise impact and strengthen future resilience.</p>
               </div>
               <div className="col-md-6 col-lg-6 order-0 order-md-1">
@@ -90,7 +90,7 @@ export default function DataCyberSecurity() {
               </div>
               <div className="col-md-5">
                 <h3 className="tag-Cat"><span className="gradientText">Ransomware Resilience</span></h3>
-                <h4 className="tag-title">Stop ransomware before it stops your business</h4>
+                <p className="tag-title">Stop ransomware before it stops your business</p>
                 <p className="tag-desc">Harden defenses, protect critical data, and ensure business continuity against ransomware threats —so an attack never becomes a crisis.</p>
               </div>
             </div>
@@ -99,7 +99,7 @@ export default function DataCyberSecurity() {
             <div className="row align-items-center justify-content-between mb-5">
               <div className="col-md-5 col-lg-5 order-1 order-md-0">
                 <h3 className="tag-Cat"><span className="gradientText">Data Sanitisation</span></h3>
-                <h4 className="tag-title">Retire systems. Dispose assets. Transfer ownership—without leaving data behind</h4>
+                <p className="tag-title">Retire systems. Dispose assets. Transfer ownership—without leaving data behind</p>
                 <p className="tag-desc">Certified data sanitisation services that protect privacy, ensure compliance, and eliminate residual data risk.</p>
               </div>
               <div className="col-md-6 col-lg-6 order-0 order-md-1">
@@ -114,7 +114,7 @@ export default function DataCyberSecurity() {
               </div>
               <div className="col-md-5">
                 <h3 className="tag-Cat"><span className="gradientText">Data Loss Prevention (DLP)</span></h3>
-                <h4 className="tag-title">Keep your data where it belongs</h4>
+                <p className="tag-title">Keep your data where it belongs</p>
                 <p className="tag-desc">End-to-end DLP strategy, tooling, and governance to safeguard sensitive data and meet regulatory obligations.</p>
               </div>
             </div>
@@ -124,7 +124,7 @@ export default function DataCyberSecurity() {
                   <div className="row align-items-center justify-content-center">
                     <div className="col-md-5">
                       <h3 className="tag-Cat gradientText">Data Sanitisation </h3>
-                      <h4 className="tag-title">Retire systems. Dispose assets. Transfer ownership—without leaving data behind</h4>
+                      <p className="tag-title">Retire systems. Dispose assets. Transfer ownership—without leaving data behind</p>
                       <p className="tag-desc">Certified data sanitisation services that protect privacy, ensure compliance, and eliminate residual data risk.</p>
                     </div>
                     <div className="col-md-6">
@@ -135,7 +135,7 @@ export default function DataCyberSecurity() {
             </div> */}
 
           </div>
-        </section>
+        </div>
 
 
         {/* partners Section */}

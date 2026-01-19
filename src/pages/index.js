@@ -81,19 +81,19 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
 
     <div className="bg-home">
 
-    <section id="homeBanner">
+    <div id="homeBanner">
           <div className="video-container">
-            <div className="overlay"></div>
+            {/* <div className="overlay"></div> */}
             <video autoPlay loop muted playsInline preload="none" className="background-video" poster="/images/video-poster.jpg">
-              <source src="/videos/video-video.webm" type="video/webm" />
-              <source src="/videos/video-emisha.mp4" type="video/mp4" />
+              {/* <source src="/videos/video-video.webm" type="video/webm" /> */}
+              <source src="/videos/video-emisha1.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
-      </section>
+      </div>
 
 
-      <section className="sectionWrapper">
+      <div className="sectionWrapper d-none d-xl-block">
       
         <div className="container">
           {/* <div className="row mt-5">
@@ -101,17 +101,17 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
               <Image src="/images/banner-video.png" alt="Emisha" width={1920} height={1055} className="img-fluid" />
             </div>
           </div> */}
+            <div className="row justify-content-center align-items-center">
+              <div className="col-md-3 col-lg-2">
+                <Image src="/images/logo-footer.svg" alt="Emisha" width={206} height={120} className="img-fluid p-4" />
+              </div>
+              <div className="col-md-9 col-lg-8">
+                <p className="banner-leadInfo">Emisha empowers businesses by unlocking the full potential of their data through end-to-end solutions. With expertise in business integration, tailored strategies, and consulting, we bridge data complexity with precision, ensuring seamless transformation from strategy to execution.</p>
+              </div>
+            </div>
 
-          <div className="row justify-content-center align-items-center">
-            <div className="col-md-3 col-lg-2">
-              <Image src="/images/logo-footer.svg" alt="Emisha" width={206} height={120} className="img-fluid p-4" />
-            </div>
-            <div className="col-md-9 col-lg-8">
-              <p className="banner-leadInfo">Emisha empowers businesses by unlocking the full potential of their data through end-to-end solutions. With expertise in business integration, tailored strategies, and consulting, we bridge data complexity with precision, ensuring seamless transformation from strategy to execution.</p>
-            </div>
-          </div>
         </div>
-      </section>
+      </div>
 
 
 
@@ -128,7 +128,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
                   <div className="cardIcon">
                      <Image src="/images/icon-services1.svg" alt="Emisha" width={60} height={60} />
                   </div>
-                  <h5 className="card-title">Enterprise Information & Management</h5>
+                  <h3 className="card-title">Enterprise Information & Management</h3>
                   <p className="card-text">Turning data into a unified, strategic asset through governance, integration, and quality.</p>
                   <Link href="/services/enterprise-information-and-management" className="link-primary">Learn More</Link>
                 </div>
@@ -140,7 +140,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
                   <div className="cardIcon">
                      <Image src="/images/icon-services2.svg" alt="Emisha" width={60} height={60} />
                   </div>
-                  <h5 className="card-title">Foundation<br />Services</h5>
+                  <h3 className="card-title">Foundation<br />Services</h3>
                   <p className="card-text">Building a strong data foundation with strategy, analysis, and management solutions.</p>
                   <Link href="/services/foundation-services" className="link-primary">Learn More</Link>
                 </div>
@@ -155,7 +155,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
                   <div className="cardIcon">
                      <Image src="/images/icon-services3.svg" alt="Emisha" width={60} height={60} />
                   </div>
-                  <h5 className="card-title">Data and <br />Cyber Security</h5>
+                  <h3 className="card-title">Data and <br />Cyber Security</h3>
                   <p className="card-text">Seamless implementation and continuous optimization of data solutions.</p>
                   <Link href="/services/data-and-cyber-security" className="link-primary">Learn More</Link>
                 </div>
@@ -167,7 +167,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
                   <div className="cardIcon">
                      <Image src="/images/icon-services4.svg" alt="Emisha" width={60} height={60} />
                   </div>
-                  <h5 className="card-title">Cloud and <br />Data Engineering</h5>
+                  <h3 className="card-title">Cloud and <br />Data Engineering</h3>
                   <p className="card-text">Seamless design and continuous optimization of cloud-based data platforms.</p>
                   <Link href="/services/cloud-and-data-engineering" className="link-primary">Learn More</Link>
                 </div>
@@ -190,7 +190,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
             <div className="row">
               <div className="col-md-12 text-center">
                 <p className="mb-2">EXPLORE OUR</p>
-                <h2><sapn className="resHeading gradientText">RESOURCES</sapn></h2>
+                <h2><span className="resHeading gradientText">RESOURCES</span></h2>
               </div>
             </div>
 
@@ -270,7 +270,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
                           </div>
                         </div>
                         <div className="card-body">
-                          <h5 className="card-title">{item.Title || item.name || 'Untitled'}</h5>
+                          <h3 className="card-title">{item.Title || item.name || 'Untitled'}</h3>
                           <p className="card-date">{(item.Category) || 'News'}   -    {formatDate(item.PublishDate)}</p>
                           <p className="card-text">{item.Summary || ''}</p>
                         </div>

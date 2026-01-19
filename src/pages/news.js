@@ -372,7 +372,7 @@ export default function News({ newsArticles, newsCategories }) {
 
 
 
-      <section className="newsSection">
+      <div className="newsSection">
         <div className="container">
 
         {/* Search section */}
@@ -418,7 +418,7 @@ export default function News({ newsArticles, newsCategories }) {
             <div className="latestNews">
               <div className="row">
                 <div className="col-md-12 text-center">
-                  <h2 className="newsHeading">LATEST</h2>
+                  <p className="newsHeading">LATEST</p>
                 </div>
               </div>
               <div className="row">
@@ -441,7 +441,7 @@ export default function News({ newsArticles, newsCategories }) {
                           </div>
                         </div>
                         <div className="card-body">
-                          <h5 className="card-title">{article.Title || 'Untitled'}</h5>
+                          <h3 className="card-title">{article.Title || 'Untitled'}</h3>
                           <p className="card-date">
                             {getCategoryName(article) || 'News'}   -    {formatDate(article.PublishDate)}
                           </p>
@@ -584,7 +584,8 @@ export default function News({ newsArticles, newsCategories }) {
           </div> */}
 
         </div>
-      </section>
+
+      </div>
 
 
     </div>

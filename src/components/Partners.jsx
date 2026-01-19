@@ -13,14 +13,14 @@ export default function Partners({
       <div className="container">
         <div className="row align-items-center">
           <div className="col-md-12 col-lg-4">
-            <h3 className="title">
+            <h2 className="title">
               {lines.map((line, idx) => (
                 <span key={idx}>
                   {line}
                   {idx < lines.length - 1 && <br />}
                 </span>
               ))}
-            </h3>
+            </h2>
             <p className="desc">{desc}</p>
           </div>
           <div className="col-md-12 col-lg-8">

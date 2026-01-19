@@ -301,7 +301,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
                           className="img-fluid"
                         />
                       </div>
-                      <h2 className="card-title">{related.Title || 'Untitled'}</h2>
+                      <h3 className="card-title">{related.Title || 'Untitled'}</h3>
                       {/* <Link href={`/resources/${related.Slug}`} className="link-primary">
                         Read More
                       </Link> */}

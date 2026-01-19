@@ -197,7 +197,7 @@ export default function NewsDetail({ article, relatedArticles }) {
                             className="img-fluid"
                           />
                         </div>
-                        <h2 className="card-title">{relatedArticle.Title || 'Untitled'}</h2>
+                        <h3 className="card-title">{relatedArticle.Title || 'Untitled'}</h3>
                         {/* <Link href={`/news/${relatedArticle.Slug}`} className="link-primary">
                           Read More
                         </Link> */}

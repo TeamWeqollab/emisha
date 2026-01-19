@@ -58,7 +58,7 @@ export default function FoundationServices() {
         </div>
 
 
-        <section className="sectionWrapper">
+        <div className="sectionWrapper">
           <div className="container">
             
             <div className="commonCard2 bxFoundation" style={{background:'#fdfdfd'}}>
@@ -69,14 +69,14 @@ export default function FoundationServices() {
                     </div>
                     <div className="col-md-5">
                       <h3 className="tag-Cat gradientText">Data Quality Assessment</h3>
-                      <h4 className="tag-title">Decisions You Can Trust. Data You Can Rely On</h4>
+                      <p className="tag-title">Decisions You Can Trust. Data You Can Rely On</p>
                       <p className="tag-desc">Identify gaps, measure data integrity, and establish a foundation for trusted insights.</p>
                     </div>
                   </div>
                    <div className="row align-items-center justify-content-center mt-5 mt-md-0">
                     <div className="col-md-5 order-1 order-md-0">
                       <h3 className="tag-Cat gradientText">Data Management Strategy</h3>
-                      <h4 className="tag-title">Lead with Data. Win with Strategy</h4>
+                      <p className="tag-title">Lead with Data. Win with Strategy</p>
                       <p className="tag-desc">Empower your business with a data strategy that unites people, processes and technology to deliver measurable growth and compliance.</p>
                     </div>
                     <div className="col-md-6 order-0 order-md-1">
@@ -92,7 +92,7 @@ export default function FoundationServices() {
               </div>
               <div className="col-md-5">
                 <h3 className="tag-Cat gradientText">Organisation Maturity Analysis</h3>
-                <h4 className="tag-title">Benchmark Today. Outperform Tomorrow</h4>
+                <p className="tag-title">Benchmark Today. Outperform Tomorrow</p>
                 <p className="tag-desc">Assess your organization&apos;s data maturity against global frameworks to establish your data baseline and chart a path to organizational excellence.</p>
               </div>
             </div>
@@ -100,7 +100,7 @@ export default function FoundationServices() {
             <div className="row align-items-center justify-content-between mt-5 mt-md-0 mb-5">
               <div className="col-md-5 order-1 order-md-0">
                 <h3 className="tag-Cat gradientText">Proof of Concept</h3>
-                <h4 className="tag-title">From Concept to Confidence</h4>
+                <p className="tag-title">From Concept to Confidence</p>
                 <p className="tag-desc">Experiment with innovative data solutions quickly, validate their impact, and move forward with clarity ensuring only the right solutions scale across your business.</p>
               </div>
                <div className="col-md-6 order-0 order-md-1">
@@ -116,7 +116,7 @@ export default function FoundationServices() {
                     </div>
                     <div className="col-md-6">
                       <h3 className="tag-Cat gradientText">Business Case & ROI Analysis</h3>
-                      <h4 className="tag-title">Invest in Data with Confidence</h4>
+                      <p className="tag-title">Invest in Data with Confidence</p>
                       <p className="tag-desc">Our ROI analysis enables you to quantify the impact of data initiatives, minimize uncertainty, and secure the resources required for confident scaling.</p>
                     </div>
                   </div>
@@ -124,7 +124,7 @@ export default function FoundationServices() {
             </div>
 
           </div>
-        </section>
+        </div>
 
 
         {/* partners Section */}
