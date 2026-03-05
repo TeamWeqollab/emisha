@@ -3,12 +3,23 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
+const DownloadModalSchema = Yup.object().shape({
+  name: Yup.string().required("Name is required"),
+  email: Yup.string()
+    .matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "Invalid email address")
+    .required("Email is required"),
+});
+
 export default function ResourceDetail({ resource, relatedResources }) {
   const router = useRouter();
+  const [showDownloadModal, setShowDownloadModal] = useState(false);
+  const [pendingPdfUrl, setPendingPdfUrl] = useState(null);
 
   // DEV: log the resource and relatedResources in the browser console for debugging
   useEffect(() => {
@@ -21,6 +32,15 @@ export default function ResourceDetail({ resource, relatedResources }) {
       }
     }
   }, [resource, relatedResources]);
+
+  // Lock body scroll when download modal is open
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    if (showDownloadModal) {
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = ''; };
+    }
+  }, [showDownloadModal]);
 
   if (!resource) {
     return (
@@ -127,13 +147,27 @@ export default function ResourceDetail({ resource, relatedResources }) {
     const summary = resource?.Summary || '';
 
     if (/white/.test(type)) {
+      const ctaLabel = resource?.CTALabel || 'Download White Paper';
+      const pdfUrl = resource?.PDF;
       return (
-        <div className="row">
-          <div className="col-md-12">
-            <h2><span>White Paper</span></h2>
-            {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+        <>
+          <div className="row">
+            <div className="col-md-12">
+              <h2><span>White Paper</span></h2>
+              {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+            </div>
           </div>
-        </div>
+
+          <div className="row">
+            <div className="col-md-12">
+              {pdfUrl ? (
+                <button type="button" className="btn btn-primary" onClick={() => { setPendingPdfUrl(pdfUrl); setShowDownloadModal(true); }}>{ctaLabel}</button>
+              ) : (
+                <Link href="/contact" className="btn btn-primary">DOWNLOAD White Paper</Link>
+              )}
+            </div>
+          </div>
+        </>
       );
     }
 
@@ -149,13 +183,27 @@ export default function ResourceDetail({ resource, relatedResources }) {
     }
 
     if (/ebook/.test(type)) {
+      const ctaLabel = resource?.CTALabel || 'Download Ebook';
+      const pdfUrl = resource?.PDF;
       return (
-        <div className="row">
-          <div className="col-md-12">
-            <h2><span>Ebook</span></h2>
-            {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+        <>
+          <div className="row">
+            <div className="col-md-12">
+              <h2><span>Ebook</span></h2>
+              {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+            </div>
           </div>
-        </div>
+
+          <div className="row">
+            <div className="col-md-12">
+              {pdfUrl ? (
+                <button type="button" className="btn btn-primary" onClick={() => { setPendingPdfUrl(pdfUrl); setShowDownloadModal(true); }}>{ctaLabel}</button>
+              ) : (
+                <Link href="/contact" className="btn btn-primary">DOWNLOAD EBOOK</Link>
+              )}
+            </div>
+          </div>
+        </>
       );
     }
 
@@ -222,99 +270,157 @@ export default function ResourceDetail({ resource, relatedResources }) {
         socialImage={getBannerImageUrl(resource)}
         socialUrl={`/resources/${resource.Slug}`}
       >
-      <section className="sectionWrapper dynamicPage" id="resourcesPage" style={{ paddingBottom: '0px' }}>
-        <div className="container">
-          <div className="blogPageContent">
-            <div className="row justify-content-center">
-              <div className="col-md-12 col-lg-11 text-center">
-                <h1 className="post-title">{resource.Title || 'Untitled'}</h1>
-                <p className="post-desc">
-                  {getResourceTypeName(resource)} {resource.PublishDate ? ' - ' + formatDate(resource.PublishDate) : ''}
-                </p>
-              </div>
-            </div>
-
-            <div className="row">
-              <div className="col-md-12">
-                <div className="post-banner">
-                  <Image
-                    src={getBannerImageUrl(resource)}
-                    alt={resource.Title || 'Resource'}
-                    width={1920}
-                    height={1440}
-                    className="img-fluid"
-                  />
+        <section className="sectionWrapper dynamicPage" id="resourcesPage" style={{ paddingBottom: '0px' }}>
+          <div className="container">
+            <div className="blogPageContent">
+              <div className="row justify-content-center">
+                <div className="col-md-12 col-lg-11 text-center">
+                  <h1 className="post-title">{resource.Title || 'Untitled'}</h1>
+                  <p className="post-desc">
+                    {getResourceTypeName(resource)} {resource.PublishDate ? ' - ' + formatDate(resource.PublishDate) : ''}
+                  </p>
                 </div>
               </div>
-            </div>
 
-            <div className="row">
-              <div className="col-md-12">
-                {/* {article.Summary && (
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="post-banner">
+                    <Image
+                      src={getBannerImageUrl(resource)}
+                      alt={resource.Title || 'Resource'}
+                      width={1920}
+                      height={1440}
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col-md-12">
+                  {/* {article.Summary && (
                   <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '2rem', fontStyle: 'italic' }}>
                     {article.Summary}
                   </p>
                 )} */}
-                
-                {resource.Content && (
-                  isHtmlContent(resource.Content) ? (
-                    <div
-                      className="post-content ckeditor-content"
-                      dangerouslySetInnerHTML={{ __html: resource.Content }}
-                    />
-                  ) : (
-                    <div className="post-content ckeditor-content">
-                      <ReactMarkdown remarkPlugins={[remarkGfm]}>{resource.Content}</ReactMarkdown>
-                    </div>
-                  )
-                )}
-              </div>
-            </div>
 
-                
-            {renderResourceTypeSection()}
-
-
-          </div>
-
-
-
-          {/* Related Articles */}
-          {relatedResources && relatedResources.length > 0 && (
-            <div className="relatedSection">
-              <div className="row">
-                <div className="col-md-12 text-center">
-                  <h2 className="gradientText">MORE FROM EMISHA</h2>
+                  {resource.Content && (
+                    isHtmlContent(resource.Content) ? (
+                      <div
+                        className="post-content ckeditor-content"
+                        dangerouslySetInnerHTML={{ __html: resource.Content }}
+                      />
+                    ) : (
+                      <div className="post-content ckeditor-content">
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>{resource.Content}</ReactMarkdown>
+                      </div>
+                    )
+                  )}
                 </div>
               </div>
-              <div className="row">
-                {relatedResources.slice(0, 3).map((related, index) => (
-                  <div key={related.id || index} className="col-md-4">
-                    <Link href={`/resources/${related.Slug}`} className="resourceLink">
-                    <div className="resourceCard">
-                      <div className="imageContainer-related">
-                        <Image
-                          src={getBannerImageUrl(related)}
-                          alt={related.Title || 'Related resource'}
-                          width={960}
-                          height={720}
-                          className="img-fluid"
-                        />
-                      </div>
-                      <h3 className="card-title">{related.Title || 'Untitled'}</h3>
-                      {/* <Link href={`/resources/${related.Slug}`} className="link-primary">
+
+
+              {renderResourceTypeSection()}
+
+
+            </div>
+
+
+
+            {/* Related Articles */}
+            {relatedResources && relatedResources.length > 0 && (
+              <div className="relatedSection">
+                <div className="row">
+                  <div className="col-md-12 text-center">
+                    <h2 className="gradientText">MORE FROM EMISHA</h2>
+                  </div>
+                </div>
+                <div className="row">
+                  {relatedResources.slice(0, 3).map((related, index) => (
+                    <div key={related.id || index} className="col-md-4">
+                      <Link href={`/resources/${related.Slug}`} className="resourceLink">
+                        <div className="resourceCard">
+                          <div className="imageContainer-related">
+                            <Image
+                              src={getBannerImageUrl(related)}
+                              alt={related.Title || 'Related resource'}
+                              width={960}
+                              height={720}
+                              className="img-fluid"
+                            />
+                          </div>
+                          <h3 className="card-title">{related.Title || 'Untitled'}</h3>
+                          {/* <Link href={`/resources/${related.Slug}`} className="link-primary">
                         Read More
                       </Link> */}
-                      <span className="link-primary">Read More</span>
+                          <span className="link-primary">Read More</span>
+                        </div>
+                      </Link>
                     </div>
-                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* PDF download modal: name & email then download (same pattern as contact form) */}
+        {showDownloadModal && (
+          <>
+            <div className="modal-backdrop fade show" aria-hidden="true" />
+            <div className="modal fade show" style={{ display: "block" }} tabIndex={-1} id="resourceDownloadModal" aria-modal="true" aria-labelledby="resourceDownloadModalLabel">
+              <div className="modal-dialog modal-dialog-centered">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="resourceDownloadModalLabel">Download Resource</h5>
+                    <button type="button" className="btn-close" aria-label="Close" onClick={() => { setShowDownloadModal(false); setPendingPdfUrl(null); }} />
                   </div>
-                ))}
+                  <div className="modal-body">
+                    <p className="card-Text mb-3">Please enter your details to download.</p>
+                    <Formik
+                      initialValues={{ name: "", email: "" }}
+                      validationSchema={DownloadModalSchema}
+                      onSubmit={(values, { resetForm }) => {
+                        setShowDownloadModal(false);
+                        if (pendingPdfUrl) {
+                          const a = document.createElement("a");
+                          a.href = pendingPdfUrl;
+                          a.download = "";
+                          a.rel = "noopener noreferrer";
+                          a.target = "_blank";
+                          document.body.appendChild(a);
+                          a.click();
+                          a.remove();
+                        }
+                        setPendingPdfUrl(null);
+                        resetForm();
+                      }}
+                    >
+                      {({ isSubmitting }) => (
+                        <Form className="row g-3">
+                          <div className="col-12">
+                            <label className="form-label">Name <span className="text-danger">*</span></label>
+                            <Field name="name" className="form-control" />
+                            <ErrorMessage name="name" component="div" className="text-danger small mt-1" />
+                          </div>
+                          <div className="col-12">
+                            <label className="form-label">Email <span className="text-danger">*</span></label>
+                            <Field type="email" name="email" className="form-control" />
+                            <ErrorMessage name="email" component="div" className="text-danger small mt-1" />
+                          </div>
+                          <div className="col-12 text-end mt-2">
+                            <button type="button" className="btn btn-secondary me-2" onClick={() => { setShowDownloadModal(false); setPendingPdfUrl(null); }}>Cancel</button>
+                            <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Download</button>
+                          </div>
+                        </Form>
+                      )}
+                    </Formik>
+                  </div>
+                </div>
               </div>
             </div>
-          )}
-        </div>
-      </section>
+          </>
+        )}
       </Layout>
     </>
   );
@@ -324,70 +430,71 @@ export default function ResourceDetail({ resource, relatedResources }) {
 export async function getStaticPaths() {
   try {
     const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
-    
-      // Fetch all resources to get their slugs
-      const resourcesRes = await fetch(`${strapiUrl}/api/resources?populate=*`);
-      
-      if (!resourcesRes.ok) {
-        console.error('Failed to fetch resources for paths:', resourcesRes.status);
-        return {
-          paths: [],
-          fallback: 'blocking' // Generate pages on-demand if not found at build time
-        };
-      }
 
-      const resourcesData = await resourcesRes.json();
-      
-      // Extract slugs from resources
-      let paths = [];
-      
-      if (resourcesData.data && Array.isArray(resourcesData.data)) {
-        paths = resourcesData.data
-          .map((item) => {
-            const attributes = item.attributes || item;
-            const slug = attributes.Slug || attributes.slug || attributes.Title || attributes.title || attributes.Name || attributes.name;
-            return slug ? { params: { slug: slug.toString().trim() } } : null;
-          })
-          .filter(Boolean);
-      } else if (Array.isArray(resourcesData)) {
-        paths = resourcesData
-          .map((item) => {
-            const slug = item.Slug || item.slug || item.Title || item.title || item.Name || item.name;
-            return slug ? { params: { slug: slug.toString().trim() } } : null;
-          })
-          .filter(Boolean);
-      }
+    // Fetch all resources to get their slugs
+    const resourcesRes = await fetch(`${strapiUrl}/api/resources?populate=*`);
 
-      return {
-        paths,
-        fallback: 'blocking' // Generate pages on-demand if not found at build time
-      };
-    } catch (error) {
-      console.error('Error generating static paths:', error);
+    if (!resourcesRes.ok) {
+      console.error('Failed to fetch resources for paths:', resourcesRes.status);
       return {
         paths: [],
-        fallback: 'blocking'
+        fallback: 'blocking' // Generate pages on-demand if not found at build time
       };
     }
+
+    const resourcesData = await resourcesRes.json();
+
+    // Extract slugs from resources
+    let paths = [];
+
+    if (resourcesData.data && Array.isArray(resourcesData.data)) {
+      paths = resourcesData.data
+        .map((item) => {
+          const attributes = item.attributes || item;
+          const slug = attributes.Slug || attributes.slug || attributes.Title || attributes.title || attributes.Name || attributes.name;
+          return slug ? { params: { slug: slug.toString().trim() } } : null;
+        })
+        .filter(Boolean);
+    } else if (Array.isArray(resourcesData)) {
+      paths = resourcesData
+        .map((item) => {
+          const slug = item.Slug || item.slug || item.Title || item.title || item.Name || item.name;
+          return slug ? { params: { slug: slug.toString().trim() } } : null;
+        })
+        .filter(Boolean);
+    }
+
+    return {
+      paths,
+      fallback: 'blocking' // Generate pages on-demand if not found at build time
+    };
+  } catch (error) {
+    console.error('Error generating static paths:', error);
+    return {
+      paths: [],
+      fallback: 'blocking'
+    };
   }
+}
 
 // Fetch resource data for a specific slug
 export async function getStaticProps({ params }) {
   try {
     const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
     const { slug } = params;
+    const slugEnc = encodeURIComponent(slug);
 
-    // Fetch the specific resource by slug
+    // Fetch the specific resource by slug (no populate[PDF] here to avoid 404 if field missing in schema)
     const resourceRes = await fetch(
-      `${strapiUrl}/api/resources?filters[Slug][$eq]=${slug}&populate[ResourceType]=*&populate[Image]=*&populate[Banner]=*`
+      `${strapiUrl}/api/resources?filters[Slug][$eq]=${slugEnc}&populate[ResourceType]=*&populate[Image]=*&populate[Banner]=*`
     );
 
     // If that doesn't work, try lowercase slug filter
     let resourceData = await resourceRes.json();
-    
+
     if (!resourceRes.ok || !resourceData.data || resourceData.data.length === 0) {
       const altRes = await fetch(
-        `${strapiUrl}/api/resources?filters[slug][$eq]=${slug}&populate=*&populate[ResourceType]=*&populate[Image]=*`
+        `${strapiUrl}/api/resources?filters[slug][$eq]=${slugEnc}&populate=*&populate[ResourceType]=*&populate[Image]=*`
       );
       if (altRes.ok) {
         resourceData = await altRes.json();
@@ -397,7 +504,7 @@ export async function getStaticProps({ params }) {
     // If still no data, try populate=*
     if (!resourceData.data || resourceData.data.length === 0) {
       const altRes = await fetch(
-        `${strapiUrl}/api/resources?filters[Slug][$eq]=${slug}&populate=*`
+        `${strapiUrl}/api/resources?filters[Slug][$eq]=${slugEnc}&populate=*`
       );
       if (altRes.ok) {
         resourceData = await altRes.json();
@@ -413,7 +520,7 @@ export async function getStaticProps({ params }) {
     // Transform resource data
     const item = resourceData.data[0];
     const attributes = item.attributes || item;
-    
+
     // Helper function to get nested value
     const getValue = (obj, ...keys) => {
       for (const key of keys) {
@@ -436,6 +543,19 @@ export async function getStaticProps({ params }) {
         bannerData = banner;
       }
     }
+
+    // Handle PDF (media) and CTALabel for whitepaper/ebook download — same pattern as Image/Banner
+    let pdfUrl = null;
+    const pdfField = getValue(attributes, 'PDF', 'pdf');
+    if (pdfField) {
+      const data = pdfField?.data ?? pdfField;
+      const attrs = data?.attributes ?? data;
+      const url = attrs?.url ?? pdfField?.attributes?.url ?? pdfField?.url;
+      if (url) {
+        pdfUrl = url.startsWith('http') ? url : `${strapiUrl}${url}`;
+      }
+    }
+    const ctaLabel = getValue(attributes, 'CTALabel', 'ctaLabel', 'CTA_Label', 'cta_label') || 'Read More';
 
     // Handle Resource Type
     let resourceTypeData = null;
@@ -475,17 +595,43 @@ export async function getStaticProps({ params }) {
       PublishDate: getValue(attributes, 'PublishDate', 'publishDate', 'PublishedAt', 'publishedAt', 'createdAt') || new Date().toISOString(),
       Banner: bannerData,
       Image: bannerData,
-      ResourceType: resourceTypeData
+      ResourceType: resourceTypeData,
+      PDF: pdfUrl,
+      CTALabel: ctaLabel
     };
+
+    // For whitepaper/ebook only: fetch PDF in a separate request so main fetches never 404
+    const typeSlug = (resourceTypeData?.Slug || resourceTypeData?.Name || '').toString().toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    if ((/white/.test(typeSlug) || /ebook/.test(typeSlug)) && item.id) {
+      try {
+        const pdfRes = await fetch(`${strapiUrl}/api/resources/${item.id}?populate[PDF]=*`);
+        if (pdfRes.ok) {
+          const pdfJson = await pdfRes.json();
+          const pdfItem = pdfJson.data != null ? pdfJson.data : pdfJson;
+          const pdfAttrs = pdfItem?.attributes || pdfItem;
+          const pdfField = getValue(pdfAttrs, 'PDF', 'pdf');
+          if (pdfField) {
+            const data = pdfField?.data ?? pdfField;
+            const attrs = data?.attributes ?? data;
+            const url = attrs?.url ?? pdfField?.attributes?.url ?? pdfField?.url;
+            if (url) {
+              resource.PDF = url.startsWith('http') ? url : `${strapiUrl}${url}`;
+            }
+          }
+        }
+      } catch (_) {
+        // leave resource.PDF as null
+      }
+    }
 
     // Try to resolve ResourceType details by fetching resource-types if missing
     try {
-      const slugify = (s) => s ? s.toString().toLowerCase().trim().replace(/\s+/g,'-').replace(/[^\w-]+/g,'') : '';
+      const slugify = (s) => s ? s.toString().toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '') : '';
       const typesRes = await fetch(`${strapiUrl}/api/resource-types?populate=*`);
       if (typesRes.ok) {
         const typesData = await typesRes.json();
         if (process.env.NODE_ENV === 'development') {
-          try { console.log('Resource Types API (detail page truncated):', JSON.stringify(typesData, null, 2).substring(0,2000)); } catch(e){}
+          try { console.log('Resource Types API (detail page truncated):', JSON.stringify(typesData, null, 2).substring(0, 2000)); } catch (e) { }
         }
 
         const typesArray = Array.isArray(typesData.data) ? typesData.data : (Array.isArray(typesData) ? typesData : []);
@@ -578,7 +724,7 @@ export async function getStaticProps({ params }) {
       const relatedRes = await fetch(
         `${strapiUrl}/api/resources?filters[Slug][$ne]=${slug}&populate=*&sort=createdAt:desc&pagination[limit]=3`
       );
-      
+
       if (relatedRes.ok) {
         const relatedData = await relatedRes.json();
         if (relatedData.data && Array.isArray(relatedData.data)) {

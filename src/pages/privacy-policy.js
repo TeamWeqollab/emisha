@@ -27,10 +27,10 @@ export default function PrivacyPolicy() {
       <div className="bg-terms">
 
       <div className="innerBanner2">
-        <div className="d-none d-md-block">
+        <div className="d-none d-md-block text-center">
           <Image src="/images/banner-news.png" alt="Emisha" width={1920} height={465} className="img-fluid" />
         </div>
-        <div className="d-md-none">
+        <div className="d-md-none text-center">
           <Image src="/images/banner-news-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
         </div>
 

@@ -1,9 +1,23 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import FooterCTA from "./FooterCTA.jsx";
+
+const SERVICES_SECTION_ID = "homeOurServices";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const router = useRouter();
+
+  const handleServicesClick = (e) => {
+    e.preventDefault();
+    if (router.pathname === "/") {
+      document.getElementById(SERVICES_SECTION_ID)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      if (typeof window !== "undefined") window.sessionStorage.setItem("scrollTo", SERVICES_SECTION_ID);
+      router.push("/");
+    }
+  };
 
   return (
     <>
@@ -48,12 +62,12 @@ export default function Footer() {
               </div>
 
               <div className="col-lg-2 col-md-4 footer-nav pe-2 mb-lg-4 mb-2">
-                <p className="footer-nav-heading2">EMISHA</p>
+                <p className="footer-nav-heading">EMISHA</p>
                 <div className="row">
                   <div className="col-md-6">
                     <ul className="list-unstyled">
                       <li><Link href="/company">About Us</Link></li>
-                      <li><Link href="/services/foundation-services">Services</Link></li>
+                      <li><Link href="/" onClick={handleServicesClick}>Services</Link></li>
                       <li><Link href="/news">News</Link></li>
                     </ul>
                   </div>
@@ -70,8 +84,8 @@ export default function Footer() {
               <div className="col-lg-2 col-md-4 footer-nav ps-lg-5 ps-3 mt-2 mt-lg-0 mb-lg-4 mb-2">
                 <p className="footer-nav-heading2">LET&apos;S GET SOCIAL</p>
                 <div className="d-flex justify-content-md-start gap-3" id="footer-social">
-                  <Link href="#" className="social-link facebook" aria-label="Read more facebook"><i className="fa-brands fa-facebook-f"></i></Link>
-                  <Link href="#" className="social-link linkedin" aria-label="Read more linkedin"><i className="fa-brands fa-linkedin-in"></i></Link>
+                  <a href="https://www.facebook.com/EmishaANZ/" target="_blank" rel="noopener noreferrer" className="social-link facebook" aria-label="Visit Emisha on Facebook"><i className="fa-brands fa-facebook-f"></i></a>
+                  <a href="https://www.linkedin.com/company/emishaglobal/" target="_blank" rel="noopener noreferrer" className="social-link linkedin" aria-label="Visit Emisha on LinkedIn"><i className="fa-brands fa-linkedin-in"></i></a>
                   {/* <Link href="#" className="social-link twitter" aria-label="Read more twitter"><i className="fab fa-twitter"></i></Link>
                   <Link href="#" className="social-link instagram" aria-label="Read more instagram"><i className="fab fa-instagram"></i></Link> */}
                 </div>

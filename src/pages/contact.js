@@ -33,6 +33,16 @@ export default function ContactUs() {
     } catch {}
   }, [isInit]);
 
+  // Scroll to contact form when arriving from another page (e.g. JOIN THE TEAM) without hash in URL
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const scrollToId = window.sessionStorage.getItem('scrollTo');
+    if (!scrollToId) return;
+    window.sessionStorage.removeItem('scrollTo');
+    const el = document.getElementById(scrollToId);
+    if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100);
+  }, []);
+
   return (
     <Layout
       pageTitle="Emisha"
@@ -55,10 +65,10 @@ export default function ContactUs() {
       <div className="bg-contact">
 
       <div className="innerBanner2">
-        <div className="d-none d-md-block">
+        <div className="d-none d-md-block text-center">
           <Image src="/images/banner-contact.png" alt="Emisha" width={1920} height={465} className="img-fluid" />
         </div>
-        <div className="d-md-none">
+        <div className="d-md-none text-center">
           <Image src="/images/banner-contact-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
         </div>
 
@@ -76,15 +86,14 @@ export default function ContactUs() {
 
 
 
-
-      <section className="sectionWrapper pt-0">
+      <section className="sectionWrapper pt-0" id="contactusform" aria-label="Contact form">
         <div className="container">
           <div className="contactEmishaBx">
             <div className="row align-items-start justify-content-between">
               <div className="col-md-4">
                 <h3 className="title">Contact Information</h3>
                 <p className="card-Text">Talk to Emisha and let&apos;s innovate together.</p>
-                <p className="card-Text">+65-XXXX-YYYY</p>
+                {/* <p className="card-Text">+65-XXXX-YYYY</p> */}
                 <p className="card-Text">info@emishaglobal.com</p>
                 <p className="card-Text mb-0">An Emisha expert will reach out soon with tailored solutions to meet your needs.</p>
               </div>

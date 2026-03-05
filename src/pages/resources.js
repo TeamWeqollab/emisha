@@ -24,6 +24,15 @@ export default function Resources({ resources = [], resourceTypes = [] }) {
     }
   }, [resources, resourceTypes]);
 
+  const sortedResourceTypes = useMemo(() => {
+    if (!resourceTypes || resourceTypes.length === 0) return [];
+    return [...resourceTypes].sort((a, b) => {
+      const nameA = (a.Name || a.name || '').toLowerCase().trim();
+      const nameB = (b.Name || b.name || '').toLowerCase().trim();
+      return nameA.localeCompare(nameB);
+    });
+  }, [resourceTypes]);
+
   const filteredResources = useMemo(() => {
     if (!resources || resources.length === 0) return [];
     if (!selectedType) return resources;
@@ -111,10 +120,10 @@ export default function Resources({ resources = [], resourceTypes = [] }) {
       <div className="bg-resources">
 
       <div className="innerBanner2">
-        <div className="d-none d-md-block">
+        <div className="d-none d-md-block text-center">
           <Image src="/images/banner-resources.png" alt="Emisha" width={1920} height={465} className="img-fluid" />
         </div>
-        <div className="d-md-none">
+        <div className="d-md-none text-center">
           <Image src="/images/banner-resources-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
         </div>
 
@@ -147,7 +156,7 @@ export default function Resources({ resources = [], resourceTypes = [] }) {
                 All
               </button>
             </div>
-            {resourceTypes && resourceTypes.length > 0 ? resourceTypes.map((type) => {
+            {sortedResourceTypes && sortedResourceTypes.length > 0 ? sortedResourceTypes.map((type) => {
               const name = type.Name || type.name || '';
               const slugRaw = type.Slug || type.slug || '';
               const slug = slugify(slugRaw || name);

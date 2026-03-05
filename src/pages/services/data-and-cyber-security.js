@@ -33,13 +33,13 @@ export default function DataCyberSecurity() {
       <div className="bg-service">
 
         <div className="innerBanner">
-          <div className="d-none d-lg-block">
+          <div className="d-none d-lg-block text-center">
             {/* <Image src="/images/banner-dataCyberSecurity.png" alt="Emisha" layout="fill" className="img-fluid" /> */}
             <div className="deskBanner">
               <Image src="/images/banner-dataCyberSecurity.png" alt="Emisha" layout="contain" width={1920} height={824} className="img-fluid" />
             </div>
           </div>
-          <div className="d-lg-none">
+          <div className="d-lg-none text-center">
             <Image src="/images/banner-dataCyberSecurity-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
           </div>
 

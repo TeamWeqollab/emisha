@@ -986,9 +986,9 @@ font-size: 16px; font-weight: 500;  color: #6E6E6E !important; border-bottom: no
 .contactEmishaBx .title{ font-size: 40px; font-weight: 500; margin-top: 150px; margin-bottom: 15px; }
 .contactEmishaBx .card-Text{font-weight: 300; margin-bottom: 30px;}
 
-.contactEmishaBx .contactForm{ background-color: #fff; padding: 30px 50px 30px 15px;}
+.contactEmishaBx .contactForm{ /*background-color: rgba(255, 255, 255, 0.1);*/ padding: 30px 50px 30px 15px;}
 .contactEmishaBx .contactForm .form-label{ font-size: 24px; font-weight: 500; margin-bottom: 8px;}
-.contactEmishaBx .contactForm .form-control{ font-size: 18px; font-weight: 300; border-radius: 0px; border: none; border-bottom: solid 2px #DFDFDF; padding-left: 0px; padding-right: 0px;}
+.contactEmishaBx .contactForm .form-control{ font-size: 18px; font-weight: 300; border-radius: 0px; border: none; border-bottom: solid 2px #DFDFDF; padding-left: 0px; padding-right: 0px; background: none;}
 
 .contactEmishaBx .contactForm .form-control:focus { box-shadow: none;  outline: none;}
 

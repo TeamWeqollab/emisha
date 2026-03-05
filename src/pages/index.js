@@ -36,6 +36,17 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
     }
   }, [homepageResources, activeResourceIndex]);
 
+  // Scroll to Services section when navigating from another page via footer (no hash in URL)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const scrollToId = window.sessionStorage.getItem("scrollTo");
+    if (scrollToId) {
+      window.sessionStorage.removeItem("scrollTo");
+      const el = document.getElementById(scrollToId);
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 100);
+    }
+  }, []);
+
   // Simplified helper: handle common image shapes only
   const getImageUrl = (item) => {
     const image = item?.Banner || item?.Image || item?.Thumbnail || (item?.attributes && (item.attributes.Banner || item.attributes.Image || item.attributes.Thumbnail));
@@ -114,8 +125,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
       </div>
 
 
-
-       <section className="sectionWrapper pt-0 pt-lg-5" id="homeOurServices">
+      <section className="sectionWrapper pt-0 pt-lg-5" id="homeOurServices" aria-label="Our Services">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-12 col-lg-3">
@@ -128,7 +138,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
                   <div className="cardIcon">
                      <Image src="/images/icon-services1.svg" alt="Emisha" width={60} height={60} />
                   </div>
-                  <h3 className="card-title">Enterprise Information & Management</h3>
+                  <h3 className="card-title">Data Trust & Transformation Services</h3>
                   <p className="card-text">Turning data into a unified, strategic asset through governance, integration, and quality.</p>
                   <Link href="/services/enterprise-information-and-management" className="link-primary">Learn More</Link>
                 </div>

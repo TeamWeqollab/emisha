@@ -2,14 +2,29 @@ import Layout from "@/components/Layout.jsx";
 import { useRef } from 'react';
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from 'next/router';
 import 'react-multi-carousel/lib/styles.css';
 
 import InnerBanner from "@/components/InnerBanner.jsx";
 import Partners from "@/components/Partners.jsx";
 
+const CONTACT_FORM_SECTION_ID = 'contactusform';
 
 export default function Company() {
   const partnershipCarouselRef = useRef(null);
+  const router = useRouter();
+
+  const handleJoinTeamClick = (e) => {
+    e.preventDefault();
+    if (router.pathname === '/contact') {
+      document.getElementById(CONTACT_FORM_SECTION_ID)?.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    if (typeof window !== 'undefined') {
+      window.sessionStorage.setItem('scrollTo', CONTACT_FORM_SECTION_ID);
+    }
+    router.push('/contact');
+  };
 
   return (
     <Layout
@@ -34,11 +49,11 @@ export default function Company() {
         <div className="innerBanner">
           <div className="d-none d-lg-block">
             {/* <Image src="/images/banner-company.png" alt="Emisha" layout="fill" className="img-fluid" /> */}
-            <div className="deskBanner">
+            <div className="deskBanner text-center">
               <Image src="/images/banner-company.png" alt="Emisha" layout="contain" width={1920} height={824} className="img-fluid" />
             </div>
           </div>
-          <div className="d-lg-none">
+          <div className="d-lg-none text-center">
             <Image src="/images/banner-company-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
           </div>
 
@@ -110,8 +125,9 @@ export default function Company() {
 
           </div>
         </div>
+        
 
-
+        <a name="aboutus"></a>
         <section className="sectionWrapper pt-3">
           <div className="container">
             <div className="row align-items-center">
@@ -221,7 +237,7 @@ export default function Company() {
 
 
 
-         <a name="careers"></a>     
+        <a name="careers"></a>     
         <section>
           <div className="container">
             <div className="row justify-content-center">
@@ -234,7 +250,7 @@ export default function Company() {
                   <p className="card-Text2">Ready to Deliver Value?</p>
                   <p className="card-Text2">Email us to inquire about open roles.</p>
 
-                  <Link href='#' className="btn btn-primary mt-4">JOIN THE TEAM</Link>
+                  <Link href="/contact" onClick={handleJoinTeamClick} className="btn btn-primary mt-4">JOIN THE TEAM</Link>
                 </div>
               </div>
             </div>

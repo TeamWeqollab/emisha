@@ -36,11 +36,11 @@ export default function EnterpriseInformationManagement() {
         <div className="innerBanner">
           <div className="d-none d-lg-block">
             {/* <Image src="/images/banner-enterpriseInformation.png" alt="Emisha" layout="fill" className="img-fluid" /> */}
-            <div className="deskBanner">
+            <div className="deskBanner text-center">
               <Image src="/images/banner-enterpriseInformation.png" alt="Emisha" layout="contain" width={1920} height={824} className="img-fluid" />
             </div>
           </div>
-          <div className="d-lg-none">
+          <div className="d-lg-none text-center">
             <Image src="/images/banner-enterpriseInformation-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
           </div>
 

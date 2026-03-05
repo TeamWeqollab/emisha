@@ -34,9 +34,9 @@ export default function CloudDataEngineering() {
       <div className="bg-service">
 
         <div className="innerBanner">
-          <div className="d-none d-lg-block">
+          <div className="d-none d-lg-block text-center">
             {/* <Image src="/images/banner-services.png" alt="Emisha" layout="fill" className="img-fluid" /> */}
-            <div className="deskBanner">
+            <div className="deskBanner text-center">
               <Image src="/images/banner-services.png" alt="Emisha" layout="contain" width={1920} height={824} className="img-fluid" />
             </div>
           </div>
