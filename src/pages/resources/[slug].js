@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import emailjs from "@emailjs/browser";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
@@ -20,6 +21,18 @@ export default function ResourceDetail({ resource, relatedResources }) {
   const router = useRouter();
   const [showDownloadModal, setShowDownloadModal] = useState(false);
   const [pendingPdfUrl, setPendingPdfUrl] = useState(null);
+  const [downloadError, setDownloadError] = useState("");
+  const [emailJsInit, setEmailJsInit] = useState(false);
+
+  useEffect(() => {
+    try {
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+      if (publicKey && !emailJsInit) {
+        emailjs.init({ publicKey });
+        setEmailJsInit(true);
+      }
+    } catch {}
+  }, [emailJsInit]);
 
   // DEV: log the resource and relatedResources in the browser console for debugging
   useEffect(() => {
@@ -161,7 +174,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
           <div className="row">
             <div className="col-md-12">
               {pdfUrl ? (
-                <button type="button" className="btn btn-primary" onClick={() => { setPendingPdfUrl(pdfUrl); setShowDownloadModal(true); }}>{ctaLabel}</button>
+                <button type="button" className="btn btn-primary" onClick={() => { setPendingPdfUrl(pdfUrl); setDownloadError(""); setShowDownloadModal(true); }}>{ctaLabel}</button>
               ) : (
                 <Link href="/contact" className="btn btn-primary">DOWNLOAD White Paper</Link>
               )}
@@ -197,7 +210,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
           <div className="row">
             <div className="col-md-12">
               {pdfUrl ? (
-                <button type="button" className="btn btn-primary" onClick={() => { setPendingPdfUrl(pdfUrl); setShowDownloadModal(true); }}>{ctaLabel}</button>
+                <button type="button" className="btn btn-primary" onClick={() => { setPendingPdfUrl(pdfUrl); setDownloadError(""); setShowDownloadModal(true); }}>{ctaLabel}</button>
               ) : (
                 <Link href="/contact" className="btn btn-primary">DOWNLOAD EBOOK</Link>
               )}
@@ -373,15 +386,39 @@ export default function ResourceDetail({ resource, relatedResources }) {
                 <div className="modal-content">
                   <div className="modal-header">
                     <h5 className="modal-title" id="resourceDownloadModalLabel">Download Resource</h5>
-                    <button type="button" className="btn-close" aria-label="Close" onClick={() => { setShowDownloadModal(false); setPendingPdfUrl(null); }} />
+                    <button type="button" className="btn-close" aria-label="Close" onClick={() => { setShowDownloadModal(false); setPendingPdfUrl(null); setDownloadError(""); }} />
                   </div>
                   <div className="modal-body">
                     <p className="card-Text mb-3">Please enter your details to download.</p>
+                    {downloadError && <p className="text-danger small mb-2">{downloadError}</p>}
                     <Formik
                       initialValues={{ name: "", email: "" }}
                       validationSchema={DownloadModalSchema}
-                      onSubmit={(values, { resetForm }) => {
-                        setShowDownloadModal(false);
+                      onSubmit={async (values, { resetForm, setSubmitting }) => {
+                        setDownloadError("");
+                        const serviceId = process.env.NEXT_PUBLIC_EMAILJS_RESOURCE_SERVICE_ID || process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+                        const templateId = process.env.NEXT_PUBLIC_EMAILJS_RESOURCE_TEMPLATE_ID;
+                        const publicKey = process.env.NEXT_PUBLIC_EMAILJS_RESOURCE_PUBLIC_KEY || process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+                        if (!serviceId || !templateId || !publicKey) {
+                          setDownloadError("Email service not configured. Please try again later.");
+                          setSubmitting(false);
+                          return;
+                        }
+                        const payload = {
+                          user_name: values.name,
+                          user_email: values.email,
+                          resource_title: resource?.Title ?? "",
+                          resource_type: resource?.ResourceType?.Name ?? "",
+                          download_url: pendingPdfUrl ?? "",
+                          page_url: typeof window !== "undefined" ? window.location.href : "",
+                        };
+                        try {
+                          await emailjs.send(serviceId, templateId, payload, publicKey);
+                        } catch (err) {
+                          setDownloadError("Failed to send. Please try again.");
+                          setSubmitting(false);
+                          return;
+                        }
                         if (pendingPdfUrl) {
                           const a = document.createElement("a");
                           a.href = pendingPdfUrl;
@@ -392,8 +429,10 @@ export default function ResourceDetail({ resource, relatedResources }) {
                           a.click();
                           a.remove();
                         }
+                        setShowDownloadModal(false);
                         setPendingPdfUrl(null);
                         resetForm();
+                        setSubmitting(false);
                       }}
                     >
                       {({ isSubmitting }) => (
@@ -409,8 +448,8 @@ export default function ResourceDetail({ resource, relatedResources }) {
                             <ErrorMessage name="email" component="div" className="text-danger small mt-1" />
                           </div>
                           <div className="col-12 text-end mt-2">
-                            <button type="button" className="btn btn-secondary me-2" onClick={() => { setShowDownloadModal(false); setPendingPdfUrl(null); }}>Cancel</button>
-                            <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Download</button>
+                            <button type="button" className="btn btn-secondary me-2" onClick={() => { setShowDownloadModal(false); setPendingPdfUrl(null); setDownloadError(""); }}>Cancel</button>
+                            <button type="submit" className="btn btn-primary" disabled={isSubmitting}>{isSubmitting ? "Sending..." : "Download"}</button>
                           </div>
                         </Form>
                       )}
