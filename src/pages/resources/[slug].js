@@ -420,14 +420,23 @@ export default function ResourceDetail({ resource, relatedResources }) {
                           return;
                         }
                         if (pendingPdfUrl) {
-                          const a = document.createElement("a");
-                          a.href = pendingPdfUrl;
-                          a.download = "";
-                          a.rel = "noopener noreferrer";
-                          a.target = "_blank";
-                          document.body.appendChild(a);
-                          a.click();
-                          a.remove();
+                          try {
+                            const res = await fetch(pendingPdfUrl, { mode: "cors" });
+                            if (!res.ok) throw new Error("Fetch failed");
+                            const blob = await res.blob();
+                            const url = URL.createObjectURL(blob);
+                            const a = document.createElement("a");
+                            a.href = url;
+                            a.download = (resource?.Title ? `${resource.Title.replace(/[^\w\s-]/g, "").replace(/\s+/g, "-")}.pdf` : "resource.pdf") || "resource.pdf";
+                            document.body.appendChild(a);
+                            a.click();
+                            a.remove();
+                            URL.revokeObjectURL(url);
+                          } catch (_) {
+                            setDownloadError("Download failed. Please try again.");
+                            setSubmitting(false);
+                            return;
+                          }
                         }
                         setShowDownloadModal(false);
                         setPendingPdfUrl(null);
