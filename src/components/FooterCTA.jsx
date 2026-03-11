@@ -30,7 +30,7 @@ export default function FooterCTA() {
       };
     }
 
-    if (pathname.startsWith('/services/enterprise-information-and-management')) {
+    if (pathname.startsWith('/services/data-trust-transformation-services')) {
       return {
        title: (
         <>

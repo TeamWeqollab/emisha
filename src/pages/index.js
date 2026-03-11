@@ -140,7 +140,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
                   </div>
                   <h3 className="card-title">Data Trust & Transformation Services</h3>
                   <p className="card-text">Turning data into a unified, strategic asset through governance, integration, and quality.</p>
-                  <Link href="/services/enterprise-information-and-management" className="link-primary">Learn More</Link>
+                  <Link href="/services/data-trust-transformation-services" className="link-primary">Learn More</Link>
                 </div>
               </div>
             </div>

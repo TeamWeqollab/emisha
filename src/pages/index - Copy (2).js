@@ -97,9 +97,9 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
                   <div className="cardIcon">
                      <Image src="/images/icon-services1.svg" alt="Emisha" width={60} height={60} />
                   </div>
-                  <h5 className="card-title">Enterprise Information & Management</h5>
+                  <h5 className="card-title">Data Trust & Transformation Services</h5>
                   <p className="card-text">Turning data into a unified, strategic asset through governance, integration, and quality.</p>
-                  <Link href="/services/enterprise-information-and-management" className="link-primary">Learn More</Link>
+                  <Link href="/services/data-trust-transformation-services" className="link-primary">Learn More</Link>
                 </div>
               </div>
             </div>

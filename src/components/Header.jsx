@@ -182,7 +182,7 @@ useEffect(() => {
                       SERVICES
                     </a>
                     <ul className="dropdown-menu">
-                      <li><Link href="/services/enterprise-information-and-management" className={getSubNavClasses('/services/enterprise-information-and-management')}><span className="dropdown-text">Enterprise Information & Management</span></Link></li>
+                      <li><Link href="/services/data-trust-transformation-services" className={getSubNavClasses('/services/data-trust-transformation-services')}><span className="dropdown-text">Data Trust & Transformation Services</span></Link></li>
 
                       <li><Link href="/services/foundation-services" className={getSubNavClasses('/services/foundation-services')}><span className="dropdown-text">Foundation Services</span></Link></li>
 
@@ -308,7 +308,7 @@ useEffect(() => {
               <div id="serviceCollapse" className="accordion-collapse collapse" aria-labelledby="serviceHeading" data-bs-parent="#mobileAccordion">
                 <div className="accordion-body bg-light">
                   <ul className="list-unstyled">
-                    <li><Link href="/services/enterprise-information-and-management" className={getMobileNavClasses('/services/enterprise-information-and-management')}>Enterprise Information & Management</Link></li>
+                    <li><Link href="/services/data-trust-transformation-services" className={getMobileNavClasses('/services/data-trust-transformation-services')}>Data Trust & Transformation Services</Link></li>
 
                     <li><Link href="/services/foundation-services" className={getMobileNavClasses('/services/foundation-services')}>Foundation Services</Link></li>
 
