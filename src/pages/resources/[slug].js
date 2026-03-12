@@ -93,6 +93,27 @@ export default function ResourceDetail({ resource, relatedResources }) {
     return 'Resources';
   };
 
+  // Check if resource type is Video or Videos (for embedded player)
+  const isVideoResource = (r) => {
+    const name = (r?.ResourceType?.Name || r?.ResourceType?.name || '').toString().trim().toLowerCase();
+    return name === 'video' || name === 'videos';
+  };
+
+  // Convert YouTube watch/shorts URL to embed URL; return null if not a usable YouTube URL
+  const getYouTubeEmbedUrl = (url) => {
+    if (!url || typeof url !== 'string') return null;
+    const u = url.trim();
+    const watchMatch = u.match(/(?:youtube\.com\/watch\?v=)([a-zA-Z0-9_-]{11})/);
+    if (watchMatch) return `https://www.youtube.com/embed/${watchMatch[1]}`;
+    const embedMatch = u.match(/(?:youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/);
+    if (embedMatch) return u;
+    const shortsMatch = u.match(/(?:youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/);
+    if (shortsMatch) return `https://www.youtube.com/embed/${shortsMatch[1]}`;
+    const beMatch = u.match(/(?:youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+    if (beMatch) return `https://www.youtube.com/embed/${beMatch[1]}`;
+    return null;
+  };
+
   // Get banner/image URL for resource
   const getBannerImageUrl = (resource) => {
     const image = resource?.Image || resource?.Banner || resource?.image || resource?.banner || resource?.BannerImage || resource?.ImageResource;
@@ -297,26 +318,44 @@ export default function ResourceDetail({ resource, relatedResources }) {
 
               <div className="row">
                 <div className="col-md-12">
-                  <div className="post-banner">
-                    <Image
-                      src={getBannerImageUrl(resource)}
-                      alt={resource.Title || 'Resource'}
-                      width={1920}
-                      height={1440}
-                      className="img-fluid"
-                    />
-                  </div>
+                  {isVideoResource(resource) && getYouTubeEmbedUrl(resource.VideoURL) ? (
+                    <div className="post-banner resource-video-wrapper">
+                      <div className="ratio ratio-16x9">
+                        <iframe
+                          src={getYouTubeEmbedUrl(resource.VideoURL)}
+                          title={resource.Title || 'Video'}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
+                          className="border-0"
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="post-banner">
+                      <Image
+                        src={getBannerImageUrl(resource)}
+                        alt={resource.Title || 'Resource'}
+                        width={1920}
+                        height={1440}
+                        className="img-fluid"
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
 
+              {resource.Summary && (
+                <div className="row">
+                  <div className="col-md-12">
+                    <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1.5rem', fontStyle: 'italic' }}>
+                      {resource.Summary}
+                    </p>
+                  </div>
+                </div>
+              )}
+
               <div className="row">
                 <div className="col-md-12">
-                  {/* {article.Summary && (
-                  <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '2rem', fontStyle: 'italic' }}>
-                    {article.Summary}
-                  </p>
-                )} */}
-
                   {resource.Content && (
                     isHtmlContent(resource.Content) ? (
                       <div
@@ -645,7 +684,8 @@ export async function getStaticProps({ params }) {
       Image: bannerData,
       ResourceType: resourceTypeData,
       PDF: pdfUrl,
-      CTALabel: ctaLabel
+      CTALabel: ctaLabel,
+      VideoURL: getValue(attributes, 'VideoURL', 'videoUrl', 'VideoUrl', 'video_url') || ''
     };
 
     // For whitepaper/ebook only: fetch PDF in a separate request so main fetches never 404
