@@ -319,7 +319,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
               <div className="row">
                 <div className="col-md-12">
                   {isVideoResource(resource) && getYouTubeEmbedUrl(resource.VideoURL) ? (
-                    <div className="post-banner resource-video-wrapper">
+                    <div className="resource-video-wrapper mb-4">
                       <div className="ratio ratio-16x9">
                         <iframe
                           src={getYouTubeEmbedUrl(resource.VideoURL)}
