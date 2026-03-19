@@ -73,7 +73,14 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
   };
-  
+
+  // Truncate Summary/SummaryLong to maxLen chars, strip HTML; append "..." if truncated
+  const truncateSummary = (text, maxLen = 100) => {
+    if (!text || typeof text !== 'string') return '';
+    const stripped = text.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').trim();
+    if (stripped.length <= maxLen) return stripped;
+    return stripped.substring(0, maxLen).trim() + '...';
+  };
 
   return (
     <>
@@ -282,7 +289,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
                         <div className="card-body">
                           <h3 className="card-title">{item.Title || item.name || 'Untitled'}</h3>
                           <p className="card-date">{(item.Category) || 'News'}   -    {formatDate(item.PublishDate)}</p>
-                          <p className="card-text">{item.Summary || ''}</p>
+                          <p className="card-text">{truncateSummary(item.Summary || '')}</p>
                         </div>
                       </div>
                     </Link>
@@ -323,22 +330,22 @@ export async function getStaticProps() {
     const root = data?.data || {};
 
     const homepageNews = (root.homepage_news || []).map(n => ({
-      id: n.id,
-      Title: n.Title,
-      Slug: n.Slug,
-      Summary: n.Summary,
-      PublishDate: n.PublishDate,
-      Banner: n?.Banner?.url || null,
-      Category: n?.news_categorie?.Name || null,
+      id: n?.id ?? null,
+      Title: n?.Title ?? "",
+      Slug: n?.Slug ?? "",
+      Summary: n?.Summary ?? n?.SummaryLong ?? n?.summaryLong ?? "",
+      PublishDate: n?.PublishDate ?? null,
+      Banner: n?.Banner?.url ?? null,
+      Category: n?.news_categorie?.Name ?? null,
     }));
 
     const homepageResources = (root.homepage_resources || []).map(r => ({
-      id: r.id,
-      Title: r.Title,
-      Slug: r.Slug,
-      Summary: r.Summary,
-      Image: r?.Image?.url || r?.Banner?.url || null,
-      ResourceType: r?.resource_type?.Name || null,
+      id: r?.id ?? null,
+      Title: r?.Title ?? "",
+      Slug: r?.Slug ?? "",
+      Summary: r?.Summary ?? r?.SummaryLong ?? r?.summaryLong ?? "",
+      Image: r?.Image?.url ?? r?.Banner?.url ?? null,
+      ResourceType: r?.resource_type?.Name ?? null,
     }));
 
     return {

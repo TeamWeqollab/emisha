@@ -106,7 +106,27 @@ export default function NewsDetail({ article, relatedArticles }) {
       .trim();
   };
 
-  const metaDescription = article.Summary || (isHtmlContent(article.Content) ? stripHtml(article.Content) : stripMarkdown(article.Content))?.substring(0, 160) || 'Read the latest news from Emisha';
+  const summaryText = article?.SummaryLong || article?.Summary || '';
+  const metaSummary = summaryText ? (isHtmlContent(summaryText) ? stripHtml(summaryText) : stripMarkdown(summaryText)) : '';
+  const metaDescription = metaSummary || (isHtmlContent(article.Content) ? stripHtml(article.Content) : stripMarkdown(article.Content))?.substring(0, 160) || 'Read the latest news from Emisha';
+
+  const renderSummaryContent = (value) => {
+    if (!value) return null;
+    if (isHtmlContent(value)) {
+      return (
+        <div
+          className="post-content ckeditor-content"
+          style={{ marginBottom: '1.5rem' }}
+          dangerouslySetInnerHTML={{ __html: value }}
+        />
+      );
+    }
+    return (
+      <div className="post-content ckeditor-content" style={{ marginBottom: '1.5rem' }}>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{value}</ReactMarkdown>
+      </div>
+    );
+  };
 
 
   return (
@@ -153,11 +173,9 @@ export default function NewsDetail({ article, relatedArticles }) {
 
             <div className="row">
               <div className="col-md-12">
-                {/* {article.Summary && (
-                  <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '2rem', fontStyle: 'italic' }}>
-                    {article.Summary}
-                  </p>
-                )} */}
+                <div id="summaryPara">
+                {summaryText && renderSummaryContent(summaryText)}
+                </div>
                 
                 {article.Content && (
                   isHtmlContent(article.Content) ? (
@@ -296,6 +314,7 @@ export async function getStaticProps({ params }) {
     Title: a.Title || a.title || a.Name || a.name || "Untitled",
     Slug: a.Slug || a.slug || "",
     Summary: a.Summary || a.summary || "",
+    SummaryLong: a.SummaryLong || a.summaryLong || a.Summary_Long || a.summary_long || "",
     Content: a.Content || "",
     PublishDate: a.PublishDate || a.publishedAt || "",
     Banner: a.Banner || null,
@@ -323,6 +342,7 @@ export async function getStaticProps({ params }) {
         Title: a.Title || a.title || a.Name || a.name || "Untitled",
         Slug: a.Slug || a.slug || "",
         Summary: a.Summary || a.summary || "",
+        SummaryLong: a.SummaryLong || a.summaryLong || a.Summary_Long || a.summary_long || "",
         Banner: a.Banner || null,
       };
     });

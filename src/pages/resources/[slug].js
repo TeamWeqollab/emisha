@@ -169,7 +169,27 @@ export default function ResourceDetail({ resource, relatedResources }) {
       .trim();
   };
 
-  const metaDescription = resource.Summary || (isHtmlContent(resource.Content) ? stripHtml(resource.Content) : stripMarkdown(resource.Content))?.substring(0, 160) || 'Read our resources from Emisha';
+  const summaryText = resource?.SummaryLong || resource?.Summary || '';
+  const metaSummary = summaryText ? (isHtmlContent(summaryText) ? stripHtml(summaryText) : stripMarkdown(summaryText)) : '';
+  const metaDescription = metaSummary || (isHtmlContent(resource.Content) ? stripHtml(resource.Content) : stripMarkdown(resource.Content))?.substring(0, 160) || 'Read our resources from Emisha';
+
+  const renderSummaryContent = (value) => {
+    if (!value) return null;
+    if (isHtmlContent(value)) {
+      return (
+        <div
+          className="post-content ckeditor-content"
+          style={{ marginBottom: '1.5rem' }}
+          dangerouslySetInnerHTML={{ __html: value }}
+        />
+      );
+    }
+    return (
+      <div className="post-content ckeditor-content" style={{ marginBottom: '1.5rem' }}>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{value}</ReactMarkdown>
+      </div>
+    );
+  };
 
   // Render a section specific to the resource type (white paper, case study, ebook, etc.)
   const renderResourceTypeSection = () => {
@@ -178,7 +198,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
       .toLowerCase()
       .replace(/\s+/g, '-')
       .replace(/[^\w-]+/g, '');
-    const summary = resource?.Summary || '';
+    const summary = resource?.SummaryLong || resource?.Summary || '';
 
     if (/white/.test(type)) {
       const ctaLabel = resource?.CTALabel || 'Download White Paper';
@@ -188,7 +208,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
           <div className="row">
             <div className="col-md-12">
               <h2><span>White Paper</span></h2>
-              {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+              {summary && renderSummaryContent(summary)}
             </div>
           </div>
 
@@ -210,7 +230,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
         <div className="row">
           <div className="col-md-12">
             <h2><span>Case Study</span></h2>
-            {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+            {summary && renderSummaryContent(summary)}
           </div>
         </div>
       );
@@ -224,7 +244,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
           <div className="row">
             <div className="col-md-12">
               <h2><span>Ebook</span></h2>
-              {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+              {summary && renderSummaryContent(summary)}
             </div>
           </div>
 
@@ -246,7 +266,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
         <div className="row">
           <div className="col-md-12">
             <h2><span>Video Tutorial</span></h2>
-            {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+            {summary && renderSummaryContent(summary)}
           </div>
         </div>
       );
@@ -257,7 +277,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
         <div className="row">
           <div className="col-md-12">
             <h2><span>Toolkit</span></h2>
-            {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+            {summary && renderSummaryContent(summary)}
           </div>
         </div>
       );
@@ -268,7 +288,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
         <div className="row">
           <div className="col-md-12">
             <h2><span>Blog</span></h2>
-            {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+            {summary && renderSummaryContent(summary)}
           </div>
         </div>
       );
@@ -279,7 +299,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
         <div className="row">
           <div className="col-md-12">
             <h2><span>Customer Story</span></h2>
-            {summary && <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1rem', fontStyle: 'italic' }}>{summary}</p>}
+            {summary && renderSummaryContent(summary)}
           </div>
         </div>
       );
@@ -344,12 +364,10 @@ export default function ResourceDetail({ resource, relatedResources }) {
                 </div>
               </div>
 
-              {resource.Summary && (
-                <div className="row">
+              {summaryText && (
+                <div className="row" id="summaryPara">
                   <div className="col-md-12">
-                    <p className="lead" style={{ fontSize: '1.1rem', marginBottom: '1.5rem', fontStyle: 'italic' }}>
-                      {resource.Summary}
-                    </p>
+                    {renderSummaryContent(summaryText)}
                   </div>
                 </div>
               )}
@@ -678,6 +696,7 @@ export async function getStaticProps({ params }) {
       Title: getValue(attributes, 'Title', 'title', 'Name', 'name') || '',
       Slug: getValue(attributes, 'Slug', 'slug') || getValue(attributes, 'Title', 'title', 'Name', 'name') || '',
       Summary: getValue(attributes, 'Summary', 'summary', 'Description', 'description') || '',
+      SummaryLong: getValue(attributes, 'SummaryLong', 'summaryLong', 'Summary_Long', 'summary_long') || '',
       Content: getValue(attributes, 'Content', 'content', 'Body', 'body') || '',
       PublishDate: getValue(attributes, 'PublishDate', 'publishDate', 'PublishedAt', 'publishedAt', 'createdAt') || new Date().toISOString(),
       Banner: bannerData,
@@ -831,6 +850,7 @@ export async function getStaticProps({ params }) {
               Title: getValue(relAttrs, 'Title', 'title', 'Name', 'name') || '',
               Slug: getValue(relAttrs, 'Slug', 'slug') || getValue(relAttrs, 'Title', 'title', 'Name', 'name') || '',
               Summary: getValue(relAttrs, 'Summary', 'summary') || '',
+              SummaryLong: getValue(relAttrs, 'SummaryLong', 'summaryLong', 'Summary_Long', 'summary_long') || '',
               Banner: relBannerData
             };
           });

@@ -1338,9 +1338,8 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 
 
 
-
-
-
+#summaryPara{position: relative;  margin-bottom: 10px !important;}
+#summaryPara p{ font-size: 18px !important;  font-style: italic !important;}
 
 
 

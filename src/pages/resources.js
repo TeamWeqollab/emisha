@@ -351,7 +351,8 @@ export async function getStaticProps() {
         id: item.id || index,
         Title: titleVal,
         Slug: rawSlug && rawSlug !== '' ? slugify(rawSlug) : slugify(titleVal),
-        Summary: getValue(attributes, 'Summary', 'summary', 'Description', 'description') || '',
+        Summary: getValue(attributes, 'SummaryLong', 'summaryLong', 'Summary_Long', 'summary_long', 'Summary', 'summary', 'Description', 'description') || '',
+        SummaryLong: getValue(attributes, 'SummaryLong', 'summaryLong', 'Summary_Long', 'summary_long') || '',
         Image: image,
         ResourceType: resourceType
       };

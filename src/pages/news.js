@@ -39,7 +39,7 @@ export default function News({ newsArticles, newsCategories }) {
       const query = searchQuery.trim().toLowerCase();
       filtered = filtered.filter(article => {
         const title = (article.Title || '').toLowerCase();
-        const summary = (article.Summary || '').toLowerCase();
+        const summary = (article.SummaryLong || article.Summary || '').toLowerCase();
         const content = (article.Content || '').toLowerCase();
         return title.includes(query) || summary.includes(query) || content.includes(query);
       });
@@ -180,7 +180,7 @@ export default function News({ newsArticles, newsCategories }) {
       const query = searchQuery.trim().toLowerCase();
       featured = featured.filter(article => {
         const title = (article.Title || '').toLowerCase();
-        const summary = (article.Summary || '').toLowerCase();
+        const summary = (article.SummaryLong || article.Summary || '').toLowerCase();
         const content = (article.Content || '').toLowerCase();
         return title.includes(query) || summary.includes(query) || content.includes(query);
       });
@@ -292,6 +292,14 @@ export default function News({ newsArticles, newsCategories }) {
     }
     
     return '';
+  };
+
+  // Truncate Summary/SummaryLong to maxLen chars, strip HTML; append "..." if truncated
+  const truncateSummary = (text, maxLen = 150) => {
+    if (!text || typeof text !== 'string') return '';
+    const stripped = text.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').trim();
+    if (stripped.length <= maxLen) return stripped;
+    return stripped.substring(0, maxLen).trim() + '...';
   };
 
   // Get banner image URL
@@ -445,7 +453,7 @@ export default function News({ newsArticles, newsCategories }) {
                           <p className="card-date">
                             {getCategoryName(article) || 'News'}   -    {formatDate(article.PublishDate)}
                           </p>
-                          <p className="card-text">{article.Summary || ''}</p>
+                          <p className="card-text">{truncateSummary(article.SummaryLong || article.Summary || '')}</p>
                         </div>
                       </div>
                     </Link>
@@ -553,7 +561,7 @@ export default function News({ newsArticles, newsCategories }) {
                           <p className="card-date">
                             {getCategoryName(article) || 'News'}   -    {formatDate(article.PublishDate)}
                           </p>
-                          <p className="card-text">{article.Summary || ''}</p>
+                          <p className="card-text">{truncateSummary(article.SummaryLong || article.Summary || '')}</p>
                           <Link href={`/news/${article.Slug}`} className="link-primary">Learn More</Link>
                         </div>
                       </div>
@@ -655,6 +663,7 @@ export async function getStaticProps() {
           Title: item.Title || '',
           Slug: item.Slug || '',
           Summary: item.Summary || '',
+          SummaryLong: item.SummaryLong || item.summaryLong || item.Summary_Long || item.summary_long || '',
           Content: item.Content || '',
           PublishDate: item.PublishDate || item.publishedAt || new Date().toISOString(),
           IsFeatured: !!item.IsFeatured,
