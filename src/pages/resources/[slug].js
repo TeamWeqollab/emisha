@@ -99,18 +99,43 @@ export default function ResourceDetail({ resource, relatedResources }) {
     return name === 'video' || name === 'videos';
   };
 
-  // Convert YouTube watch/shorts URL to embed URL; return null if not a usable YouTube URL
-  const getYouTubeEmbedUrl = (url) => {
+  // Resolve video URL to full URL (handles Strapi relative paths)
+  const getFullVideoUrl = (url) => {
     if (!url || typeof url !== 'string') return null;
     const u = url.trim();
+    if (u.startsWith('http://') || u.startsWith('https://')) return u;
+    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+    return u.startsWith('/') ? `${baseUrl}${u}` : `${baseUrl}/${u}`;
+  };
+
+  // Parse VideoURL: returns { type: 'embed', url } for iframe, { type: 'video', url } for <video>, or null
+  const getVideoSource = (url) => {
+    if (!url || typeof url !== 'string') return null;
+    const u = url.trim();
+    if (!u) return null;
+
+    // YouTube
     const watchMatch = u.match(/(?:youtube\.com\/watch\?v=)([a-zA-Z0-9_-]{11})/);
-    if (watchMatch) return `https://www.youtube.com/embed/${watchMatch[1]}`;
-    const embedMatch = u.match(/(?:youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/);
-    if (embedMatch) return u;
+    if (watchMatch) return { type: 'embed', url: `https://www.youtube.com/embed/${watchMatch[1]}` };
+    if (u.match(/(?:youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/)) return { type: 'embed', url: u };
     const shortsMatch = u.match(/(?:youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/);
-    if (shortsMatch) return `https://www.youtube.com/embed/${shortsMatch[1]}`;
+    if (shortsMatch) return { type: 'embed', url: `https://www.youtube.com/embed/${shortsMatch[1]}` };
     const beMatch = u.match(/(?:youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-    if (beMatch) return `https://www.youtube.com/embed/${beMatch[1]}`;
+    if (beMatch) return { type: 'embed', url: `https://www.youtube.com/embed/${beMatch[1]}` };
+
+    // Vimeo
+    const vimeoMatch = u.match(/(?:vimeo\.com\/|player\.vimeo\.com\/video\/)(\d+)/);
+    if (vimeoMatch) return { type: 'embed', url: `https://player.vimeo.com/video/${vimeoMatch[1]}` };
+
+    // Direct video files (Strapi uploads, CDN, etc.)
+    const videoExt = /\.(mp4|webm|ogg|mov)(\?|$)/i;
+    if (videoExt.test(u)) return { type: 'video', url: getFullVideoUrl(u) };
+    // Relative path like /uploads/video.mp4
+    if (u.startsWith('/') && /\.(mp4|webm|ogg|mov)(\?|$)/i.test(u)) return { type: 'video', url: getFullVideoUrl(u) };
+
+    // Already an embed URL (e.g. Wistia, other providers)
+    if (/\/embed\//.test(u) || /player\./.test(u)) return { type: 'embed', url: getFullVideoUrl(u) };
+
     return null;
   };
 
@@ -338,19 +363,36 @@ export default function ResourceDetail({ resource, relatedResources }) {
 
               <div className="row">
                 <div className="col-md-12">
-                  {isVideoResource(resource) && getYouTubeEmbedUrl(resource.VideoURL) ? (
-                    <div className="resource-video-wrapper mb-4">
-                      <div className="ratio ratio-16x9">
-                        <iframe
-                          src={getYouTubeEmbedUrl(resource.VideoURL)}
-                          title={resource.Title || 'Video'}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          allowFullScreen
-                          className="border-0"
-                        />
+                  {isVideoResource(resource) && (() => {
+                    const src = getVideoSource(resource.VideoURL);
+                    if (!src) return null;
+                    return (
+                      <div className="resource-video-wrapper mb-4">
+                        <div className="ratio ratio-16x9">
+                          {src.type === 'embed' ? (
+                            <iframe
+                              src={src.url}
+                              title={resource.Title || 'Video'}
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                              allowFullScreen
+                              className="border-0"
+                            />
+                          ) : (
+                            <video
+                              src={src.url}
+                              controls
+                              playsInline
+                              className="border-0 w-100 h-100"
+                              style={{ objectFit: 'contain' }}
+                            >
+                              Your browser does not support the video tag.
+                            </video>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  ) : (
+                    );
+                  })()}
+                  {(!isVideoResource(resource) || !getVideoSource(resource.VideoURL)) && (
                     <div className="post-banner">
                       <Image
                         src={getBannerImageUrl(resource)}
@@ -591,7 +633,7 @@ export async function getStaticProps({ params }) {
 
     // Fetch the specific resource by slug (no populate[PDF] here to avoid 404 if field missing in schema)
     const resourceRes = await fetch(
-      `${strapiUrl}/api/resources?filters[Slug][$eq]=${slugEnc}&populate[ResourceType]=*&populate[Image]=*&populate[Banner]=*`
+      `${strapiUrl}/api/resources?filters[Slug][$eq]=${slugEnc}&populate[ResourceType]=*&populate[Image]=*&populate[Banner]=*&populate[VideoURL]=*`
     );
 
     // If that doesn't work, try lowercase slug filter
@@ -662,6 +704,25 @@ export async function getStaticProps({ params }) {
     }
     const ctaLabel = getValue(attributes, 'CTALabel', 'ctaLabel', 'CTA_Label', 'cta_label') || 'Read More';
 
+    // Handle VideoURL: string (YouTube, Vimeo, etc.) or Strapi media (uploaded file)
+    let videoUrl = '';
+    const videoField = getValue(attributes, 'VideoURL', 'videoUrl', 'VideoUrl', 'video_url');
+    if (videoField) {
+      if (typeof videoField === 'string') {
+        videoUrl = videoField.trim();
+        if (videoUrl && !videoUrl.startsWith('http') && videoUrl.startsWith('/')) {
+          videoUrl = `${strapiUrl}${videoUrl}`;
+        }
+      } else {
+        const data = videoField?.data ?? videoField;
+        const attrs = data?.attributes ?? data;
+        const url = attrs?.url ?? videoField?.attributes?.url ?? videoField?.url;
+        if (url) {
+          videoUrl = url.startsWith('http') ? url : `${strapiUrl}${url}`;
+        }
+      }
+    }
+
     // Handle Resource Type
     let resourceTypeData = null;
     const typeField = getValue(attributes, 'ResourceType', 'resourceType', 'Type', 'type', 'Category', 'category');
@@ -704,7 +765,7 @@ export async function getStaticProps({ params }) {
       ResourceType: resourceTypeData,
       PDF: pdfUrl,
       CTALabel: ctaLabel,
-      VideoURL: getValue(attributes, 'VideoURL', 'videoUrl', 'VideoUrl', 'video_url') || ''
+      VideoURL: videoUrl
     };
 
     // For whitepaper/ebook only: fetch PDF in a separate request so main fetches never 404
