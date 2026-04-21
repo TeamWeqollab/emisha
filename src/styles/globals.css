@@ -1081,6 +1081,9 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 .blogPageContent blockquote::before{ content: url(/images/icon-quote1.svg); width: 70px; height: 57px; position: absolute; top: 25px; left: 25px;}
 .blogPageContent blockquote::after{ content: url(/images/icon-quote2.svg); width: 70px; height: 57px; position: absolute; bottom: 10px; right: 25px;}
 
+.blogPageContent ul li{ margin-bottom: 10px;}
+.blogPageContent ul li:last-child{ margin-bottom: 0px;}
+
 
 .resourceLink{ text-decoration: none !important; color: #1A1A1A;}
 .bg-resoureceCat{background: none; color: #777; padding: 0px; font-weight: 400;}
