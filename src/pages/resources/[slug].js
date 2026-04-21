@@ -232,8 +232,8 @@ export default function ResourceDetail({ resource, relatedResources }) {
         <>
           <div className="row">
             <div className="col-md-12">
-              <h2><span>White Paper</span></h2>
-              {summary && renderSummaryContent(summary)}
+              {/* <h2><span>White Paper</span></h2>
+              {summary && renderSummaryContent(summary)} */}
             </div>
           </div>
 
@@ -254,8 +254,8 @@ export default function ResourceDetail({ resource, relatedResources }) {
       return (
         <div className="row">
           <div className="col-md-12">
-            <h2><span>Case Study</span></h2>
-            {summary && renderSummaryContent(summary)}
+            {/* <h2><span>Case Study</span></h2>
+            {summary && renderSummaryContent(summary)} */}
           </div>
         </div>
       );
@@ -268,8 +268,8 @@ export default function ResourceDetail({ resource, relatedResources }) {
         <>
           <div className="row">
             <div className="col-md-12">
-              <h2><span>Ebook</span></h2>
-              {summary && renderSummaryContent(summary)}
+              {/* <h2><span>Ebook</span></h2>
+              {summary && renderSummaryContent(summary)} */}
             </div>
           </div>
 
@@ -290,8 +290,8 @@ export default function ResourceDetail({ resource, relatedResources }) {
       return (
         <div className="row">
           <div className="col-md-12">
-            <h2><span>Video Tutorial</span></h2>
-            {summary && renderSummaryContent(summary)}
+            {/* <h2><span>Video Tutorial</span></h2>
+            {summary && renderSummaryContent(summary)} */}
           </div>
         </div>
       );
@@ -301,8 +301,8 @@ export default function ResourceDetail({ resource, relatedResources }) {
       return (
         <div className="row">
           <div className="col-md-12">
-            <h2><span>Toolkit</span></h2>
-            {summary && renderSummaryContent(summary)}
+            {/* <h2><span>Toolkit</span></h2>
+            {summary && renderSummaryContent(summary)} */}
           </div>
         </div>
       );
@@ -312,8 +312,8 @@ export default function ResourceDetail({ resource, relatedResources }) {
       return (
         <div className="row">
           <div className="col-md-12">
-            <h2><span>Blog</span></h2>
-            {summary && renderSummaryContent(summary)}
+            {/* <h2><span>Blog</span></h2>
+            {summary && renderSummaryContent(summary)} */}
           </div>
         </div>
       );
@@ -323,8 +323,8 @@ export default function ResourceDetail({ resource, relatedResources }) {
       return (
         <div className="row">
           <div className="col-md-12">
-            <h2><span>Customer Story</span></h2>
-            {summary && renderSummaryContent(summary)}
+            {/* <h2><span>Customer Story</span></h2>
+            {summary && renderSummaryContent(summary)} */}
           </div>
         </div>
       );
