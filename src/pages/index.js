@@ -296,7 +296,8 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
                   </div>
                 )) : (
                   <div className="col-12 text-center py-4">
-                    <p>No homepage news defined. Please check the homepage settings in the CMS.</p>
+                    {/* <p>No homepage news defined. Please check the homepage settings in the CMS.</p> */}
+                    <p>You are all caught up for now!</p>
                   </div>
                 )}
               </div>

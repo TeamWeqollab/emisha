@@ -1145,7 +1145,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 #homeResourceSec ul li{ display: inline-block; height: 520px; max-width: 20%; margin-right: 20px; text-align: left;}
 #homeResourceSec ul li:last-child{ margin-right: 0px;}
 /* #homeResourceSec ul li:hover{max-width: 60%; transition: .25s;} */
-#homeResourceSec ul li.active{max-width: 60%; /*transition: all 0.4s ease*/} 
+#homeResourceSec ul li.active{/*max-width: 60%;*/ max-width:55%; /*transition: all 0.4s ease*/} 
 
 #homeResourceSec .imageContainer-latesResourece{ position: relative; width: 100%; max-height: 520px; overflow: hidden;}
 #homeResourceSec .imageContainer-latesResourece img{ max-width: 100%; height: 520px; object-fit: cover; object-position: center; border-radius: 30px;}
