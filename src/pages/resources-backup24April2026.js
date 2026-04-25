@@ -186,27 +186,13 @@ export default function Resources({ resources = [], resourceTypes = [] }) {
               filteredResources.map((resource, index) => {
                 const slug = resource.Slug || resource.slug || slugify(resource.Title || resource.Name || '');
                 return (
-                  <div key={resource.id || index} className="col-md-6 col-lg-6 col-xl-4">
+                  <div key={resource.id || index} className="col-md-4">
                     <Link href={slug ? `/resources/${slug}` : '/resources'} className="resourceLink">
                       <div className="resourceCard">
-                        <div className="imageContainerNew imageContainer-framed">
+                        <div className="imageContainer">
                           <Image src={getImageUrl(resource)} alt={resource.Title || resource.Name || 'Resource'} width={960} height={720} className="img-fluid" />
-                          {/* <span className="resource-categoryNew">White Paper</span> */}
-                           <span className="resource-categoryNew">{(() => {
-                              const typeField = resource.ResourceType || resource.resourceType || resource.Type || resource.Category || (resource.attributes && (resource.attributes.ResourceType || resource.attributes.resourceType || resource.attributes.Type || resource.attributes.Category));
-                              if (!typeField) return 'Resource Type';
-                              if (typeof typeField === 'string') return typeField;
-                              if (typeField.Name || typeField.name) return typeField.Name || typeField.name;
-                              if (typeField.data) {
-                                const td = Array.isArray(typeField.data) ? typeField.data[0] : typeField.data;
-                                const tattrs = td?.attributes || td;
-                                return tattrs?.Name || tattrs?.name || 'Resource Type';
-                              }
-                              if (typeField.attributes) return typeField.attributes.Name || typeField.attributes.name || 'Resource Type';
-                              return 'Resource Type';
-                            })()}</span>
                         </div>
-                        {/* <span className="badge bg-resoureceCat mb-2">{(() => {
+                        <span className="badge bg-resoureceCat mb-2">{(() => {
                           const typeField = resource.ResourceType || resource.resourceType || resource.Type || resource.Category || (resource.attributes && (resource.attributes.ResourceType || resource.attributes.resourceType || resource.attributes.Type || resource.attributes.Category));
                           if (!typeField) return 'Resource Type';
                           if (typeof typeField === 'string') return typeField;
@@ -218,7 +204,7 @@ export default function Resources({ resources = [], resourceTypes = [] }) {
                           }
                           if (typeField.attributes) return typeField.attributes.Name || typeField.attributes.name || 'Resource Type';
                           return 'Resource Type';
-                        })()}</span> */}
+                        })()}</span>
                         <h3 className="card-title">{resource.Title || resource.Name || ''}</h3>
                         <span className="link-primary">Read More</span>
                         {/* <Link href={slug ? `/resources/${slug}` : '/resources'} className="link-primary">Read More</Link> */}

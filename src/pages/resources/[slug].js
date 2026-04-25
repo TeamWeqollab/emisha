@@ -355,8 +355,11 @@ export default function ResourceDetail({ resource, relatedResources }) {
               <div className="row justify-content-center">
                 <div className="col-md-12 col-lg-11 text-center">
                   <h1 className="post-title">{resource.Title || 'Untitled'}</h1>
-                  <p className="post-desc">
+                  {/* <p className="post-desc">
                     {getResourceTypeName(resource)} {resource.PublishDate ? ' - ' + formatDate(resource.PublishDate) : ''}
+                  </p> */}
+                   <p className="post-desc">
+                    {resource.PublishDate ? '  ' + formatDate(resource.PublishDate) : ''}
                   </p>
                 </div>
               </div>
@@ -393,7 +396,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
                     );
                   })()}
                   {(!isVideoResource(resource) || !getVideoSource(resource.VideoURL)) && (
-                    <div className="post-banner">
+                    <div className="post-bannerNew imageContainer-framed">
                       <Image
                         src={getBannerImageUrl(resource)}
                         alt={resource.Title || 'Resource'}
@@ -401,6 +404,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
                         height={1440}
                         className="img-fluid"
                       />
+                      <span className="resource-categoryNewDetail">{getResourceTypeName(resource)}</span>
                     </div>
                   )}
                 </div>

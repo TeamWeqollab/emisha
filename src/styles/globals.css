@@ -1022,11 +1022,62 @@ font-size: 16px; font-weight: 500;  color: #6E6E6E !important; border-bottom: no
 
 #catResources{ margin-bottom: 80px;}
 
-.resourceCard{ margin-bottom: 40px;}
+.resourceCard{ margin-bottom: 40px; position: relative;}
 .resourceCard .card-title{ font-size: 24px; font-weight: 500; margin-bottom: 8px;}
 .resourceCard .link-primary::after{ content: ' ';}
+
+
+.img-mask{  
+  width: 100%;
+  -webkit-mask-image: url(/images/frame-thumb.svg);
+  mask-image: url(/images/frame-thumb.svg);
+  mask-repeat: no-repeat;
+  mask-position: bottom left;
+  mask-size: 100% 100%;  
+
+}
+
 .imageContainer{ position: relative; width: 100%;  margin-bottom: 25px; max-height: 360px;}
 .imageContainer img{ max-width: 100%; height: 360px; object-fit: cover; border-radius: 10px;}
+
+
+.imageContainerNew{ position: relative; width: 100%; max-height: 255px;  margin-bottom: 25px; }
+.imageContainerNew img{ max-width: 100%; height: 255px; object-fit: cover; border-radius: 10px;}
+
+
+/* Lock the framed container to the SVG frame's aspect ratio so mask + overlay
+   never distort regardless of grid column width. Two-class specificity beats
+   the single-class breakpoint overrides for .imageContainerNew. */
+.imageContainerNew.imageContainer-framed {
+  aspect-ratio: 1025 / 547;
+  max-height: unset;
+}
+
+.imageContainerNew.imageContainer-framed img {
+  height: 100%;
+  -webkit-mask-image: url('/images/frame-thumb-mask.svg');
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-image: url('/images/frame-thumb-mask.svg');
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+}
+
+.imageContainer-framed::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/frame-thumb.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.resource-categoryNew{ width: auto; position: absolute; top: 85%; left: 20%; transform: translate(-50%); z-index: 2; font-size: 13px; color: #fff; text-transform: uppercase; font-weight: 700; padding: 5px 5px 5px 0px; text-align: center; display: inline-block;}
+
+
+
 
 .imageContainer-related{ position: relative; width: 100%; max-height: 360px;  margin-bottom: 25px;}
 .imageContainer-related img{ max-width: 100%; height: 360px; object-fit: cover; object-position: center; border-radius: 10px;}
@@ -1037,6 +1088,21 @@ font-size: 16px; font-weight: 500;  color: #6E6E6E !important; border-bottom: no
 .post-desc{ font-size: 24px; font-weight: 300; margin-bottom: 50px !important;}
 .post-banner{ position: relative; width: 100%; max-height: 680px; overflow: hidden; margin-bottom: 50px;}
 .post-banner img{ max-width: 100%; height: 680px; object-fit: cover; object-position: center; border-radius: 20px;}
+
+
+/* Resource detail banner with frame + mask — same SVG aspect-ratio pattern as imageContainerNew.imageContainer-framed */
+.post-bannerNew{ position: relative; width: 100%; aspect-ratio: 1025 / 547; margin-bottom: 50px;}
+.post-bannerNew img{ max-width: 100%; height: 100%; max-height: 767px; object-fit: cover; object-position: center; border-radius: 10px;
+  -webkit-mask-image: url('/images/frame-thumb-mask.svg');
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-image: url('/images/frame-thumb-mask.svg');
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+}
+
+.resource-categoryNewDetail{ width: auto; position: absolute; top: 86%; left: 20%; transform: translate(-50%); z-index: 2; font-size: 32px; color: #fff; text-transform: uppercase; font-weight: 700; padding: 5px 5px 5px 0px; text-align: center; display: inline-block;}
+
 
 .post-heading{ font-size: 36px; font-weight: 700; margin-top: 30px; margin-bottom: 20px;
   background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #5452A2 77%, #1364AB 100%);
@@ -1442,6 +1508,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 
 .resourceCard .imageContainer{ max-height: 250px; }
 .resourceCard .imageContainer img{height: 250px;}
+
 .resourceCard .card-title { font-size: 20px;}
 .post-title{font-size: 32px;}
 .post-desc { font-size: 18px;}
@@ -1487,6 +1554,14 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 .imageContainer-related img{ height: 200px;}
 
 .dynamicPage{ margin-top: 140px !important;}
+
+/* .imageContainerNew{  max-height: 255px;}
+.imageContainerNew img{  height: 255px; } */
+.resource-categoryNew{ font-size: 11px; width: auto; top: 85%; left: 20%; transform: translate(-50%);  }
+
+.post-bannerNew{ margin-bottom: 25px;}
+.resource-categoryNewDetail{ font-size: 11px; width: auto; top: 85%; left: 20%; transform: translate(-50%);  }
+
 }
 
 
@@ -1602,6 +1677,14 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 .imageContainer-related img{ height: 200px;}
 
 .dynamicPage{ margin-top: 140px !important;}
+
+
+/* .imageContainerNew{  max-height: 255px;}
+.imageContainerNew img{  height: 255px; } */
+.resource-categoryNew{ font-size: 12px; width: auto; top: 85%; left: 20%; transform: translate(-50%);  }
+
+.post-bannerNew{ margin-bottom: 25px;}
+.resource-categoryNewDetail{ font-size: 12px; width: auto; top: 85%; left: 20%; transform: translate(-50%);  }
 
 }
 
@@ -1722,6 +1805,13 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 
 .dynamicPage{ margin-top: 140px !important;}
 
+/* .imageContainerNew{  max-height: 255px;}
+.imageContainerNew img{  height: 255px; } */
+.resource-categoryNew{ font-size: 11px; width: auto; top: 83%; left: 20%; transform: translate(-50%);  }
+
+.post-bannerNew{ margin-bottom: 25px;}
+.resource-categoryNewDetail{ font-size: 18px; width: auto; top: 85%; left: 20%; transform: translate(-50%);  }
+
 }
 
 
@@ -1839,6 +1929,11 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 
 .dynamicPage{ margin-top: 140px !important;}
 
+.resource-categoryNew{ font-size: 11px; width: auto; top: 85%; left: 20%; transform: translate(-50%);  }
+
+.post-bannerNew{ margin-bottom: 25px;}
+.resource-categoryNewDetail{ font-size: 22px; width: auto; top: 86%; left: 20%; transform: translate(-50%);  }
+
 }
 
 
@@ -1854,6 +1949,11 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
   .tag-title{ font-size: 20px; }
   
   .deskBanner{ height: auto; top: 0px; }
+
+  .resource-categoryNew{ font-size: 11px; width: auto; top: 83%; left: 20%; transform: translate(-50%);  }
+
+.post-bannerNew{ margin-bottom: 25px;}
+.resource-categoryNewDetail{ font-size: 24px; width: auto; top: 87%; left: 20%; transform: translate(-50%);  }
   
 }
 
@@ -1871,6 +1971,11 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
   .deskBanner{ height: auto; top: 0px;}
 
 
+  .resource-categoryNew{ font-size: 11px; width: auto; top: 85%; left: 20%; transform: translate(-50%);  }
+
+  /* .post-bannerNew{ margin-bottom: 25px;}
+.resource-categoryNewDetail{ font-size: 24px; width: auto; top: 87%; left: 20%; transform: translate(-50%);  } */
+
 }
 
 /* XXL devices (very large screens) */
@@ -1885,6 +1990,8 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
   .tag-title{ font-size: 20px; }
   
   .deskBanner{ height: auto; top: 0px; }
+
+  .resource-categoryNew{ font-size: 11px; width: auto; top: 85%; left: 20%; transform: translate(-50%);  }
 
 }
 
