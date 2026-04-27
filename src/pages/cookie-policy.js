@@ -295,8 +295,8 @@ export default function CookiePolicy() {
                   If you have any questions about our use of cookies or this Cookie Policy, please contact us:
                 </p>
                 <div className="contact-info">
-                  <p><strong>Emisha Interactive</strong></p>
-                  <p>Email: <a href="mailto:career@emisha.com" className="text-decoration-none">career@emisha.com</a></p>
+                  <p><strong>Emisha</strong></p>
+                  <p>Email: <a href="mailto:marketing@emishaglobal.com" className="text-decoration-none">marketing@emishaglobal.com</a></p>
                   {/* <p>Phone: <a href="tel:+1234567890" className="text-decoration-none">+1 (234) 567-890</a></p> */}
                 </div>
               </div>
