@@ -935,7 +935,7 @@ font-size: 16px; font-weight: 500;  color: #6E6E6E !important; border-bottom: no
 
 .banner-details{ position: relative; margin-top: 280px;}
 .banner-details .banner-title{ font-size: 60px; font-weight: 300; margin-bottom: 25px;}
-.banner-details .banner-desc{ font-size: 28px; font-weight: 300; margin-bottom: 25px;}
+.banner-details .banner-desc{ font-size: 22px; font-weight: 300; margin-bottom: 25px;}
 .banner-details .btn-primary{border-radius: 10px !important;}
 
 /* .servicesBanner{background: url("/images/banner-services.png") no-repeat right center; background-size: cover;} */
@@ -956,7 +956,7 @@ font-size: 16px; font-weight: 500;  color: #6E6E6E !important; border-bottom: no
 /******************** company Page CSS ********************/
 .aboutInfo{position: relative;}
 .aboutHeading{ font-size: 28px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px;}
-.aboutDesc{ font-size: 26px; font-weight: 300; margin-bottom: 25px; line-height: 1.2; }
+.aboutDesc{ font-size: 22px; font-weight: 300; margin-bottom: 25px; line-height: 1.2; }
 .aboutLeatTitle{font-size: 36px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-top: 100px; margin-bottom: 100px;}
 
 .bringAction{ position: relative; width: 100%; background: #fcfcfc; padding: 60px 0px; border: solid 1px #f2f3f6; margin-bottom: 80px;}
