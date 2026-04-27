@@ -456,7 +456,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
                     <div key={related.id || index} className="col-md-4">
                       <Link href={`/resources/${related.Slug}`} className="resourceLink">
                         <div className="resourceCard">
-                          <div className="imageContainer-related">
+                          <div className="related-articleFrame">
                             <Image
                               src={getBannerImageUrl(related)}
                               alt={related.Title || 'Related resource'}

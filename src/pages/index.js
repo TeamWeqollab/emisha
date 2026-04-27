@@ -104,7 +104,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
             {/* <div className="overlay"></div> */}
             <video autoPlay loop muted playsInline preload="none" className="background-video" poster="/images/video-poster.jpg">
               {/* <source src="/videos/video-video.webm" type="video/webm" /> */}
-              <source src="/videos/video-emisha1.mp4" type="video/mp4" />
+              <source src="/videos/video-emisha2.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -136,7 +136,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-12 col-lg-3">
-              <h2 className="hd-ourServices">OUR SERVICES</h2>
+              <h2 className="hd-ourServices">Our Services</h2>
               <p>Optimizing data quality, governance, and strategy.</p>
             </div>
             <div className="col-md-6 col-lg-4 col-xl-3">

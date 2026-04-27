@@ -185,7 +185,7 @@ export default function Company() {
                     <div className="cardIcon">
                       <Image src="/images/icon-action1.svg" alt="Emisha" width={90} height={90} />
                     </div>
-                    <h5 className="card-title">BRING ACTION TO <br /> INNOVATION</h5>
+                    <h5 className="card-title">Bring Action To <br /> Innovation</h5>
                   </div>
                 </div>
               </div>
@@ -196,7 +196,7 @@ export default function Company() {
                     <div className="cardIcon">
                       <Image src="/images/icon-action2.svg" alt="Emisha" width={90} height={90} />
                     </div>
-                    <h5 className="card-title">LEVERAGE <br />  Partnerships</h5>
+                    <h5 className="card-title">Leverage <br />  Partnerships</h5>
                   </div>
                 </div>
               </div>
@@ -244,10 +244,10 @@ export default function Company() {
               <div className="col-md-12">
                 <div className="careerEmishaBx">
                   <h2 className="title">CAREERS AT EMISHA</h2>
-                  <h3 className="sub-Title">Want to Join Our Team?</h3>
+                  <h3 className="sub-Title">Want To Join Our Team?</h3>
                   <p className="card-Text">At Emisha, you&apos;ll do work that matters. We bring together curious minds and experienced practitioners to solve complex data challenges for leading enterprises. If you&apos;re passionate about building trusted data foundations and shaping meaning full transformation, Emisha offers a place to grow, lead, and make an impact.</p>
 
-                  <p className="card-Text2">Ready to Deliver Value?</p>
+                  <p className="card-Text2">Ready To Deliver Value?</p>
                   <p className="card-Text2">Email us to inquire about open roles.</p>
 
                   <Link href="/contact" onClick={handleJoinTeamClick} className="btn btn-primary mt-4">JOIN THE TEAM</Link>
