@@ -1413,7 +1413,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 .brandBorder{ border-right: solid 1px #CACACB;}
 
 .tag-row{ margin-bottom: 40px;}
-.tag-Cat{ font-size: 24px; font-weight: 600; display: inline-block; background: #fff; margin-bottom: 20px; border-radius: 50px; padding: 12px 40px; text-align: center; box-shadow: 0 4px 20px 0px rgba(0,0,0,0.1);}
+.tag-Cat{ font-size: 22px; font-weight: 600; display: inline-block; background: #fff; margin-bottom: 20px; border-radius: 50px; padding: 12px 40px; text-align: center; box-shadow: 0 4px 20px 0px rgba(0,0,0,0.1);}
 .tag-title{ font-size: 22px; font-weight: 500; margin-bottom: 8px;}
 .tag-desc{ font-size: 16px; font-weight: 300; margin-bottom: 0px; }
 
