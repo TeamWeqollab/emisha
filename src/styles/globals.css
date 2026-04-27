@@ -1589,7 +1589,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 
 /* .imageContainerNew{  max-height: 255px;}
 .imageContainerNew img{  height: 255px; } */
-.resource-categoryNew{ font-size: 11px; width: auto; top: 85%; left: 20%; transform: translate(-50%);  }
+.resource-categoryNew{ font-size: 11px; width: auto; top: 84%; left: 20%; transform: translate(-50%);  }
 
 .post-bannerNew{ margin-bottom: 25px;}
 .resource-categoryNewDetail{ font-size: 11px; width: auto; top: 85%; left: 20%; transform: translate(-50%);  }
@@ -2067,3 +2067,70 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
   }
 
 }
+
+
+
+
+
+
+/* 
+.cardNew {
+  padding: 15px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #f7b733, #fc4a9c, #3a7bd5);
+}
+
+
+.card-inner {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff; 
+}
+
+
+.card-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  height: 50px;
+  padding: 0 25px;
+
+  background: linear-gradient(90deg, #f7b733, #fc4a9c);
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 14px;
+
+  border-radius: 0 12px 0 0;
+}
+
+
+.badge span {
+  position: relative;
+  z-index: 2;
+}
+
+
+.badge .cut1 {
+  position: absolute;
+  right: -30px;
+  bottom: 0;
+
+  width: 60px;
+  height: 50px;
+
+  background: transparent; 
+
+  border-top-left-radius: 60px;
+} */

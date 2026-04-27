@@ -178,7 +178,23 @@ export default function Resources({ resources = [], resourceTypes = [] }) {
           </div>
 
 
+            {/* <div className='row'>
+              <div className="col-md-6 col-lg-6 col-xl-4">
+                <div className="cardNew mb-5">
+                  <div className="card-inner">
+                    <img src="./images/img-resourcesArticle1.jpg" width={2003} height={1019} alt="Customer Story" />
+                    
+                    <div className="badge">
+                      <span>CUSTOMER STORY</span>
+                      <div className="cut1"></div>
+                      <div className="cut2"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> */}
 
+            
 
           {/* Resource List Grid */}
           <div className="row">
