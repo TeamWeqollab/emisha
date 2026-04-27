@@ -1976,7 +1976,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
   .innerBanner{ height: 560px; padding-top: 100px; display: flex; align-items: center;}
   .banner-details{ margin-top: 90px; padding-right: 0px;}
   .banner-details .banner-title{ font-size: 34px; font-weight: 400; margin-bottom: 15px;}
-  .banner-details .banner-desc{ font-size: 26px; margin-bottom: 15px;}
+  .banner-details .banner-desc{ font-size: 22px; margin-bottom: 15px;}
   .tag-Cat{ font-size: 20px; padding: 12px 30px; margin-top: 15px; margin-bottom: 25px;}
   .tag-title{ font-size: 20px; }
   
@@ -1996,7 +1996,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
   .innerBanner{ height: 624px; padding-top: 100px; display: flex; align-items: center;}
   .banner-details{ margin-top: 0px; padding-right: 0px;}
   .banner-details .banner-title{ font-size: 34px; font-weight: 400; margin-bottom: 15px;}
-  .banner-details .banner-desc{ font-size: 26px; margin-bottom: 15px;}
+  .banner-details .banner-desc{ font-size: 22px; margin-bottom: 15px;}
   .tag-Cat{ font-size: 20px; padding: 12px 30px; margin-top: 15px; margin-bottom: 25px;}
   .tag-title{ font-size: 20px; }
   
@@ -2017,7 +2017,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
   .innerBanner{ height: 724px; padding-top: 100px; display: flex; align-items: center;}
   .banner-details{ margin-top: 0px; padding-right: 0px;}
   .banner-details .banner-title{ font-size: 40px; font-weight: 400; margin-bottom: 15px;}
-  .banner-details .banner-desc{ font-size: 30px; margin-bottom: 15px;}
+  .banner-details .banner-desc{ font-size: 22px; margin-bottom: 15px;}
   .tag-Cat{ font-size: 20px; padding: 12px 30px; margin-top: 15px; margin-bottom: 25px;}
   .tag-title{ font-size: 20px; }
   
