@@ -1273,7 +1273,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 
 .resource-homeDetail{ color: #fff; position: absolute; top: 0px; left: 0px; z-index: 1; padding: 15px; z-index: 2;}
 .resource-homeDetail .resourceTag{ font-size: 12px; font-weight: 600; margin-bottom: 8px; background: #9A4494; padding: 10px 15px;  border-radius: 50px; text-transform: uppercase; }
-.resource-homeDetail .resourceTitle{ font-size: 24px; font-weight: 500;}
+.resource-homeDetail .resourceTitle{ font-size: 22px; font-weight: 500;}
 
 
 
@@ -2098,8 +2098,8 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 
 .badge {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: -1px;
+  left: -15px;
 
   height: 50px;
   padding: 0 25px;
