@@ -145,13 +145,17 @@ export default function ContactUs() {
                     {({ isSubmitting }) => (
                       <Form className="row g-4">
                         <div className="col-12 contactCol">
-                          <label className="form-label">Name <span className="text-danger">*</span></label>
+                          <label className="form-label">Name 
+                            {/* <span className="text-danger">*</span> */}
+                          </label>
                           <Field name="name" className="form-control" />
                           <ErrorMessage name="name" component="div" className="text-danger small mt-3" />
                         </div>
 
                         <div className="col-12 contactCol">
-                          <label className="form-label">Email <span className="text-danger">*</span></label>
+                          <label className="form-label">Email 
+                            {/* <span className="text-danger">*</span> */}
+                          </label>
                           <Field type="email" name="email" className="form-control" />
                           <ErrorMessage name="email" component="div" className="text-danger small mt-3" />
                         </div>
@@ -172,7 +176,9 @@ export default function ContactUs() {
                         </div>
 
                         <div className="col-12 contactCol">
-                          <label className="form-label">Message <span className="text-danger">*</span></label>
+                          <label className="form-label">Message 
+                            {/* <span className="text-danger">*</span> */}
+                          </label>
                           <Field as="textarea" name="message" className="form-control" rows="4" style={{ resize: 'none' }} />
                           <ErrorMessage name="message" component="div" className="text-danger small mt-3" />
                         </div>

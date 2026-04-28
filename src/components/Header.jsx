@@ -397,7 +397,7 @@ useEffect(() => {
             >
               <i className="fas fa-calendar-alt me-2"></i>CONTACT US
             </Link> */}
-             <Link href="contact" className="btn btn-primary btnHeader">
+             <Link href="/contact" className="btn btn-primary btnHeader">
               CONTACT US
             </Link>
           </div>

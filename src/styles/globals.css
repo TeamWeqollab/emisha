@@ -1074,7 +1074,12 @@ font-size: 16px; font-weight: 500;  color: #6E6E6E !important; border-bottom: no
   z-index: 1;
 }
 
-.resource-categoryNew{ width: auto; position: absolute; top: 85%; left: 20%; transform: translate(-50%); z-index: 2; font-size: 13px; color: #fff; text-transform: uppercase; font-weight: 700; padding: 5px 5px 5px 0px; text-align: center; display: inline-block;}
+.resource-categoryNew{ width: auto; position: absolute; top: 85%; left: 20%; transform: translate(-50%); z-index: 2; font-size: 13px; color: #fff; text-transform: uppercase; font-weight: 700; padding: 5px 15px 5px 15px; text-align: center; display: inline-block;
+max-width: 150px;   
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
 
 
 
@@ -1133,7 +1138,12 @@ font-size: 16px; font-weight: 500;  color: #6E6E6E !important; border-bottom: no
   z-index: 1;
 }
 
-.resource-categoryNewDetail{ width: auto; position: absolute; top: 87%; left: 20%; transform: translate(-53%); z-index: 2; font-size: 28px; color: #fff; text-transform: uppercase; font-weight: 700; padding: 5px 5px 5px 0px; text-align: center; display: inline-block;}
+.resource-categoryNewDetail{ width: auto; position: absolute; top: 87%; left: 20%; transform: translate(-53%); z-index: 2; font-size: 28px; color: #fff; text-transform: uppercase; font-weight: 700; padding: 5px 15px 5px 15px; text-align: center; display: inline-block;
+max-width: 400px;   
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
 
 
 .post-heading{ font-size: 36px; font-weight: 700; margin-top: 30px; margin-bottom: 20px;
@@ -1489,7 +1499,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 
   
 .hd-ourServices { font-size: 24px;}
-.commonCard .card-title{ font-size: 22px;}
+.commonCard .card-title{ font-size: 20px;}
 .lastCommonCard{ margin-bottom: 0px;}
 .partners .title{ font-size: 24px;}
 .footer-cta{ padding: 20px 25px; min-height: 270px;}
@@ -1500,7 +1510,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 .innerBanner{ height: auto; padding-top: 150px;}
 .banner-details{ margin-top: 40px; padding-right: 0px;}
 .banner-details .banner-title{ font-size: 28px; font-weight: 400; margin-bottom: 15px;}
-.banner-details .banner-desc{ font-size: 22px; margin-bottom: 20px;}
+.banner-details .banner-desc{ font-size: 20px; margin-bottom: 20px;}
 .tag-Cat{ font-size: 20px; padding: 12px 30px; margin-top: 15px; margin-bottom: 25px;}
 .tag-title{ font-size: 20px; }
 
@@ -1523,7 +1533,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 .innerBanner2 .banner-details2{ position: relative; top: 0; left: 0; transform: none;}
 .banner-details2 .banner-title{font-size: 28px; font-weight: 400;}
 .contactEmishaBx{padding: 30px; margin-top: 30px; border: solid 1px #e8ecf3;}
-.contactEmishaBx .title{margin-top: 0px; font-size: 32px;}
+.contactEmishaBx .title{margin-top: 0px; font-size: 28px;}
 .contactEmishaBx .card-Text{ margin-bottom: 15px;}
 .contactEmishaBx .contactForm{padding: 30px 15px;}
 .contactEmishaBx .contactForm .form-label{ font-size: 20px; margin-bottom: 0px;}
@@ -1542,7 +1552,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 .resourceCard .imageContainer img{height: 250px;}
 
 .resourceCard .card-title { font-size: 20px;}
-.post-title{font-size: 32px;}
+.post-title{font-size: 28px;}
 .post-desc { font-size: 18px;}
 .post-banner{max-height: 350px; margin-bottom: 20px;}
 .post-banner img{height: 350px;}
@@ -1561,7 +1571,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 #catResources{ margin-bottom: 40px;}
 
 #homeResourceSec{ padding:30px 20px; margin-top: 40px;}
-#homeResourceSec .resHeading{ font-size: 28px; margin-bottom: 20px;}
+#homeResourceSec .resHeading{ font-size: 24px; margin-bottom: 20px;}
 #homeResourceSec ul li{ max-width: 100%; height: auto;  margin-right: 0px; margin-bottom: 20px;}
 #homeResourceSec ul li:last-child{margin-bottom: 0px;}
 #homeResourceSec ul li.active{ max-width: 100%; width: 100%;}
@@ -1592,7 +1602,10 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 .resource-categoryNew{ font-size: 11px; width: auto; top: 84%; left: 20%; transform: translate(-50%);  }
 
 .post-bannerNew{ margin-bottom: 25px;}
-.resource-categoryNewDetail{ font-size: 11px; width: auto; top: 84%; left: 20%; transform: translate(-50%);  }
+.resource-categoryNewDetail{ max-width: 150px; font-size: 11px; width: auto; top: 84%; left: 20%; transform: translate(-50%);  }
+
+.homeLatestNews .newsHeading{ font-size: 24px;}
+.newsHeading{ font-size: 24px;}
 
 }
 
@@ -1612,7 +1625,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 .background-video { height: auto; object-fit: contain;}
 
   .hd-ourServices { font-size: 24px;}
-  .commonCard .card-title{ font-size: 22px;}
+  .commonCard .card-title{ font-size: 20px;}
   .lastCommonCard{ margin-bottom: 0px;}
   .partners .title{ font-size: 24px;}
   .footer-cta{ padding: 20px 25px; min-height: 270px;}
@@ -1623,7 +1636,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
   .innerBanner{ height: auto; padding-top: 150px;}
   .banner-details{ margin-top: 40px; padding-right: 0px;}
   .banner-details .banner-title{ font-size: 28px; font-weight: 400; margin-bottom: 15px;}
-  .banner-details .banner-desc{ font-size: 22px; margin-bottom: 20px;}
+  .banner-details .banner-desc{ font-size: 20px; margin-bottom: 20px;}
   .tag-Cat{ font-size: 20px; padding: 12px 30px; margin-top: 15px; margin-bottom: 25px;}
   .tag-title{ font-size: 20px; }
 
@@ -1646,7 +1659,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
   .innerBanner2 .banner-details2{ position: relative; top: 0; left: 0; transform: none;}
   .banner-details2 .banner-title{font-size: 28px; font-weight: 400;}
   .contactEmishaBx{padding: 30px; margin-top: 30px; border: solid 1px #e8ecf3;}
-  .contactEmishaBx .title{margin-top: 0px; font-size: 32px;}
+  .contactEmishaBx .title{margin-top: 0px; font-size: 28px;}
   .contactEmishaBx .card-Text{ margin-bottom: 15px;}
   .contactEmishaBx .contactForm{padding: 30px 15px;}
   .contactEmishaBx .contactForm .form-label{ font-size: 20px; margin-bottom: 0px;}
@@ -1664,7 +1677,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
   .resourceCard .imageContainer{ max-height: 250px; }
   .resourceCard .imageContainer img{height: 250px;}
   .resourceCard .card-title { font-size: 20px;}
-  .post-title{font-size: 32px;}
+  .post-title{font-size: 28px;}
   .post-desc { font-size: 18px;}
   .post-banner{max-height: 350px; margin-bottom: 20px;}
   .post-banner img{height: 350px;}
@@ -1684,7 +1697,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 
 
 #homeResourceSec{ padding:30px 20px; margin-top: 40px;}
-#homeResourceSec .resHeading{ font-size: 28px; margin-bottom: 20px;}
+#homeResourceSec .resHeading{ font-size: 24px; margin-bottom: 20px;}
 #homeResourceSec ul li{ max-width: 100%; height: auto;  margin-right: 0px; margin-bottom: 20px;}
 #homeResourceSec ul li:last-child{margin-bottom: 0px;}
 #homeResourceSec ul li.active{ max-width: 100%; width: 100%;}
@@ -1716,7 +1729,10 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 .resource-categoryNew{ font-size: 12px; width: auto; top: 85%; left: 20%; transform: translate(-50%);  }
 
 .post-bannerNew{ margin-bottom: 25px;}
-.resource-categoryNewDetail{ font-size: 12px; width: auto; top: 85%; left: 20%; transform: translate(-50%);  }
+.resource-categoryNewDetail{ max-width: 150px; font-size: 12px; width: auto; top: 85%; left: 20%; transform: translate(-50%);  }
+
+.homeLatestNews .newsHeading{ font-size: 24px;}
+.newsHeading{ font-size: 24px;}
 
 }
 
@@ -1842,7 +1858,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 .resource-categoryNew{ font-size: 11px; width: auto; top: 83%; left: 20%; transform: translate(-50%);  }
 
 .post-bannerNew{ margin-bottom: 25px;}
-.resource-categoryNewDetail{ font-size: 18px; width: auto; top: 85%; left: 20%; transform: translate(-50%);  }
+.resource-categoryNewDetail{ max-width: 250px; font-size: 18px; width: auto; top: 85%; left: 20%; transform: translate(-50%);  }
 
 }
 
@@ -1964,7 +1980,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 .resource-categoryNew{ font-size: 11px; width: auto; top: 85%; left: 20%; transform: translate(-50%);  }
 
 .post-bannerNew{ margin-bottom: 25px;}
-.resource-categoryNewDetail{ font-size: 22px; width: auto; top: 86%; left: 20%; transform: translate(-50%);  }
+.resource-categoryNewDetail{ max-width: 280px; font-size: 22px; width: auto; top: 86%; left: 20%; transform: translate(-50%);  }
 
 }
 
@@ -1985,7 +2001,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
   .resource-categoryNew{ font-size: 11px; width: auto; top: 83%; left: 20%; transform: translate(-50%);  }
 
 .post-bannerNew{ margin-bottom: 25px;}
-.resource-categoryNewDetail{ font-size: 24px; width: auto; top: 87%; left: 20%; transform: translate(-50%);  }
+.resource-categoryNewDetail{ max-width: 350px; font-size: 24px; width: auto; top: 87%; left: 20%; transform: translate(-50%);  }
   
 }
 
