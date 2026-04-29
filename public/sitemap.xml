@@ -1,31 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      
-          <url>
-            <loc>https://emisha.com/</loc>
-            <priority>1</priority>
-          </url>
-        
-          <url>
-            <loc>https://emisha.com/solutions</loc>
-            <priority>1</priority>
-          </url>
-        
-          <url>
-            <loc>https://emisha.com/technology</loc>
-            <priority>1</priority>
-          </url>
-        
-          <url>
-            <loc>https://emisha.com/services</loc>
-            <priority>1</priority>
-          </url>
-
-          <url>
-            <loc>https://emisha.com/customer-stories</loc>
-            <priority>1</priority>
-          </url>
-        
-          
-        
-    </urlset> 
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url><loc>https://emishaglobal.com</loc><lastmod>2026-04-29T09:01:50.224Z</lastmod><changefreq>weekly</changefreq><priority>1</priority></url>
+<url><loc>https://emishaglobal.com/company</loc><lastmod>2026-04-29T09:01:50.224Z</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+<url><loc>https://emishaglobal.com/contact</loc><lastmod>2026-04-29T09:01:50.224Z</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+<url><loc>https://emishaglobal.com/cookie-policy</loc><lastmod>2026-04-29T09:01:50.224Z</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+<url><loc>https://emishaglobal.com/news</loc><lastmod>2026-04-29T09:01:50.224Z</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+<url><loc>https://emishaglobal.com/privacy-policy</loc><lastmod>2026-04-29T09:01:50.224Z</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+<url><loc>https://emishaglobal.com/resources</loc><lastmod>2026-04-29T09:01:50.224Z</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+<url><loc>https://emishaglobal.com/services/cloud-and-data-engineering</loc><lastmod>2026-04-29T09:01:50.224Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://emishaglobal.com/services/data-and-cyber-security</loc><lastmod>2026-04-29T09:01:50.224Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://emishaglobal.com/services/data-trust-transformation-services</loc><lastmod>2026-04-29T09:01:50.224Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://emishaglobal.com/services/foundation-services</loc><lastmod>2026-04-29T09:01:50.224Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://emishaglobal.com/terms-of-service</loc><lastmod>2026-04-29T09:01:50.224Z</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+<url><loc>https://emishaglobal.com/news/cdao-singapore</loc><lastmod>2026-04-22T04:48:14.415Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://emishaglobal.com/resources/accelerating-data-to-insight-powering-dealer-centric-analytics-at-scale</loc><lastmod>2026-04-27T05:59:03.681Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://emishaglobal.com/resources/why-data-lineage-is-critical-enterprise</loc><lastmod>2026-04-27T05:40:59.980Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://emishaglobal.com/resources/sap-s4hana-retail-data-migration-oracle-case-study</loc><lastmod>2026-04-27T05:55:13.090Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://emishaglobal.com/resources/sap-mdg-healthcare-case-study-s4hana-master-data-harmonization</loc><lastmod>2026-04-27T05:56:04.135Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://emishaglobal.com/resources/data-quality-generative-ai-success</loc><lastmod>2026-04-27T05:57:14.628Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://emishaglobal.com/resources/fmcg-data-lake-aws-redshift-tableau-analytics-case-study</loc><lastmod>2026-04-27T05:58:04.884Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://emishaglobal.com/resources/strategic-value-master-data-management</loc><lastmod>2026-04-27T05:36:46.598Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+</urlset>

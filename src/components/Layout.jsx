@@ -17,7 +17,8 @@ export default function Layout({
   socialUrl 
 }) {
   const router = useRouter();
-  const baseUrl = process.env.SOCIAL_CARD_URL || "https://emisha.com"; 
+  const baseUrl = process.env.SOCIAL_CARD_URL || "https://emishaglobal.com";
+  const isDevSite = (process.env.NEXT_PUBLIC_SITE_URL || '').includes('dev.emishaglobal.com');
   
   // Default metadata (fallback values)
   const defaults = {
@@ -56,6 +57,7 @@ export default function Layout({
         <meta name="title" content={metaTitleFinal} />
         <meta name="description" content={metaDescriptionFinal} />
         <meta name="keywords" content={metaKeywordsFinal} />
+        {isDevSite && <meta name="robots" content="noindex, nofollow" />}
 
         {/* <!-- Facebook and Linkedin--> */}
         <meta property="og:url" content={fullUrl} />
