@@ -599,7 +599,7 @@ export default function News({ newsArticles, newsCategories }) {
     </div>
 
 
-    </Layout>
+    </Layout> 
   );
 }
 
