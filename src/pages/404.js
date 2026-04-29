@@ -17,14 +17,14 @@ export default function Custom404() {
     >
 
       {/* banner inner Section */}
-      <InnerBanner
+      {/* <InnerBanner
         imageSrc="/images/banner-notFound.jpg"
         imageAlt="404"
-      //title="404 - not found"
-      />
+        title="404 - not found"
+      /> */}
 
 
-      <section className="sectionWrapper" style={{ minHeight: '450px' }}>
+      <section className="sectionWrapper" style={{ minHeight: '450px', marginTop: '150px' }}>
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-10 text-center">
