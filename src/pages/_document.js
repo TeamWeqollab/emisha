@@ -1,12 +1,12 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
-  const gtmId = "GTM-TBMQHB6V";
+  const gtmId = "GTM-KZ87R6J8";
 
   return (
     <Html lang="en">
       <Head>
-        {/* Google Tag Manager uncommented when client provide it
+        {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -18,13 +18,13 @@ export default function Document() {
             `,
           }}
         />
-         */}
+        
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
       </Head>
       <body>
-        {/* Google Tag Manager (noscript) uncommented when client provide it
+        {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
@@ -32,7 +32,7 @@ export default function Document() {
             width="0"
             style={{ display: "none", visibility: "hidden" }}
           />
-        </noscript>*/}
+        </noscript>
         <Main />
         <NextScript />
       </body>
