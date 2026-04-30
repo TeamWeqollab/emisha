@@ -142,7 +142,7 @@ export default function FooterCTA() {
               >
                 {ctaContent.buttonText}
               </button> */}
-              <Link href="/contact" className="btn btn-primary">GET IN TOUCH</Link>
+              <Link href="/contact" className="btn btn-primary" aria-label="Get started by contacting us">GET IN TOUCH</Link>
             </div>
           </div>
         </div>
