@@ -54,11 +54,7 @@ export default function Footer() {
               </div>
                <div className="col-lg-2 col-md-4 footer-nav pe-5 mb-lg-4 mb-2">
                 <p className="footer-nav-heading">UAE</p>
-                <p>SF3133, C1-1F
-                    Ajman Free Zone
-                    Ajman
-                    United Arab Emirate
-                  </p>
+                <p>SF3133, C1-1F Ajman Free Zone, Ajman, United Arab Emirates</p>
               </div>
 
               <div className="col-lg-2 col-md-4 footer-nav pe-2 mb-lg-4 mb-2">
