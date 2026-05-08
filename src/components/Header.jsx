@@ -249,7 +249,7 @@ useEffect(() => {
           </div>
 
           {/* Mobile Offcanvas Toggle Button */}
-          <button className="btn btn-outline-light d-lg-none btn-bars" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu">
+          <button className="btn btn-outline-light d-lg-none btn-bars" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu"  aria-label="Open mobile menu">
             <i className="fas fa-bars"></i>
           </button>
         </div>

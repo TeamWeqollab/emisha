@@ -421,8 +421,8 @@ export default function News({ newsArticles, newsCategories }) {
           </div>
 
 
-          {/* Latest News section */}
-          {featuredArticles.length > 0 && (
+          {/* Latest News section  Uncomment if required*/}
+          {/* {featuredArticles.length > 0 && (
             <div className="latestNews">
               <div className="row">
                 <div className="col-md-12 text-center">
@@ -461,7 +461,7 @@ export default function News({ newsArticles, newsCategories }) {
                 ))}
               </div>
             </div>
-          )}
+          )} */}
 
 
           {/* Filters */}
@@ -538,35 +538,40 @@ export default function News({ newsArticles, newsCategories }) {
 
 
           {/* News Grid */}
-          <div className="row mt-5">
-            <div className="col-md-12">
+            <div className="row mt-5">
               {gridArticles.length > 0 ? (
                 gridArticles.map((article, index) => (
-                  <div key={article.id || index} className="card newsCard">
-                    <div className="row align-items-center g-0">
-                      <div className="col-md-6 col-lg-6">
-                        <div className="imageContainer-news">
+                <>
+                  {/* New Grid Article */}
+                  <div key={article.id || index} className="col-md-6 col-lg-4 col-xl-4">
+                    <Link href={`/news/${article.Slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                      <div className="card latestNewsCard">
+                        <div className="imageContainer-latestNews position-relative">
                           <Image 
                             src={getBannerImageUrl(article)} 
                             alt={article.Title || 'News article'} 
-                            width={1480} 
-                            height={568} 
-                            className="img-fluid" 
+                            width={480} 
+                            height={360} 
+                            className="img-fluid mask1" 
                           />
+                          <div className="news-btn">
+                            <span className="cardIcon">
+                              <span className="arrow"></span>
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                      <div className="col-md-6 col-lg-6">
                         <div className="card-body">
                           <h3 className="card-title">{article.Title || 'Untitled'}</h3>
                           <p className="card-date">
                             {getCategoryName(article) || 'News'}   -    {formatDate(article.PublishDate)}
                           </p>
                           <p className="card-text">{truncateSummary(article.SummaryLong || article.Summary || '')}</p>
-                          <Link href={`/news/${article.Slug}`} className="link-primary">Learn More</Link>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   </div>
+                  </>
+                  
                 ))
               ) : newsArticles && newsArticles.length > 0 ? (
                 <div className="text-center py-5">
@@ -578,7 +583,7 @@ export default function News({ newsArticles, newsCategories }) {
                   <p className="text-muted small">Debug: Total articles received: {newsArticles?.length || 0}</p>
                 </div>
               )}
-            </div>
+            
           </div>
 
 
