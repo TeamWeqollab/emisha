@@ -281,7 +281,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
                         <div className="imageContainer-latestNews position-relative">
                           <Image src={getImageUrl(item) || '/images/img-news-1.jpg'} alt={item.Title || 'Emisha'} width={480} height={360} className="img-fluid mask1" />
                           <div className="news-btn">
-                            <span className="cardIcon">
+                            <span className="cardIcon homeCardIcon">
                               <span className="arrow"></span>
                             </span>
                           </div>
