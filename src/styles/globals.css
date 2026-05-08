@@ -1867,6 +1867,8 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 .post-bannerNew{ margin-bottom: 25px;}
 .resource-categoryNewDetail{ max-width: 250px; font-size: 18px; width: auto; top: 85%; left: 20%; transform: translate(-50%);  }
 
+.homeCardIcon{bottom: 4px !important; right: 0px !important;}
+
 }
 
 
