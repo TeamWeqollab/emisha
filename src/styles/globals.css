@@ -1196,10 +1196,10 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 .blogPageContent ul li{ margin-bottom: 10px;}
 .blogPageContent ul li:last-child{ margin-bottom: 0px;}
 
-.blogPageContent table{ width: 100%; margin-bottom: 15px;}
+.blogPageContent table{ width: 100%; margin-bottom: 15px; border-collapse: collapse;}
 .blogPageContent table tr td{ padding: 10px; border: solid 1px;}
-.blogPageContent table thead{ background: #f5f5f5; font-weight: 500;}
-.blogPageContent table thead tr th{ border: solid 1px; padding: 10px;}
+/* .blogPageContent table thead{ font-weight: 500;}
+.blogPageContent table thead tr th{ border: solid 1px; padding: 10px; background: #f5f5f5; font-weight: 500;} */
 
 
 .resourceLink{ text-decoration: none !important; color: #1A1A1A;}
