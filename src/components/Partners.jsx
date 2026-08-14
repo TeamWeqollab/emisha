@@ -24,7 +24,8 @@ export default function Partners({
             <p className="desc">{desc}</p>
           </div>
           <div className="col-md-12 col-lg-8">
-            <Image src={imageSrc} alt={alt} width={1499} height={216} className="img-fluid mt-4 mt-lg-0" />
+            <Image src={imageSrc} alt={alt} width={1499} height={216} className="img-fluid mt-4 mt-lg-0 d-none d-lg-block" />
+            <Image src="/images/partners-logo-mobile.webp" alt={alt} width={1499} height={216} className="img-fluid mt-4 mt-lg-0 d-lg-none" />
           </div>
         </div>
       </div>
