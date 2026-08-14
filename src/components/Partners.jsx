@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Partners({
   title = 'Trusted Partnerships\nThat Power Our Services',
   desc = 'Partnering with the best to deliver smarter solutions for you.',
-  imageSrc = '/images/logo-partners.png',
+  imageSrc = '/images/partners-logo-v2.webp',
   alt = 'Emisha',
 }) {
   const lines = title.split('\n');
