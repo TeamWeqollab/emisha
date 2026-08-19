@@ -1201,6 +1201,19 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 /* .blogPageContent table thead{ font-weight: 500;}
 .blogPageContent table thead tr th{ border: solid 1px; padding: 10px; background: #f5f5f5; font-weight: 500;} */
 
+@media (max-width: 991px) {
+  .blogPageContent table,
+  .blogPageContent table tbody,
+  .blogPageContent table tr,
+  .blogPageContent table td {
+    display: block;
+    width: 100%;
+  }
+  .blogPageContent table tr{ margin-bottom: 10px;}
+  .blogPageContent table tr td{ border-bottom: none;}
+  .blogPageContent table tr:last-child td{ border-bottom: solid 1px;}
+}
+
 
 .resourceLink{ text-decoration: none !important; color: #1A1A1A;}
 .bg-resoureceCat{background: none; color: #777; padding: 0px; font-weight: 400;}
