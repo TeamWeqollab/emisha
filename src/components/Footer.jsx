@@ -57,7 +57,7 @@ export default function Footer() {
                 <p>SF3133, C1-1F Ajman Free Zone, Ajman, United Arab Emirates</p>
               </div>
 
-              <div className="col-lg-2 col-md-4 footer-nav pe-2 mb-lg-4 mb-2">
+              {/* <div className="col-lg-2 col-md-4 footer-nav pe-2 mb-lg-4 mb-2">
                 <p className="footer-nav-heading">EMISHA</p>
                 <div className="row">
                   <div className="col-md-6">
@@ -74,8 +74,8 @@ export default function Footer() {
                     </ul>
                   </div>
                 </div>
-               
-              </div>
+
+              </div> */}
 
               <div className="col-lg-2 col-md-4 footer-nav ps-lg-5 ps-3 mt-2 mt-lg-0 mb-lg-4 mb-2">
                 <p className="footer-nav-heading2">LET&apos;S GET SOCIAL</p>

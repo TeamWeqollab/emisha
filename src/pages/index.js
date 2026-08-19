@@ -102,7 +102,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
     <div id="homeBanner">
           <div className="video-container">
             {/* <div className="overlay"></div> */}
-            <video autoPlay loop muted playsInline preload="none" className="background-video" poster="/images/video-poster.jpg">
+            <video autoPlay loop muted playsInline preload="none" className="background-video">
               {/* <source src="/videos/video-video.webm" type="video/webm" /> */}
               <source src="/videos/video-emisha2.mp4" type="video/mp4" />
               Your browser does not support the video tag.
