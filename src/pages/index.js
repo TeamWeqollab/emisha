@@ -77,7 +77,14 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
   // Truncate Summary/SummaryLong to maxLen chars, strip HTML; append "..." if truncated
   const truncateSummary = (text, maxLen = 100) => {
     if (!text || typeof text !== 'string') return '';
-    const stripped = text.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').trim();
+    const stripped = text
+      .replace(/<[^>]*>/g, '')
+      .replace(/&nbsp;/g, ' ')
+      .replace(/\*\*(.*?)\*\*/g, '$1')
+      .replace(/\*(.*?)\*/g, '$1')
+      .replace(/__(.*?)__/g, '$1')
+      .replace(/_(.*?)_/g, '$1')
+      .trim();
     if (stripped.length <= maxLen) return stripped;
     return stripped.substring(0, maxLen).trim() + '...';
   };
