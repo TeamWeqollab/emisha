@@ -35,6 +35,8 @@ export default function Footer() {
                 <Image src="/images/logo-footer.svg" width={124} height={72} alt="Emisha" className="img-fluid me-4" />
               </div>
 
+              <div className="col-lg-2 d-none d-lg-block" aria-hidden="true"></div>
+
               <div className="col-lg-2 col-md-4 footer-nav pe-5 mb-lg-4 mb-2" >
                 <p className="footer-nav-heading">Australia</p>
                 <p>Level 35, Tower One
