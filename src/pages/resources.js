@@ -267,7 +267,7 @@ export async function getStaticProps() {
     const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
     // Fetch resources (explicitly populate relations first, fall back to populate=*)
-    let resourcesRes = await fetch(`${strapiUrl}/api/resources?populate[ResourceType]=*&populate[Image]=*&populate[ImageResource]=*`);
+    let resourcesRes = await fetch(`${strapiUrl}/api/resources?populate[0]=resource_type&populate[1]=Banner&sort[0]=Title:asc&pagination[pageSize]=100`);
     if (!resourcesRes.ok) {
       // fallback
       resourcesRes = await fetch(`${strapiUrl}/api/resources?populate=*&sort[0]=Title:asc&pagination[pageSize]=100`);

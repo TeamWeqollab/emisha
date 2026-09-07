@@ -635,24 +635,14 @@ export async function getStaticProps({ params }) {
     const { slug } = params;
     const slugEnc = encodeURIComponent(slug);
 
-    // Fetch the specific resource by slug (no populate[PDF] here to avoid 404 if field missing in schema)
+    // Fetch the specific resource by slug (PDF is populated separately below, only when needed)
     const resourceRes = await fetch(
-      `${strapiUrl}/api/resources?filters[Slug][$eq]=${slugEnc}&populate[ResourceType]=*&populate[Image]=*&populate[Banner]=*&populate[VideoURL]=*`
+      `${strapiUrl}/api/resources?filters[Slug][$eq]=${slugEnc}&populate[0]=resource_type&populate[1]=Banner`
     );
 
-    // If that doesn't work, try lowercase slug filter
     let resourceData = await resourceRes.json();
 
-    if (!resourceRes.ok || !resourceData.data || resourceData.data.length === 0) {
-      const altRes = await fetch(
-        `${strapiUrl}/api/resources?filters[slug][$eq]=${slugEnc}&populate=*&populate[ResourceType]=*&populate[Image]=*`
-      );
-      if (altRes.ok) {
-        resourceData = await altRes.json();
-      }
-    }
-
-    // If still no data, try populate=*
+    // If that returned nothing, fall back to a wildcard populate
     if (!resourceData.data || resourceData.data.length === 0) {
       const altRes = await fetch(
         `${strapiUrl}/api/resources?filters[Slug][$eq]=${slugEnc}&populate=*`
@@ -664,7 +654,8 @@ export async function getStaticProps({ params }) {
 
     if (!resourceData.data || resourceData.data.length === 0) {
       return {
-        notFound: true
+        notFound: true,
+        revalidate: 10 // Retry rather than caching the 404 forever (e.g. entry still in draft)
       };
     }
 
@@ -729,7 +720,7 @@ export async function getStaticProps({ params }) {
 
     // Handle Resource Type
     let resourceTypeData = null;
-    const typeField = getValue(attributes, 'ResourceType', 'resourceType', 'Type', 'type', 'Category', 'category');
+    const typeField = getValue(attributes, 'resource_type', 'ResourceType', 'resourceType', 'Type', 'type', 'Category', 'category');
     if (typeField) {
       if (typeField.data) {
         const td = Array.isArray(typeField.data) ? typeField.data[0] : typeField.data;
@@ -774,9 +765,10 @@ export async function getStaticProps({ params }) {
 
     // For whitepaper/ebook only: fetch PDF in a separate request so main fetches never 404
     const typeSlug = (resourceTypeData?.Slug || resourceTypeData?.Name || '').toString().toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
-    if ((/white/.test(typeSlug) || /ebook/.test(typeSlug)) && item.id) {
+    if ((/white/.test(typeSlug) || /ebook/.test(typeSlug)) && (item.documentId || item.id)) {
       try {
-        const pdfRes = await fetch(`${strapiUrl}/api/resources/${item.id}?populate[PDF]=*`);
+        // Strapi v5 addresses single entries by documentId; the numeric id 404s
+        const pdfRes = await fetch(`${strapiUrl}/api/resources/${item.documentId || item.id}?populate=PDF`);
         if (pdfRes.ok) {
           const pdfJson = await pdfRes.json();
           const pdfItem = pdfJson.data != null ? pdfJson.data : pdfJson;
@@ -935,7 +927,8 @@ export async function getStaticProps({ params }) {
   } catch (error) {
     console.error('Error fetching resource:', error);
     return {
-      notFound: true
+      notFound: true,
+      revalidate: 10 // Retry rather than caching the 404 forever (e.g. transient Strapi error)
     };
   }
 }
