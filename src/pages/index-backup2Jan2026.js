@@ -273,7 +273,7 @@ export default function Home({ homepageNews = [], homepageResources = [] }) {
           <div className="latestNews homeLatestNews">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h2 className="newsHeading">Get The Latest From Emisha</h2>
+                <h2 className="newsHeading">Get the Latest from Emisha</h2>
               </div>
             </div>
             

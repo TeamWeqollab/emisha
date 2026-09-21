@@ -245,7 +245,7 @@ export default function Company() {
                 <div className="careerEmishaBx">
                   <h2 className="title">CAREERS AT EMISHA</h2>
                   <h3 className="sub-Title">Want To Join Our Team?</h3>
-                  <p className="card-Text">At Emisha, you&apos;ll do work that matters. We bring together curious minds and experienced practitioners to solve complex data challenges for leading enterprises. If you&apos;re passionate about building trusted data foundations and shaping meaning full transformation, Emisha offers a place to grow, lead, and make an impact.</p>
+                  <p className="card-Text">At Emisha, you&apos;ll do work that matters. We bring together curious minds and experienced practitioners to solve complex data challenges for leading enterprises. If you&apos;re passionate about building trusted data foundations and shaping meaningful transformation, Emisha offers a place to grow, lead, and make an impact.</p>
 
                   <p className="card-Text2">Ready To Deliver Value?</p>
                   <p className="card-Text2">Email us to inquire about open roles.</p>

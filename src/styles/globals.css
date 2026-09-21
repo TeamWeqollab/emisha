@@ -143,7 +143,7 @@ body {
 .dark-mode .footer-cta{background:var( --dark-mode-bg) !important;  border: solid 1px #494949;}
 /* .dark-mode .footer-cta .sectionHeading{ color: var(--black-primary) !important;} */
 .dark-mode  .footer-nav ul li a{ color: #ccc !important;}
-.dark-mode #copyright ul li a, #copyright .copytext{  color: var(--dark-mode-color) !important;}
+.dark-mode #copyright ul li a, .dark-mode #copyright .copytext{  color: var(--dark-mode-color) !important;}
 
 
 .dark-mode .post-content{  color: var(--dark-mode-color) !important;}
@@ -950,6 +950,7 @@ font-size: 16px; font-weight: 500;  color: #6E6E6E !important; border-bottom: no
 
 .deskBanner{position: absolute; width: 100%; height: 824px; padding-left: 120px; top: 0;  }
 /* .deskBanner img{ width: 100%; height: auto; } */
+.deskBanner img{ display: block; margin-left: auto;}
 
 
 
@@ -1524,6 +1525,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 
   
 .hd-ourServices { font-size: 24px;}
+.hd-ourServices br { display: none;}
 .commonCard .card-title{ font-size: 20px;}
 .lastCommonCard{ margin-bottom: 0px;}
 .partners .title{ font-size: 24px;}
@@ -1536,7 +1538,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 .banner-details{ margin-top: 40px; padding-right: 0px;}
 .banner-details .banner-title{ font-size: 28px; font-weight: 400; margin-bottom: 15px;}
 .banner-details .banner-desc{ font-size: 20px; margin-bottom: 20px;}
-.tag-Cat{ font-size: 20px; padding: 12px 30px; margin-top: 15px; margin-bottom: 25px;}
+.tag-Cat{ font-size: 20px; padding: 12px 30px; margin-top: 15px; margin-bottom: 25px; width: 100%;}
 .tag-title{ font-size: 20px; }
 
 .aboutHeading{ font-size: 24px;}
@@ -1650,6 +1652,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 .background-video { height: auto; object-fit: contain;}
 
   .hd-ourServices { font-size: 24px;}
+  .hd-ourServices br { display: none;}
   .commonCard .card-title{ font-size: 20px;}
   .lastCommonCard{ margin-bottom: 0px;}
   .partners .title{ font-size: 24px;}
