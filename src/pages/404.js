@@ -6,7 +6,7 @@ import InnerBanner from "@/components/InnerBanner.jsx";
 export default function Custom404() {
   return (
     <Layout
-      pageTitle="Emisha Interactive - Custom & Enterprise Software Development Solutions"
+      pageTitle="Page Not Found | Emisha"
       metaTitle="Emisha Interactive - Custom & Enterprise Software Development Solutions"
       metaDescription="Emisha Interactive builds scalable, secure, and intelligent enterprise software. We specialize in custom software development, system integration, and digital transformation for businesses that demand performance and precision."
       metaKeywords="enterprise software development, custom software development, business software, enterprise applications, digital transformation, technology partner, enterprise solutions, software engineering, IT consulting"

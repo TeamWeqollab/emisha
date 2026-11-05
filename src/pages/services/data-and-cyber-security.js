@@ -13,7 +13,7 @@ export default function DataCyberSecurity() {
 
   return (
     <Layout
-      pageTitle="Emisha"
+      pageTitle="Data and Cyber Security | Emisha"
       metaTitle="Future-proofing businesses with intelligent data solutions."
       metaDescription="Emisha empowers businesses by unlocking the full potential of their data through end-to-end solutions. With expertise in business integration, tailored strategies, and consulting, we bridge data complexity with precision, ensuring seamless transformation from strategy to execution."
       metaKeywords="Data-driven business solutions, End-to-end data solutions, Business data transformation, Data integration services, Enterprise data solutions, Data strategy and execution, Business integration expertise, Tailored data strategies, Data consulting services, Data-driven decision making, Digital transformation solutions, Strategic data consulting"
@@ -40,7 +40,7 @@ export default function DataCyberSecurity() {
             </div>
           </div>
           <div className="d-lg-none text-center">
-            <Image src="/images/banner-dataCyberSecurity-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
+            <Image src="/images/banner-dataCyberSecurity-xs.webp" alt="Emisha" width={1000} height={1000} className="img-fluid" />
           </div>
 
           <div className="container">

@@ -28,7 +28,7 @@ export default function Company() {
 
   return (
     <Layout
-      pageTitle="Emisha"
+      pageTitle="Company | Emisha"
       metaTitle="Future-proofing businesses with intelligent data solutions."
       metaDescription="Emisha empowers businesses by unlocking the full potential of their data through end-to-end solutions. With expertise in business integration, tailored strategies, and consulting, we bridge data complexity with precision, ensuring seamless transformation from strategy to execution."
       metaKeywords="Data-driven business solutions, End-to-end data solutions, Business data transformation, Data integration services, Enterprise data solutions, Data strategy and execution, Business integration expertise, Tailored data strategies, Data consulting services, Data-driven decision making, Digital transformation solutions, Strategic data consulting"

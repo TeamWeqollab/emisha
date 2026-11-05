@@ -12,7 +12,7 @@ export default function NewsDetail({ article, relatedArticles }) {
   if (!article) {
     return (
       <Layout
-        pageTitle="Article Not Found"
+        pageTitle="Article Not Found | Emisha"
         metaTitle="Article Not Found"
         metaDescription="The requested article could not be found."
       >
@@ -135,7 +135,7 @@ export default function NewsDetail({ article, relatedArticles }) {
 
       </Head>
       <Layout
-        pageTitle={article.Title || 'News Article'}
+        pageTitle={`${article.Title || 'News Article'} | Emisha`}
         metaTitle={article.Title || 'News Article'}
         metaDescription={metaDescription}
         metaKeywords={`${article.Title}, Emisha news, ${getCategoryName(article)}`}

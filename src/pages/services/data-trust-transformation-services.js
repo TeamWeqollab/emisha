@@ -41,7 +41,7 @@ export default function DataTrustTransformationServices() {
             </div>
           </div>
           <div className="d-lg-none text-center">
-            <Image src="/images/banner-enterpriseInformation-xs.png" alt="Emisha" width={800} height={600} className="img-fluid" />
+            <Image src="/images/banner-enterpriseInformation-xs.webp" alt="Emisha" width={1000} height={1000} className="img-fluid" />
           </div>
 
           <div className="container">

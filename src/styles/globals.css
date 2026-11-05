@@ -1535,7 +1535,7 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 #copyright ul li{ margin-right: 10px;}
 
 .innerBanner{ height: auto; padding-top: 150px;}
-.banner-details{ margin-top: 40px; padding-right: 0px;}
+.banner-details{ margin-top: 40px; padding-right: 0px; text-align: center;}
 .banner-details .banner-title{ font-size: 28px; font-weight: 400; margin-bottom: 15px;}
 .banner-details .banner-desc{ font-size: 20px; margin-bottom: 20px;}
 .tag-Cat{ font-size: 20px; padding: 12px 30px; margin-top: 15px; margin-bottom: 25px; width: 100%;}
@@ -2189,3 +2189,9 @@ background: linear-gradient(to right, #FBB32B 0%, #E54D8B 27%, #AE3D8F 53%, #545
 
   border-top-left-radius: 60px;
 } */
+
+/* Mobile/tablet banner illustration: centered and capped so the square artwork
+   doesn't take over the viewport below 992px */
+@media (max-width: 991.98px) {
+  .innerBanner .d-lg-none img{ display: block; width: 70%; max-width: 308px; height: auto; margin-left: auto; margin-right: auto;}
+}

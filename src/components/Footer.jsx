@@ -101,7 +101,7 @@ export default function Footer() {
                 </ul>
               </div>
               <div className="col-md-4 col-lg-6 text-center text-lg-end">
-                <p className="copytext mb-3 mb-lg-0">&copy; {currentYear} Emisha 2026</p>
+                <p className="copytext mb-3 mb-lg-0">&copy; Emisha {currentYear}</p>
               </div>
             </div>
           </div>

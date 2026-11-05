@@ -58,7 +58,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
   if (!resource) {
     return (
       <Layout
-        pageTitle="Resource Not Found"
+        pageTitle="Resource Not Found | Emisha"
         metaTitle="Resource Not Found"
         metaDescription="The requested resource could not be found."
       >
@@ -340,7 +340,7 @@ export default function ResourceDetail({ resource, relatedResources }) {
       </Head>
 
       <Layout
-        pageTitle={resource.Title || 'Resource'}
+        pageTitle={`${resource.Title || 'Resource'} | Emisha`}
         metaTitle={resource.Title || 'Resource'}
         metaDescription={metaDescription}
         metaKeywords={`${resource.Title}, Emisha resources, ${getResourceTypeName(resource)}`}
